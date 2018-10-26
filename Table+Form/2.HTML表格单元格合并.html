@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML表格单元格合并</title>
+	</head>
+	<body>   
+		<table border="1" width="300px" cellspacing="0">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>3</td>
+			</tr>
+		</table>		
+
+		<h2>合并行：rowspan</h2>
+		<p>效果1：</p>
+		<table border="1" width="300px" cellspacing="0">
+			<tr>
+				<td rowspan="2">1</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<!-- <td>4</td> -->
+				<td>3</td>
+			</tr>
+		</table>
+
+		<p>效果2：</p>
+		<table border="1" width="300px" cellspacing="0">
+			<tr>
+				<td>1</td>
+				<td rowspan="2">2</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<!-- <td>3</td> -->
+			</tr>
+		</table>
+
+		<h2>合并列：colspan</h2>
+		<p>效果3：</p>
+
+		<table border="1" width="300px" cellspacing="0">
+			<tr>
+				<td colspan="2">1</td>
+				<!-- <td>2</td> -->
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>3</td>
+			</tr>
+		</table>
+
+		<p>效果4：</p>
+
+		<table border="1" width="300px" cellspacing="0">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td colspan="2">4</td>
+				<!-- <td>3</td> -->
+			</tr>
+		</table>
+	</body>
+</html>

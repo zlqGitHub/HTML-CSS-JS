@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册表单</title>
+	</head>
+	<body>   
+		<form action="register.php" method="POST">
+			<!-- disabled是让文本框里的值不在改变 -->
+			<p>用户名：<input type="text" name="username" value="张利强" disabled></p>   
+			<p>密码：<input type="password" name="pass"></p>
+			<p>重复密码：<input type="password" name="repass"></p>
+			<p>
+				性别：
+				<input type="radio" name="sex" value="1"> 男
+				<input type="radio" name="sex" value="0"> 女
+				<input type="radio" name="sex" checked value="2"> 你懂的
+			</p>
+			<p>
+				爱好：
+				<input type="checkbox" name="like[]" value="1" checked> 吃饭
+				<input type="checkbox" name="like[]" value="2" checked> 睡觉
+				<input type="checkbox" name="like[]" value="3"> 打豆豆
+			</p>
+			<p>
+				头像：<input type="file">
+			</p>
+			<p>
+				学历：
+				<select name="edu">
+					<option value="1">小学</option>
+					<option selected value="2">高中</option>
+					<option value="3">本科</option>
+				</select>
+			</p>
+			<p>
+				简历：
+				<!-- style="resize: none;"使得多行文本框大小不能改变 -->
+				<textarea name="jianli"  rows="10" cols="50" style="resize: none;">请填写你的个人简历，不能少于100字！</textarea>
+			</p>
+			<input type="hidden" name="userid" value="1">
+			<input type="button" value="我是input普通按钮">
+			<button>默认情况下，我是提交按钮</button>
+			<button type="button">我是普通按钮</button>
+			<input type="submit" value="快速注册">
+			<input type="reset" value="重置">
+			<!-- 普通按钮可以触发事件的发生 -->
+			<button type="button" onclick="alert(123)">普通按钮触发事件的发生</button>
+
+		</form>
+
+		
+	</body>
+</html>
