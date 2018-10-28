@@ -1,0 +1,11 @@
+.title{
+	font-family: "微软雅黑";   /*字体类型*/
+	font-size:70px;           /* 字体大小*/
+	font-weight: 700;         /*字体加粗*/
+}
+
+
+p{
+	color:red;
+	font-size: 30px;
+}
