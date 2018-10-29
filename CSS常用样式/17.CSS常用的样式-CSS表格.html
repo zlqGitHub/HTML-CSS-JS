@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS常用的样式-CSS表格</title>
+		<style>
+			table{
+				/*边框会合并为一个单一的边框。会忽略 border-spacing 属性*/
+				border-collapse: collapse;  
+				/*border-spacing: 10px;*/
+				border:1px solid pink;
+				width: 600px;
+				height: 500px;
+			}
+
+			td,th{
+				border: 1px solid pink;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>年龄</th>
+				<th>籍贯</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>张礼军</td>
+				<td>男</td>
+				<td>18</td>
+				<td>安庆</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>张大川</td>
+				<td>男</td>
+				<td>20</td>
+				<td>吕梁</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>白大昱</td>
+				<td>男</td>
+				<td>17</td>
+				<td>大同</td>
+			</tr>
+		</table>
+	</body>
+</html>
