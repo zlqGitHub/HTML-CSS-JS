@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS选择器-伪元素选择器</title>
+		<style>
+			p:first-letter{
+				font-size: 40px;
+			}
+
+			.first-letter{
+				font-size: 40px;
+			}
+
+			p:first-line{
+				color: red;
+			}
+
+			.before:before{
+				content: 'you before ';
+				color:red;
+			}
+
+			/*.after:after{
+				content: ' after me';
+			}*/
+
+			.after:hover:after{
+				content: ' after me';
+				color: green;
+			}
+
+			.news li a:before{
+				content: url(./images/hot.png);
+			}
+
+			a:before{
+				content: attr(title)
+			}
+		</style>
+	</head>
+	<body>
+		<p>I Love U.</p>
+		<h2><span class="first-letter">I</span> Love U.</h2>
+		<p>
+			You can use the :first-line pseudo-element to add a special 
+			effect to the first line of a text!You can use the :first-line pseudo-element to add a special 
+			effect to the first line of a text!You can use the :first-line pseudo-element to add a special 
+			effect to the first line of a text!
+		</p>
+		<div class="before">me</div>
+		<div class="after">you</div>
+
+		<ul class="news">
+			<li><a href="#"> 皇马官方宣布C罗转会尤文 </a></li>
+			<li><a href="#"> 9年皇马岁月！谢谢你C罗 </a></li>
+			<li><a href="#"> 9年皇马岁月！谢谢你C罗 </a></li>
+		</ul>
+
+		<a href="http://weui.moocba.com" title="慕课吧——微信开发者终身学习平台" target="_blank"></a>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS选择器-伪类选择器</title>
+		<style>
+			/*:first-child   	向元素的第一个子元素添加样式。*/
+			p:first-child i{
+				color:pink;
+			}
+
+			.p1 i{
+				color:pink;
+			}
+
+			/*
+			    "love hate"爱恨之间   l->v->h->a
+			  :active  			向被激活的元素添加样式。
+			  :hover  			鼠标悬浮时向元素添加样式。
+			  :link      		向未被访问的链接添加样式。
+			  :visited        	向已被访问的链接添加样式。
+			  
+            */
+           
+			.top a:link,a:visited{
+				color: #999;
+				text-decoration: none;
+			}
+
+			.top a:hover{
+				color: #FF0000;
+				text-decoration: underline;
+			}
+
+			.top a:active{
+				color:green;
+			}
+
+		</style>
+	</head>
+	<body>
+		<p>I am a <i>weakness</i> man. I am a <i>weakness</i> man.</p>
+		<p>I am a <i>strong</i> man. I am a <i>strong</i> man.</p>
+		<p class="p1">I am a <i>strong</i> man. I am a <i>strong</i> man.</p>
+		<p>I am a <i>strong</i> man. I am a <i>strong</i> man.</p>
+
+		<p class="top">
+			<a href="http://www.baidu.com" target="_blank">请登录</a>
+			<a href="http://www.baidu.com" target="_blank">免费注册</a>
+		</p>
+	</body>
+</html>
