@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS背景：案例二</title>
+		<style>
+			.news{
+				list-style: none;
+			}
+
+			.news a:link{
+				color:#122e67;
+				text-decoration: none;
+			}
+
+			.news a:visited{
+				color: #52687e;
+			}
+
+			.news a:hover{
+				color: #ff8400;
+				text-decoration: underline;
+			}
+
+			.news li{
+				padding-left: 10px;
+				margin-bottom: 10px;
+				height: 26px;
+				line-height: 26px;
+				background: url(./images/icon.png) no-repeat 0 -881px;
+			}
+
+			.news a.videoNewsLeft{
+				padding-left: 25px;
+				background: url(./images/videoNewsLeft.gif) no-repeat center left;
+			}
+
+			.news a.photoNewsLeft{
+				padding-left: 25px;
+				background: url(./images/photoNewsLeft.gif) no-repeat center left;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<ul class="news">
+			<li>
+				<a href="#" class="videoNewsLeft">马克龙回顾与特朗普历史友谊</a>
+			</li>
+			<li>
+				<a href="#" class="photoNewsLeft">马克龙回顾与特朗普历史友谊</a>
+			</li>
+			<li>
+				<a href="#" class="videoNewsLeft">马克龙回顾与特朗普历史友谊</a>
+			</li>
+			<li>
+				<a href="#" class="videoNewsLeft">马克龙回顾与特朗普历史友谊</a>
+			</li>
+			<li>
+				<a href="#" class="photoNewsLeft">马克龙回顾与特朗普历史友谊</a>
+			</li>
+		</ul>
+	</body>
+</html>
