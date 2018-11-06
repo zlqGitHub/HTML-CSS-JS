@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS定位-绝对定位：absolute</title>
+		<style>
+			.box1,.box2,.box3{
+				width: 200px;
+				height: 200px;
+			}
+
+			.box1{
+				background: red;
+			}
+
+			.box2{
+				background:green; 
+				position: absolute;  
+				/*实际开发中，一定是在相对定位里面嵌套绝对定位！ */
+				/*绝对定位 :相对于最近的、已定位的祖先元素，如 果元素没有已定位的祖先元素，那么它的位置将相 对于 body 元素*/
+				top: 0px;
+				left: 0px;
+			}
+
+			.box3{
+				background:blue;
+			}	
+
+			.box4{
+				width: 400px;
+				height: 400px;
+				background:green;
+				/*position: relative;*/
+				
+			}		
+
+			.box5{
+				width: 300px;
+				height: 300px;
+				background: pink;
+				/*position: relative;*/
+			}
+
+			.box6{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">box1</div>
+		<div class="box2">box2</div>
+		<div class="box3">box3</div>
+
+		<div class="box4">
+			box4
+			<div class="box5">
+			box5
+				<div class="box6">box6</div>
+			</div>
+		</div>
+	</body>
+</html>
