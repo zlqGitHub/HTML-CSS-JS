@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>display和visibility</title>
+		<style>
+			.box1,.box2,.box3,.box4{
+				width: 200px;
+				height: 200px;
+				color: #FFF;
+			}
+			.box1{
+				background: red;
+			}
+			.box2{
+				background:green;
+				visibility: hidden;  /*占位隐藏*/
+			} 
+			.box3{
+				background: pink;
+				display: none;       /*非占位隐藏*/
+			}
+			.box4{
+				background: blue;
+			}
+
+			h2{
+				background:pink;
+				width: 200px;
+				height: 100px;
+				display: inline;  /*将块级元素转换为行内元素*/
+			}
+
+			span.title1{
+				background:green;
+				width: 200px;
+				height: 100px;
+				display: block; /*将行内元素转换为块级元素*/
+			}
+
+			span.title2{
+				background:red;
+				width: 200px;
+				height: 100px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">box1</div>
+		<div class="box2">box2</div>
+		<div class="box3">box3</div>
+		<div class="box4">box4</div>
+
+
+		<h2>我是H2标题标签</h2>
+		<span class="title1">我是SPAN标签</span>
+		<span class="title2">我是SPAN标签</span>
+		<span>我是SPAN标签</span>
+	</body>
+</html>
