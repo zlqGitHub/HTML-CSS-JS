@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS背景</title>
+		<style>
+			body{
+				background-color:#F0F3EF;
+				background-image: url(./images/bg.jpg);
+				background-repeat: repeat-x;
+			}
+
+			.box1{
+				width: 200px;
+				height: 300px;
+				border:1px dashed red;
+				background-image: url(./images/yifu.png);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+
+			.box2{
+				width: 100%;
+				height: 300px;
+				border:1px solid green;
+				background-image: url(./images/yifu.png);
+				background-repeat: no-repeat;
+				background-position: -10px 100px;
+			}
+
+			.icon{
+				width: 34px;
+				height: 28px;
+				/*border: 1px dashed blue;*/
+				/*分开写*/
+				/*
+					background-image: url(./images/hao123.png);
+					background-repeat: no-repeat;
+					background-position:-388px -395px;
+				*/
+				/*简写*/
+				background:url(./images/hao123.png) no-repeat -388px -395px;
+			}
+
+			.tips{
+				font-size: 12px;
+				text-align: center;
+				padding-top: 2px;
+				padding-left: 2px;
+				color: #ff3c00;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+
+		<div class="box2"></div>
+
+		<div class="icon tips">爆款秒杀</div>
+
+		<div class="icon tips">半价开抢</div>
+	</body>
+</html>
