@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS边框-border</title>
+		<style>
+			.box1,.box2,.box3{
+				width: 200px;
+				height: 200px;			
+			}
+
+			/*简写*/
+			.box1{
+				border-style:solid dashed;      /*上下、左右*/
+				border-width: 1px 2px 3px 4px;  /*上、右、下、左*/
+				border-color: green red;
+			}
+
+			.box2{
+				/*border-style: solid dashed;*/
+				border-top-style: solid;
+				border-bottom-style: solid;
+				border-right-style:dashed;
+
+				/*border-left-style: dashed;
+				border-left-width: 10px;
+				border-left-color: red;*/
+				border-left:10px dashed red;
+			}
+
+			.box3{
+				border:1px dashed pink;
+			}
+
+			.box4{
+				width: 100%;
+				height: 200px;
+				border-bottom: 2px solid #f10214;
+				-webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+    			-moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+    			box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</body>
+</html>
