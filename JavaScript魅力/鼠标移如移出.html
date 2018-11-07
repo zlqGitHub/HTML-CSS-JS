@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		label{
+			display: block;   /*行内->块级*/
+			height: 40px;
+			line-height: 40px;
+			float: left;    /*浮动*/
+			cursor: pointer;
+		}
+		.tips{
+			float: left;
+			width: 200px;
+			height: 40px;
+			border:1px solid pink;
+			border-radius: 10%;
+			padding: 10px;
+			color: red;
+			display: none;    /*不显示*/
+		}
+	</style>
+</head>
+<body>
+	<label for="freeLogin" onmouseover="document.getElementById('J_tips').style.display='block'" onmouseout="document.getElementById('J_tips').style.display='none'">
+		<input type="checkbox" id="freeLogin">10天内免登录
+	</label>
+
+	<div class="tips" id="J_tips">
+		为了您的安全，请勿在网吧或公用电脑上使用！！！
+	</div>
+	
+</body>
+</html>
