@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>1</p>
+	<p>2</p>
+	<p>3</p>
+	<script>
+		//方式一： for 循环
+		var arr = [1,2,3,4,5,6];
+
+		for(let i=0;i<arr.length;i++)
+		{
+			//……
+
+		}
+		// 方式一利用for循环来遍历数组的缺点就是：代码不够简洁！
+		
+		//方式二：forEach
+
+		arr.forEach(function(value,key){
+
+			console.log(key+":"+value);
+			
+		});
+
+		//forEach((value,key)=>{});   //函数为箭头函数
+
+		// 方式二利用forEach循环代码是少了，写法也简洁，缺点就是：无法中断整个循环
+		
+		//方式三：for in
+		for(let i in arr){
+			console.log(typeof i);   //6次String类型
+		}
+
+		//方式三利用for in来循环，但是每次循环中得到的i是字符串类型，而不是我们预料中的数字类型。要想对它进行运算的话，那就需要进行类型转换。
+		
+
+		//方式四：for of
+		
+		//循环可以终止
+		for(let value of arr){
+			
+			if(value == 3)
+			{
+				//终止整个循环
+				break;
+			}
+			console.log(value);
+		}
+
+		//可以跳出当前循环，继续进行下一次循环
+		for(let value of arr){
+			//过滤掉偶数
+			if(value%2 == 0)
+			{
+				// 跳出当前循环，继续进行下一次循环
+				continue;
+			}
+			console.log(value);
+		}
+
+		//可以得到数字类型的索引
+		for(let index of arr.keys()){
+			console.log(typeof index);
+		}
+
+		//遍历字符串
+		let word = "暑假我在慕课吧，老铁，你在哪？";
+		for(let w of word){
+			console.log(w);
+		}
+
+		//遍历类数组
+		let aPlist = document.getElementsByTagName('p');  //获取标签p
+
+		console.log(aPlist);
+
+		for(let p of aPlist){
+			console.log(p);
+			console.log(p.innerText);
+		}
+
+		let word2 = "暑假我在慕课吧，老铁，你在哪？";
+		var arr2 = word2.split();      //整个字符串转化为一个数组
+		console.log(arr2);
+		for(let w of arr2){
+			console.log(w);
+		}
+
+		let word3 = "暑假我在慕课吧，老铁，你在哪？";
+		var arr3 = Array.from(word3);      //字符串转化为正真的数组
+		console.log(arr3);
+		for(let w of arr3.keys()){   //取索引
+			console.log(w);
+		}
+		for(let w of arr3){   //取value值
+			console.log(w);
+		}
+	</script>
+</body>
+</html>
