@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			.day{background: #FFF;color: #000;}
+			.night{background: #000;color: #FFF;}
+		</style>
+	</head>
+	<body>
+		<button type="button" id="J_btn">开灯/关灯</button>
+		<p>白天不懂夜的黑！</p>
+		<script>
+			document.getElementById('J_btn').onclick = function(){
+				// console.log('ok');
+				// document.body.style.background = "#000";
+				// document.body.style.color = "#FFF";
+				
+				// alert(document.body.className);
+
+				if(document.body.className == "" || document.body.className == "day")
+				{
+					//如果条件成立，则变成黑天
+					document.body.className = "night";	
+				}
+				else
+				{
+					//如果条件不成立，则变成白天
+					document.body.className = "day";
+				}
+			}
+		</script>
+	</body>
+</html>
