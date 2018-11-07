@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" href="./css/yellow.css" id="J_link">
+	</head>
+	<body>
+		<button onclick="color('green');">苹果绿</button>
+		<button onclick="color('black');">高端黑</button>
+		<button onclick="color('red');">玫瑰红</button>
+		<button onclick="color('gray');">奶奶灰</button>
+		<button onclick="color('yellow');">屎壳黄</button>
+		<p>据蔚县网信办消息：7月21日上午8时30分左右，109国道蔚县黄梅小枣碾村附近发生一起交通事故，一辆大货车与一辆客车相撞，事故现场造成8人死亡12人受伤。救治过程中，又有2名伤员不治身亡。现当地政府正组织全力救治伤员。事故原因正在调查中。 （河北公安网）</p>
+		<script>
+			var oLink = document.getElementById('J_link');
+			function color(color){
+				oLink.href = "./css/" + color + ".css";
+			}
+		</script>
+	</body>
+</html>
