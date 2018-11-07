@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.ad{
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+
+			.ad img{
+				width: 90px;
+				height: 90px;
+				transition: all 0.2s;   /*过渡，兼容性处理*/
+				-webkit-transition: all 0.2s;
+				-moz-transition: all 0.2s;
+				-ms-transition: all 0.2s;
+				-o-transition: all 0.2s;
+			}
+
+			.ad:hover img{
+				width: 110px;
+				height: 110px;
+			}
+
+			.ad .closeBtn{
+				cursor: pointer;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				display: block;
+				width: 22px;
+				height: 22px;
+				background: url(./images/hao123.png) no-repeat -513px -206px;
+				margin-top:-12px; 
+				margin-left: -8px;
+			}
+		</style>
+		<script>
+			// window.onload() 用来实现页面加载完成之后执行js事件
+
+			window.onload = function(){
+				document.getElementById('J_close').onclick = function(){
+					document.getElementById('J_ad').style.display = "none";
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<div class="ad" id="J_ad">
+			<a href="http://weui.moocba.com">
+				<img src="./images/dati.png">
+			</a>
+			<span class="closeBtn" id="J_close"></span>
+		</div>
+		
+	</body>
+</html>
