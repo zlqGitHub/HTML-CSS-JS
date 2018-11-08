@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			.box{width: 200px;height: 200px;border:1px solid black;background: green;}
+			.box2{width: 300px;height: 300px;border:1px solid black;background: yellow;}
+		</style>
+	</head>
+	<body>
+		<button onclick="setStyle();">style</button>
+		<button onclick="setClass();">className</button>
+		<div class="box" id="J_box"></div>
+		<script>
+		// 建议：要么 style，要么 className，别混着来！ 
+			function setStyle(){
+				document.getElementById('J_box').style.background = "red";
+			}
+
+			function  setClass(){
+				// className是设置div  class  的
+				document.getElementById('J_box').className = "box2";
+			}
+		</script>
+	</body>
+</html>
