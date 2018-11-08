@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="text" id="J_input">
+		<button onclick="writeText()" type="button">写入</button>
+		<button onclick="writeText2()" type="button">写入2</button>
+		<script>
+
+			function writeText(){
+
+				document.getElementById('J_input').value = "张利强";
+				// document.getElementById('J_input')['value'] = "jayjun";
+			}
+
+			function writeText2(){
+
+				var name = "value";
+
+				// document.getElementById('J_input').name = "jayjun";
+				document.getElementById('J_input')[name] = "张利强";
+			}
+		</script>
+	</body>
+</html>

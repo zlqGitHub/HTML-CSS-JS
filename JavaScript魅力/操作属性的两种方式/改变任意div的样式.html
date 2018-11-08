@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="toWidth('300px')">变宽</button>
+		<button onclick="toHeight('300px')">变高</button>
+		<button onclick="toColor('red')">变红</button>
+		<div class="box" id="J_box"></div>
+		<script>
+				function toWidth(w){
+					document.getElementById("J_box").style.width = w;
+				}
+
+				function toHeight(h){
+					document.getElementById("J_box").style.height = h;
+				}
+
+				function toColor(c){
+					document.getElementById("J_box").style.background = c;
+				}				
+
+		</script>
+	</body>
+</html>
