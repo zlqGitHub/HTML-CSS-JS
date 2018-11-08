@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 200px;height: 200px;border:1px dashed green;float:left;}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script>
+		// getElementsByTagName()该方法可返回带有指定标签名的一组元素的集合，即数组。该方法返回元素的顺序是它们在文档中的顺序。 
+				var aDiv = document.getElementsByTagName('div');
+				// alert(aDiv);
+				// alert(aDiv.length);  //获取数组的长度
+				// console.log(aDiv);
+				for(var i=0;i<aDiv.length;i++)
+				{
+					aDiv[i].style.background = "red";
+				}
+				aDiv[0].style.background = "green";
+				aDiv[1].style.background = "yellow";
+				
+		</script>
+	</body>
+</html>
