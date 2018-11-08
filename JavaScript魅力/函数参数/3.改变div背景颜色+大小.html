@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			button{
+				cursor: pointer;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" onmouseover="change('yellow','400px','400px');" onmouseout="change('green','100px','100px')" id="J_box"></div>
+		<script>
+			// 函数支持多参数，多个参数之间用,隔开
+			function change(c,w,h){
+				var oBox = document.getElementById('J_box'); 
+				oBox.style.background = c;
+				oBox.style.width = w;
+				oBox.style.height = h;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			button{
+				cursor: pointer;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="setBgColor('green');">变绿</button>
+		<button onclick="setBgColor('blue');">变蓝</button>
+		<button onclick="setBgColor('pink');">变粉</button>
+		<button onclick="setBgColor('yellow');">变黄</button>
+		<div class="box" id="J_box"></div>
+		<script>
+			function setBgColor(color){
+				//1、怎么找到div元素  document.getElementById()
+				//2、设置div背景颜色  .style.background = ""
+				document.getElementById('J_box').style.background = color;
+			}
+		</script>
+	</body>
+</html>

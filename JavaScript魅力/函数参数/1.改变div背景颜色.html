@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			button{
+				cursor: pointer;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="toGreen();">变绿</button>
+		<button onclick="toBlue();">变蓝</button>
+		<button onclick="toPink();">变粉色</button>
+		<div class="box" id="J_box"></div>
+		<script>
+			function toGreen(){
+				// 让div背景颜色变为绿色
+				//1、怎么找到div元素  document.getElementById()
+				//2、设置背景颜色为绿色   .style.background = "green"
+				document.getElementById('J_box').style.background = "green";
+			}
+
+
+			function toBlue(){
+				document.getElementById('J_box').style.background = "blue";
+			}
+
+
+			function toPink(){
+				document.getElementById('J_box').style.background = "pink";
+			}
+		</script>
+	</body>
+</html>
