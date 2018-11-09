@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="div1" style="width: 100px;height: 100px;"></div>
+		<script>
+			// css() - 设置或返回样式属性
+			// 1、获取样式   两个参数 
+			// 2、设置样式   三个参数
+			function css(obj,name,value)
+			{
+				if(arguments.length == 2)
+				{	
+					return obj.style[name];
+				}else
+				{
+					// oDiv1.style.background = "red";
+					obj.style[name] = value;
+				}
+			}
+
+			
+			var oDiv1 = document.getElementById("div1");
+			console.log(css(oDiv1,"width"));
+
+			css(oDiv1,"background","red");
+		</script>
+	</body>
+</html>
