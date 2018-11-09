@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="div1" style="width: 100px;height: 100px;background: red;"></div>
+		<div id="div2" style="width: 200px;height: 200px;background: green;"></div>
+		<script>
+				//函数的定义和调用
+				
+				/*
+				function 函数名(){
+					//代码块
+				}	
+				*/
+				var oDiv1 = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+
+				function getStyle(obj,name){
+					
+					if(typeof obj != "object")
+					{
+						return;
+					}
+					//操作属性,[]、. 要修改的属性不固定的时候 
+					return obj.style[name];
+					console.log(ok);
+				}
+
+				//调用  函数名();
+				
+				var div1 = getStyle(oDiv1,"width");
+				var div2 = getStyle(oDiv2,"background");
+				console.log(div1,div2);
+
+				var div3 = getStyle("div3","width");
+				console.log(div3);
+
+		</script>
+	</body>
+</html>
