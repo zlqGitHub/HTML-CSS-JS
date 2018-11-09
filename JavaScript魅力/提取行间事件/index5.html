@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			.intro {
+			    width: 600px;
+			    margin: 20px auto;
+			    height: 130px;
+			}
+			
+
+			.intro .item {
+			    width: 150px;
+			    height: 150px;
+			    float: left;
+			}
+
+			.intro .item a {
+			    display: block;
+			}
+
+			/*.content {
+			    outline: 0;
+			}*/
+
+
+			.intro .content {
+			    width: 150px;
+			    height: 150px;
+			    cursor: pointer;
+			}
+
+			.intro .qrcode {
+			    background: url(./images/qrcode1-t.jpg) 0 0 no-repeat;
+			}
+
+			.intro .phone {
+			    background: url(./images/phone1-t.jpg) 0 0 no-repeat;
+			}
+
+			/*激活时候的动画效果*/
+			.active .content{
+				background-position:0 -1800px;
+				-moz-animation:movedown .5s steps(12) forwards;
+				-webkit-animation:movedown .5s steps(12) forwards
+			}
+
+			/*不激活时候的动画效果*/
+
+			.unactive .content{
+				-moz-animation:moveup .3s steps(7) forwards;
+				-webkit-animation:moveup .3s steps(7) forwards
+			}
+
+			@keyframes movedown{
+				0%{background-position:0 0}
+				100%{background-position:0 -1800px}
+			}
+
+			@-moz-keyframes movedown{
+				0%{background-position:0 0}
+				100%{background-position:0 -1800px}
+			}
+
+			@-webkit-keyframes movedown{
+				0%{background-position:0 0}
+				100%{background-position:0 -1800px}
+			}
+
+
+			@keyframes moveup{
+				0%{background-position:0 -1800px}
+				100%{background-position:0 -2850px}
+			}
+
+			@-moz-keyframes moveup{
+				0%{background-position:0 -1800px}
+				100%{background-position:0 -2850px}
+			}
+
+			@-webkit-keyframes moveup{
+				0%{background-position:0 -1800px}
+				100%{background-position:0 -2850px}
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="intro">
+			<div class="item" id="J_qrcode">
+				<a class="qrcode content"  href="#nogo" target="_blank"></a>
+			</div>
+			<div class="item" id="J_phone" >
+				<a class="phone content" href="#" target="_blank"></a>
+			</div>
+			<!-- <div class="item unactive">
+				<a class="pad content" href="#" target="_blank"></a> 
+			</div>
+			<div class="item unactive">
+				<a class="other content" href="#" target="_blank"></a>
+			</div> -->
+		</div>		
+		<script src="script.js"></script>
+	</body>
+</html>
