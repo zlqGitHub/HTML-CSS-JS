@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+
+			body{
+				padding: 100px;
+			}
+
+			.card_title{
+				list-style: none;
+			}
+
+			.card_title li{
+				cursor: pointer;
+				text-align: center;
+				width: 80px;
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid #333;
+				float:left;
+			}
+
+			.card_title li.active{
+				background: yellow;
+			}
+
+			.card div{
+				clear: both;
+				width: 246px;
+				height: 200px;
+				border: 1px solid #333;
+				display: none;
+			}
+
+			div.active{
+				display: block;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="card" id="J_card">
+			<ul class="card_title">
+				<li class="active">选项一</li>
+				<li>选项二</li>
+				<li>选项三</li>
+			</ul>
+			<div class="active">选项一的内容</div>
+			<div>选项二的内容</div>
+			<div>选项三的内容</div>
+		</div>
+
+		<script>
+			//获取id为J_card的选项卡元素对象
+			var oCard = document.getElementById('J_card');
+
+			//获取选项卡下的所有的标题li元素
+			var aLi = oCard.getElementsByTagName('li');
+
+			//获取选项卡下的所有的内容div元素
+			var aDiv = oCard.getElementsByTagName('div');
+
+			// alert(aLi.length);
+			for(var i=0;i<aLi.length;i++)
+			{
+				//alert(i); //0 1 2 
+				
+				aLi[i].index = i;//循环为每一个标题li元素添加一个index属性并赋值
+
+				aLi[i].onclick = function(){
+					
+					for(var j=0;j<aLi.length;j++)
+					{
+						//将所有的标题li元素全部不激活
+						aLi[j].className = "";
+
+						//将所有的内容div元素全部不激活（即全部隐藏）
+						aDiv[j].style.display = "none";
+					}
+					// console.log(this.index);
+
+					//设置当前的标题li元素激活
+					this.className = "active";
+
+					//设置当前的内容div元素激活			
+				    // 当前的内容.style.display = "block";	
+				    // alert(this.index);
+					aDiv[this.index].style.display = "block";
+				}
+			}
+
+		</script>
+	</body>
+</html>
