@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//数组1.concat(数组2)，连接两个数组
+
+			var arr1 = ['a','b','c'];
+			var arr2 = ['d','e','f'];
+
+			var arr3 = arr1.concat(arr2);
+			console.log(arr1,arr2,arr3);
+
+			var arr4 = arr2.concat(arr1);
+			console.log(arr4);
+
+			//数组转字符串
+			
+			var aUrl = ['www','moocba','com'];
+
+			console.log(aUrl.join('.'));
+			console.log(aUrl.join(' '));
+			console.log(aUrl.join(''));
+			console.log(aUrl.join());
+
+			var sUrl = "www.moocba.com";
+			console.log(sUrl.split('.'));
+			console.log(sUrl.split());
+			console.log(sUrl.split(''));
+
+			var avatarUrl = "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLbvlrrLfldMeomicPVW1Mvlmica8tmnr5icAicAzO45HWicR5DLBuklWKq7xzbGDSftStGtNPTpIeMlVA/132";
+			console.log(avatarUrl.replace('/132','/0'));   //微信头像大小的转换
+		</script>
+	</body>
+</html>
