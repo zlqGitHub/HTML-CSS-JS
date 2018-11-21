@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+				// var a = 1, b =2, c = 3, d = 4;
+				
+				//第一种方式：[]
+				var aNumber = [1,2,3,4];
+
+				//定义一个空数组
+				var aEmpty = [];
+
+				aEmpty[1] = "a";
+				aEmpty[0] = "b";
+				console.log(aEmpty);
+
+				//第二种方式：new Array();
+				
+				var aNumber2 = new Array(1,2,3,4);
+				console.log(aNumber2);
+
+
+				//数组的读取[]
+				console.log(aNumber2[0],aNumber2[1],aNumber2[2],aNumber2[3]);
+
+
+				aNumber2[3] = "c";
+
+				//读取数组每一个元素，可以结合循环
+				for(var i=0;i<aNumber2.length;i++)
+				{
+					console.log(aNumber2[i]);
+				}
+
+
+				console.log(aNumber2.length);
+
+				//快速清空数组
+				aNumber2.length = 0;
+				console.log(aNumber2);  // 结果是 []
+
+
+		</script>
+	</body>
+</html>
