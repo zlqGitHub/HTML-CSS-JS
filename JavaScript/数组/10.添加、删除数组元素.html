@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+				var aFruit = ['banana','apple','watermelon','orange'];
+				console.log(aFruit);
+				//从尾部添加
+				aFruit.push('pineapple');
+				console.log(aFruit);
+
+				//从头部添加
+				aFruit.unshift("pear");
+				console.log(aFruit);
+
+				//从尾部删除
+				aFruit.pop();
+				console.log(aFruit);
+
+				//从头部删除
+				aFruit.shift();
+				console.log(aFruit);
+
+				// 删除
+				// splice(开始,长度)
+				
+				aFruit.splice(1,2);
+				console.log(aFruit);
+
+				// 插入
+				// splice(开始, 0, 元素…)
+				aFruit.splice(1,0,"apple","watermelon");
+				console.log(aFruit);
+
+				// 替换
+				// splice(开始n, n, 元素…)
+				aFruit.splice(1,2,"grape","cherry");
+				console.log(aFruit);
+		</script>
+	</body>
+</html>
