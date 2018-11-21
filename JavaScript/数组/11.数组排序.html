@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+				var aFruit = ['banana','apple','watermelon','orange'];
+				console.log(aFruit);
+
+				aFruit.sort();
+				console.log(aFruit); //["apple", "banana", "orange", "watermelon"]
+
+				var iNumber = [34,12,78,100,1,22];
+				iNumber.sort();
+				console.log(iNumber);
+
+				iNumber.sort(function(a,b){
+					if(a > b){
+						return 1;
+					}else if(a < b){
+						return -1;
+					}else{
+						return 0;
+					}
+				});
+
+				console.log(iNumber);
+
+				//从小到大排序
+				iNumber.sort(function(a,b){
+					return a-b;
+				});
+
+				console.log(iNumber);
+
+				//从大到小排序
+				iNumber.sort(function(a,b){
+					return b-a;
+				});
+
+				console.log(iNumber);
+		</script>
+	</body>
+</html>
