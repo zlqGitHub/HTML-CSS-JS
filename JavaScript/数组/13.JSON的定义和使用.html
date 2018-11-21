@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//json 表示对象
+			
+			var oStudent = {"name":"张利强","age":21,"address":"吕梁"};
+			console.log(oStudent);
+			console.log(oStudent.name,oStudent.age,oStudent.address);
+
+			for(var item in oStudent)
+			{
+				console.log(oStudent[item]);
+			}
+
+			//json 表示数组
+			var oStudents = [
+					{"name":"张三","age":20},
+					{"name":"李四","age":18},
+					{"name":"王五","age":89}
+			];
+			console.log(oStudents);
+
+			for(var i=0;i<oStudents.length;i++)
+			{	
+				console.log(oStudents[i].name,oStudents[i].age);
+			}
+
+			var oData = {
+				"students":[
+					{"name":"张三","age":20},
+					{"name":"李四","age":18},
+					{"name":"王五","age":89}
+				],
+				"other":"other info"
+			};
+
+
+		</script>
+	</body>
+</html>
