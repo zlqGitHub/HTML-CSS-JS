@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<button id="btn">关闭定时器</button>
+		<script>
+			// setInterval()  间隔型
+
+			/*
+				setInterval(function() {
+					console.log('ok');
+				},1000);
+			*/
+		
+			function ok(){
+				console.log('ok');
+			}
+
+			var timer = setInterval(ok,1000);
+
+			// setTimeout() 延时型
+			setTimeout(function(){
+				console.log('ok2');
+			},1000);
+
+
+			//关闭定时器
+			
+			var oBtn = document.getElementById('btn');
+			oBtn.onclick = function(){
+				clearInterval(timer);
+			}
+
+		</script>
+	</body>
+</html>
