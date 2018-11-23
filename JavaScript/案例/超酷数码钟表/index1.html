@@ -1,0 +1,113 @@
+﻿<!doctype html>
+<html>
+        <head>
+            <meta charset="utf-8" />
+            <title>超酷数码钟表 - 慕课吧 - www.moocba.com</title>
+            <link rel="stylesheet" type="text/css" href="css/style.css"  />
+        </head>
+        <body>
+        <div id="clock" class="date">
+                    <h2><img src="images/title.png" /></h2>
+                    <div class="year" id="J_year">
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img src="images/year.png" alt="year" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img src="images/month.png" alt="month" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img src="images/seven.png" alt="seven" />
+                    </div>
+                    <div class="time" id="J_time">
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img src="images/sign.png" alt="sign" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img src="images/sign.png" alt="sign" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="num" src="images/0.png" alt="0" />
+                            <img class="pos2" src="images/week.png" alt="week" />
+                            <img class="num2" src="images/one.png" alt="one" />
+                    </div>
+                    <div class="url" title="慕课吧-超酷时钟">
+                            <a href="http://www.moocba.com/" target="_blank"><img src="images/logo.png" alt="慕课吧" /></a>
+                    </div>
+            </div>
+        </body>
+
+        <script>
+            var oYear = document.getElementById('J_year');
+            var oTime = document.getElementById('J_time');
+           
+            var aYear = oYear.getElementsByTagName('img');
+            var aTime = oTime.getElementsByTagName('img');
+
+            function Double(title){    //让小于10的数字变为两位数
+
+                if(title<10){
+                    return '0'+title;
+                }
+                else{
+                    return ''+title;
+                }
+            }
+
+            function time(){
+                var oDate = new Date();   //每次执行都需要重新定义一个oDate对象
+                var str = Double(oDate.getHours())+":"+Double(oDate.getMinutes())+":"+Double(oDate.getSeconds());
+                for(var i=0;i<8;i++){
+                    if(aTime[i].className=="num"){
+                        aTime[i].src="./images/"+str.charAt(i)+".png";
+                    }
+                    else{
+                        continue;
+                    }
+                }
+                var day = oDate.getDay();
+                switch(day){
+                    case 0:
+                        aTime[9].src="./images/seven.png";
+                        break;
+                    case 1:
+                        aTime[9].src="./images/one.png";
+                        break;
+                    case 2:
+                        aTime[9].src="./images/two.png";
+                        break;
+                    case 3:
+                        aTime[9].src="./images/three.png";
+                        break;
+                    case 4:
+                        aTime[9].src="./images/four.png";
+                        break;
+                    case 5:
+                        aTime[9].src="./images/five.png";
+                        break;
+                    case 6:
+                        aTime[9].src="./images/six.png";
+                        break;
+                }
+
+                var oDate1 = new Date();
+                var str1 = Double(oDate1.getFullYear())+":"+Double(oDate1.getMonth()+1)+":"+Double(oDate1.getDate())+":";
+                for(var i=0;i<aYear.length;i++){
+                    if(aYear[i].className=="num"){                     
+                        aYear[i].src="./images/"+str1.charAt(i)+".png";   //charAt()设置图片的路径
+                    }
+                    else{
+                        continue;
+                    }
+
+                }
+               
+            }
+           
+            time();        //解决一排0的问题
+            setInterval(time,1000);
+
+        </script>
+</html>
