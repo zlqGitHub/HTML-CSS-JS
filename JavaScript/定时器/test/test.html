@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>撕名牌</title>
+	<style>
+		.JD{
+			position: absolute;
+			top: 200px;
+			left: -2px;
+			width: 80px;
+			height: 172px;
+			/*float: left;*/
+/*			background: green;*/
+		}
+		.close{
+			margin: 170px 55px 0;
+			width: 16px;
+			height: 16px;
+			background: url(./images/close.png);
+			cursor: pointer;
+		}
+		.JD2{
+			width: 448px;
+			height: 307px;
+			background: url(./images/simingpai2.png);
+			float: left;
+			position: absolute;
+			top: 95px;
+			left: 80px;
+			display: none;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="JD" id="J_JD">
+		<a href="#"><img src="./images/simingpai.png"></a>
+	</div>
+
+	<div class="close" id="J_close">
+
+	</div>
+
+	<div class="JD2" id="J_JD2"></div>
+	<script>
+		var oJD=document.getElementById('J_JD');
+		var oJD2=document.getElementById('J_JD2');
+		var oClose=document.getElementById('J_close');
+		var itemr=null;
+
+		oClose.onclick=function(){
+			oClose.style.display='none';
+			oJD.style.display='none';
+		}
+
+		oClose.onmouseover=oClose.onmouseout=function(){
+			oJD2.style.display='none';
+		}
+
+		oJD.onmouseover=oJD2.onmouseover=function(){
+			clearTimeout(itemr);
+			setTimeout(function(){
+				oJD2.style.display='block';
+			},500);
+		}
+
+		oJD.onmouseout=oJD2.onmouseout=function(){
+			clearTimeout(itemr);
+			itemr=setTimeout(function(){
+				oJD2.style.display='none';
+			},500);
+		}
+
+	</script>
+	
+</body>
+</html>
