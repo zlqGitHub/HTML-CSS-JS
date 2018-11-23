@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<style>
+		body{
+			font-size: 20px;
+			font-weight: 700;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" id="seconds">5</a> 秒后页面跳转...
+
+	<script>
+		var oSeconds=document.getElementById('seconds');
+		var seconds=parseInt(oSeconds.innerText);
+		function change(){
+			if(seconds>0){
+				seconds--;
+				oSeconds.innerText=seconds;			
+			}
+			else{
+				window.location.href="https://www.baidu.com";
+				return;
+			}
+
+		}
+
+		setInterval(change,1000);
+
+	</script>
+	
+</body>
+</html>
