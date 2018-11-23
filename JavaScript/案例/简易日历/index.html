@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+        <head>
+                <meta charset="utf-8">
+                <title>JavaScript简易日历</title>
+                <link  rel="stylesheet" type="text/css" href="style.css" />
+        </head>
+        <body>
+                <div id="tab" class="calendar">
+                        <ul>
+                                <li id="Jan"><h2>1</h2><p>JAN</p></li>
+                                <li id="Fer"><h2>2</h2><p>FER</p></li>
+                                <li id="Mar"><h2>3</h2><p>MAR</p></li>
+                                <li id="Apr"><h2>4</h2><p>APR</p></li>
+                                <li id="May"><h2>5</h2><p>MAY</p></li>
+                                <li id="Jun"><h2>6</h2><p>JUN</p></li>
+                                <li id="Jul"><h2>7</h2><p>JUL</p></li>
+                                <li id="Aug"><h2>8</h2><p>AUG</p></li>
+                                <li id="Sep"><h2>9</h2><p>SEP</p></li>
+                                <li id="Oct"><h2>10</h2><p>OCT</p></li>
+                                <li id="Nov"><h2>11</h2><p>NOV</p></li>
+                                <li id="Dec"><h2>12</h2><p>DEC</p></li>
+                        </ul>
+                        
+                        <div class="text" id="J_text">
+                                <h2>1月活动</h2>
+                                <p>快过年了，大家可以商量着去哪玩吧～</p>
+                        </div>
+            </div>
+
+    <script>
+        var oJan = document.getElementById('Jan');
+        var oFer = document.getElementById('Fer');
+        var oMar = document.getElementById('Mar');
+        var oApr = document.getElementById('Apr');
+        var oMay = document.getElementById('May');
+        var oJun = document.getElementById('Jun');
+        var oJul = document.getElementById('Jul');
+        var oAug = document.getElementById('Aug');
+        var oSep = document.getElementById('Sep');
+        var oOct = document.getElementById('Oct');
+        var oNov = document.getElementById('Nov');
+        var oDec = document.getElementById('Dec');
+        var oText = document.getElementById('J_text');
+
+        var aLi = document.getElementsByTagName('li');
+
+        oJan.onmouseover = function(){
+            oJan.className="active";
+            oText.innerHTML="<h2>1月活动</h2><p>快过年了，大家可以商量着去哪玩吧～</p>";
+            // alert(oText.innerText);
+        }
+
+        oFer.onmouseover = function(){
+            oFer.className="active";
+            oText.innerHTML="<h2>2月活动</h2><p>正在过年</p>";
+        }
+
+        oMar.onmouseover = function(){
+            oMar.className="active";
+            oText.innerHTML="<h2>3月活动</h2><p>刚过完年</p>";
+        }
+
+        oApr.onmouseover = function(){
+            oApr.className="active";
+            oText.innerHTML="<h2>4月活动</h2><p>过完年一个月了</p>";
+        }
+
+        oMay.onmouseover = function(){
+            oMay.className="active";
+            oText.innerHTML="<h2>5月活动</h2><p>五一劳动节</p>";
+        }
+
+        oJun.onmouseover = function(){
+            oJun.className="active";
+            oText.innerHTML="<h2>6月活动</h2><p>六一儿童节</p>";
+        }
+
+        oJul.onmouseover = function(){
+            oJul.className="active";
+            oText.innerHTML="<h2>7月活动</h2><p>七一建党节</p>";
+        }
+
+        oAug.onmouseover = function(){
+            oAug.className="active";
+            oText.innerHTML="<h2>8月活动</h2><p>八一建军节</p>";
+        }
+
+        oSep.onmouseover = function(){
+            oSep.className="active";
+            oText.innerHTML="<h2>9月活动</h2><p>开学了，宝宝不开心</p>";
+        }
+
+        oOct.onmouseover = function(){
+            oOct.className="active";
+            oText.innerHTML="<h2>10月活动</h2><p>十一国庆</p>";
+        }
+
+        oNov.onmouseover = function(){
+            oNov.className="active";
+            oText.innerHTML="<h2>11月活动</h2><p>光棍节日</p>";
+        }
+
+        oDec.onmouseover = function(){
+            oDec.className="active";
+            oText.innerHTML="<h2>12月活动</h2><p>考四六级</p>";
+        }
+
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].onmouseout = function(){
+                this.className="";
+            }
+        }
+
+    </script>
+</body>
+</html>
