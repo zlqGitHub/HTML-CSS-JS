@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px;height: 200px;background: green;position: absolute;left: 0;top:0;}
+
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			var oDiv1 = document.getElementById("div1");
+			setInterval(function(){
+				// console.log(oDiv1.offsetLeft);
+				oDiv1.style.left =  oDiv1.offsetLeft + 2 + "px";
+			},30)
+			
+		</script>
+	</body>
+</html>
