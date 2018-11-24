@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px;height: 200px;background: red;position: absolute;left:100px;}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			var oDiv1 = document.getElementById("div1");
+			// console.log(oDiv1.style.left);
+			console.log(oDiv1.offsetLeft);  //div距离左边的距离
+			console.log(oDiv1.offsetWidth);  //div 的宽度
+			console.log(oDiv1.offsetHeight);
+
+		</script>
+	</body>
+</html>
