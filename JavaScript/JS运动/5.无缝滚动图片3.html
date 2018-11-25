@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			#div1 {width: 712px;height: 134px;background: red;margin: 100px auto;position: relative;overflow: hidden;} 
+			/*overflow隐藏div1外的内容*/
+			#div1 ul{position: absolute;left:0;top:0;}
+			#div1 ul li {list-style: none;float: left;width: 178px;height: 134px;}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<ul>
+				<li><img src="images/1.jpg"></li>
+				<li><img src="images/2.jpg"></li>
+				<li><img src="images/3.jpg"></li>
+				<li><img src="images/4.jpg"></li>
+			</ul>
+		</div>
+		<script>
+			var oDiv1 = document.getElementById("div1");
+			var oUl = oDiv1.getElementsByTagName("ul")[0];
+			var aLi = oUl.getElementsByTagName("li");
+
+			// oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;
+			oUl.innerHTML += oUl.innerHTML; //赋值一份
+			console.log(oUl.innerHTML);
+			oUl.style.width = aLi[0].offsetWidth * aLi.length + "px";
+			console.log(aLi.length);      //8
+			setInterval(function(){
+				// console.log(oUl.offsetLeft);
+				if(oUl.offsetLeft > 0)
+				{
+						oUl.style.left = -oUl.offsetWidth/2 + "px";
+						// console.log(oUl.style.left);
+				}
+				oUl.style.left = oUl.offsetLeft + 2 + "px";
+			},30);
+			// oUl.style.left是距离左边的距离，offsetLeft是去设置距离左边的距离，offsetWidth是物体的宽度
+		</script>
+	</body>
+</html>
