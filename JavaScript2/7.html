@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据类型强制转化</title>
+	<script type="text/javascript">
+		/*
+			强制类型转换
+				将其他数据类型转换为  Number、String、Boolean
+		 */
+		
+		/*
+			将其他的数据类型转换为String
+				方式一：调用被转换数据类型的toString()方法
+						该方法不会影响原变量，它将返回转换的结果
+						注意：null 和 undefined 没有toString()方法
+
+				方式二：调用 String() 函数,将被转换的数据作为参数
+		 */
+		var a = 123;
+		console.log(typeof a);
+		//调用a的toString()方法
+		a.toString();
+		console.log(typeof a);  //number
+
+		var b = a.toString();
+		console.log(typeof b);    //string
+
+		a = null;
+		// console.log(a.toString());
+		a = undefined;
+		// console.log(a.toString());
+		
+		
+		var a = 123;
+		a = String(a);
+		console.log(typeof a)
+
+		a = null;
+		a = String(a);
+		console.log(typeof a)
+
+		a = undefined;
+		a = String(a);
+		console.log(typeof a)
+
+
+
+
+		/*
+			将其他的数据类型转化为Number
+				方式一：使用Number()函数
+						字符串转数字：1.纯数字转,直接转为数字
+									  2.字符串中有非数字字符，转为NaN
+									  3.字符串为一个或多个空格则转为0
+
+				方式二：parseInt()、parseFloat()
+		 */
+		var a = "123";
+		console.log(typeof a)   //String
+
+		a = Number(a);
+		console.log(typeof a)   //number
+
+		var a = "123aaa123";
+		a = Number(a);
+		console.log(typeof a);
+		console.log(a);      //NaN
+
+		var a = "";
+		a = Number(a);
+		console.log(typeof a);
+		console.log(a);      //0
+
+
+		a = true;
+		a = Number(a);
+		console.log(typeof a);
+		console.log(a);     //1
+
+
+		a = null;
+		a = Number(a);
+		console.log(typeof a);
+		console.log(a);   //0
+
+
+		a = undefined;
+		a = Number(a);
+		console.log(typeof a);
+		console.log(a);   //NaN
+
+
+		a = "123px";
+		console.log(a);	
+		a = parseInt(a);
+		console.log(a);
+
+
+		a = "123.456px";
+		console.log(a);	
+		a = parseFloat(a);
+		console.log(a);
+
+
+		/*
+			其他进制的数
+		 */
+		var a = 123;
+		a = 0x10;
+		console.log(a);   //16进制：0x开头
+
+		a = 070;      //8进制：0开头
+		console.log(a);     //56
+
+		//可以在parseInt()中传递第二个参数
+		a = parseInt(a,10);   //10表示10进制
+
+
+		/*
+			将其他的数据类型转换为Boolean
+				调用Boolean()函数
+		 */
+		
+
+
+ 
+
+
+
+	</script>
+</head>
+<body>
+
+	
+</body>
+</html>
