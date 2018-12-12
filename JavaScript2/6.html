@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据类型</title>
+	<script type="text/javascript">
+		/*
+			数据类型就是字面量类型
+			六种数据类型：String、Number、Boolean、Null、Undefined、Object
+
+					前五种属于基本数据类型
+					Object为引用数据类型
+
+					String类型 使用单双引号都可以,引号不能嵌套    可以在单引号中放双引号
+
+		*/
+		var str = "hello";
+
+		// str = "我叫"12345"zlq";
+		
+
+		/*
+			在字符串中可以使用转义字符\
+				表示一些特殊字符时可以使用 \ 进行转移
+
+				\" 表示"
+				\' 表示'
+				\n 表示换行
+				\t 表示制表符
+				\\ 表示\
+
+		 */
+		
+		var str2 = "我叫\"张利强\"";
+		console.log(str2);
+
+
+		/*
+			Number类型:整数、浮点数（小数）
+			可以用一个运算符 typeof 来检查变量的类型    语法: typeof 变量
+
+			JS 中的Number类型的最大值  Number.MAX_VALUE   最小正值   Number.MIN_VALUE
+
+			当Number表示的数字超过最大值，则返回一个Infinity
+				Infinity  正无穷
+				-Infinity  负无穷
+		 */
+		var a = 123;
+		var b = "123";
+		console.log(typeof a);
+		console.log(typeof b);
+
+		console.log(Number.MAX_VALUE);
+		console.log(Number.MIN_VALUE);
+
+		a = Number.MAX_VALUE * Number.MAX_VALUE;
+		console.log(a);    //返回Infinity正无穷
+
+		a = Infinity;   //表示正无穷，不加引号
+		console.log(a);
+
+		a = "abc" * "bcd";
+		console.log(a);   //返回一个NaN
+		console.log(typeof a);   //Number类型
+
+
+		/*
+			JS在整数中运算中基本上精确
+			但浮点数的计算中值可能会不精确    注意：要求精确计算的尽量在服务器中计算
+
+		 */
+
+		var c = 125412 + 963252;
+		console.log(c);
+
+		var c = 0.1 + 0.2;
+		console.log(c);     //0.30000000000000004
+
+
+
+		/*
+			Boolean 布尔值:false(逻辑假),true(逻辑真)
+		 */		
+		var bool = true;
+		console.log(bool);
+		console.log(typeof bool);
+
+
+		/*
+			Null类型的值只有一个：null
+				null专门来表示空对象
+				使用typeof检查一个null值时，返回一个Object
+		 */
+		var a = null;
+		console.log(a);
+		console.log(typeof a);   
+
+
+		/*
+			Undefined类型的值只有一个，就是undefined,又变量，为赋值
+		 */
+		var d;
+		console.log(d);
+		console.log(typeof d);
+
+
+	</script>
+</head>
+<body>
+	<!-- body中什么也没的话会报错 -->
+</body>
+</html>
