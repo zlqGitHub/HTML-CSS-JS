@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS代码编写位置</title>
+
+	<!-- 
+		1.可以外部引入js文件 
+		有点：可以在不同页面中同时使用，也可以利用浏览器的缓存机制，推荐使用
+	-->
+	<!-- <script type="text/javascript" src="路径"></script> -->
+
+	<!-- 2.可以写入scrit标签中 -->
+	<script type="text/javascript">
+		alert("我是script标签中的代码");
+	</script>
+
+</head>
+<body>
+	<!-- 
+		3.放入标签的onclick(点击事件)属性中
+		缺点：写在标签属性当中，属于结构与行为耦合，不方便维护
+	 -->
+	<button onclick="alert('点我干嘛？')">点我一下</button>
+	
+	<!-- 写入超链接中的href属性中 -->
+	<a href="javascript:alert('让你点你就点！！')">你也点我一下</a>
+
+	<a href="javascript:')">你也点我一下</a>
+	
+</body>
+</html>
