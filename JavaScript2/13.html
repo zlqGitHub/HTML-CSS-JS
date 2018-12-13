@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>质数练习</title>
+	<script type="text/javascript">
+		/*
+			在页面中用户输入一个数，判断是否是质数
+				质数：只能被1 和 它本身整除的数，1不是质数也不是合数，质数必须是大于1的自然数
+		 */
+		
+		var num = prompt("请输入一个整数：");
+
+		if(num < 1){
+			alert("该值不合法！");
+		}
+		else{
+			//判断是否是质数
+			var flag = true;
+			for(var i = 2; i < num ; i++){
+				// console.log(i);
+				if(num % i == 0){
+					console.log(num+"不是质数！");
+					flag = false;
+					break;
+				}
+			}
+			if(flag == true){
+				console.log(num+"是质数！");
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<button></button>
+</body>
+</html>
