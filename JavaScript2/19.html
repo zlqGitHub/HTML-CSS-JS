@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数参数</title>
+	<script type="text/javascript">
+		//函数也是一个对象
+		function fun1(a,b){
+			console.log(a+b);
+		}
+		fun1(10,15);
+
+
+		function fun2(obj){
+			console.log("我是"+obj.name+",今年"+obj.age+"岁。");
+		}
+		var obj = {
+			name:"zlq",
+			age:20
+		}
+		fun2(obj);
+
+
+		function fun(a){   //实际中经常用匿名函数作为参数
+			console.log("a = "+a);
+		}
+		fun(function(){alert("hello")});
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
