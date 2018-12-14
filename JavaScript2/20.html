@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>立即执行函数</title>
+	<script type="text/javascript">
+		/*
+			函数定义完，立即被调用;    匿名函数自调用
+			   立即执行函数往往执行一次
+
+		 */
+		
+		(function(){
+			alert("我是一个立即执行函数！");
+		})();
+
+		(function(a,b){
+			console.log("a = "+a);
+			console.log("b = "+b);
+		})(132,456);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
