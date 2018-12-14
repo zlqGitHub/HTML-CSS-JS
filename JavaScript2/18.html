@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数Function</title>
+	<script type="text/javascript">
+		/*
+			函数：function
+				可以用typeof检查函数对象
+		 */
+		//创建一个函数对象
+		
+		var fun = new Function();
+		console.log(fun);
+		console.log(typeof fun);
+
+		/*
+			调用函数   语法：函数对象()
+		 */
+		fun();
+
+
+		/*
+			推荐使用：
+				使用函数声明来创建一个函数
+					语法：  参数可有可无
+						function 函数名([形参1，形参2...]){
+							函数体...
+						}
+
+		 */
+		
+		function fun2(){
+			console.log("ni hao!");
+		}
+
+		fun2();   //调用函数
+
+		/*
+			函数表达式
+				var 函数名 = function(){}
+		 */
+		var fun3 = function(){
+			console.log("我是一个匿名 函数");
+		}
+		console.log(fun3);
+		fun3();
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
