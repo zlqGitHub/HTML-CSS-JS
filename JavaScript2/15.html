@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象</title>
+	<script type="text/javascript">
+		/*
+			Object 是一种复合的数据类型  在对象中可以保存多个不同的数据类型的属性
+				对象分类:
+					1.内建对象
+						有ES标准定义的对象，在任何的ES的实现中都可以使用
+						比如：Math、String、Number、Boolean...
+					2.宿主对象
+						由JS的运行环境提供的对象，目前主要是浏览器提供的对象
+						比如：BOM、DOM
+							console.log()   document.write()
+					3.自定义对象
+						开发人员自己创建的对象
+		 */
+		
+		//创建对象
+		/*
+			使用new关键字调用的函数，是构造函数constructor
+			构造函数是专门来创建对象的函数
+			使用typeof检查对象时，返回一个object
+		 */
+		var obj = new Object();
+
+		console.log(obj);
+		console.log(typeof obj);
+		
+		/*
+			向对象中添加属性
+				语法：对象.属性名 = 属性值
+		 */
+		obj.name = "zlq";
+		obj.gender = "nan";
+		obj.age = 20;
+		console.log(obj);
+
+		/*
+			读取对象中的属性
+				语法：对象.属性
+
+				如果读取变量中没有的属性，不会报错而会返回一个 undefined
+		 */
+		
+		console.log(obj.gender);
+		console.log(obj.hello);
+
+		/*
+			修改对象的属性值
+				语法：对象.属性 = 属性值
+		 */
+		obj.name = "张利强";
+		console.log(obj.sname);
+
+		/*
+			删除对象的属性
+				语法：delete 对象.属性名
+
+		 */
+		delete obj.name;
+		console.log(obj.name);
+
+
+		/*
+			对象名的属性不强制要求遵守标识符的规范
+				语法：对象["属性名"] = 属性值
+
+				读取值时也是这样取
+				使用[]这种方式更加灵活
+					可以在[]中传变量
+		 */
+		obj.var = "hello";
+		obj["123"] = 456;
+		console.log(obj["123"]);
+
+		/*
+			属性值  可以是任意的数据类型，甚至也可以是一个对象
+		 */
+		
+		var obj2 = new Object();
+		obj2.test = "test";
+		console.log(obj2);
+
+		obj.test = obj2;
+
+		console.log(obj);
+		console.log(typeof obj.test);
+
+		/*
+			一般情况下，我们使用是已有的对象
+				可以通过 in 运算符查看对象中是否含有指定的属性    如果有返回true
+				语法："属性名" in 对象
+		 */
+		
+		console.log("test" in obj);    //true
+		console.log("test2" in obj);    //false
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
