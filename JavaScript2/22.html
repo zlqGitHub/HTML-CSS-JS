@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域</title>
+	<script type="text/javascript">
+		/*
+			作用域：指变量的作用范围
+
+			1.全局作用域：
+				直接编写在script标签中的JS代码，都在全局作用域中
+					例如：var a = 123;
+						  function aa(){};
+				在页面打开时创建，在页面关闭时销毁
+				全局作用域中有一个window (它代表浏览器窗口，由浏览器创建) 全局对象，可以直接使用
+				在全局作用域中，创建的变量都会作为window对象的属性保存    console.log(window.变量名);
+								同样，函数也一样     window.alert();
+				全局作用域中的变量都是全局变量
+					在页面的任何地方都可以使用
+
+			2.函数作用域(局部作用域):
+				调用函数是创建，函数执行完毕后，函数作用域销毁
+				每调用一次函数就会创建一个新的函数作用域，他们之间相互独立的
+				
+		 */
+		
+		console.log(window);
+		var a = 123;
+		console.log(a);
+		console.log(window.a);
+
+
+
+		/*
+			变量提升
+				使用var关键字声明的变量，会在所有的代码执行之前被声明
+				但是声明变量时不适用var时，变量不会被声明提升
+
+			函数的声明提前
+				使用函数声明形式创建的函数的  function 函数名(){}
+					他会在所有的代码执行之前就被创建，所以可以在函数声明之前调用
+				使用函数表达式创建的表达式    var 变量 = function(){}
+					他不会被提前声明，所以不能再声明前调用
+				全局作用域中，无法访问函数作用域
+
+		 */
+		console.log(b);    //undefined
+		var b = 123;
+
+
+		fun();
+		function fun(){
+			console.log("我是函数声明提前");
+		}
+		
+		// fun2();    报错
+		var fun2 = function(){
+			console.log("函数表达式不能声明提前");
+		}
+
+
+		function fun2(){
+			var c = 30;
+			console.log(c);
+		}
+		fun2();
+		// console.log(c);   报错无法访问
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
