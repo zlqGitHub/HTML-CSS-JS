@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工厂方法创建对象</title>
+	<script type="text/javascript">
+		//创建一个对象
+		var obj = {
+			name:"孙悟空",
+			age:18,
+			gender:"男",
+			sayName:function(){
+				alert(this.name);
+			}
+		}
+
+		// console.log(obj.sayName());
+		
+		/*
+			使用工厂方法创建对象,可以批量生产对象
+				缺陷：使用工厂方法创建对象，使用构造函数都是Object
+				 	所以对象都是Object类型，导致我们无法区分多种不同类型的对象
+		 */ 
+		
+		function createPerson(name,age,gender){
+			//创建一个对象
+			var obj = new Object();
+
+			//添加属性
+			obj.name = name;
+			obj.age = age;
+			obj.gender = gender;
+
+			//返回对象
+			return obj;
+		}
+
+		var obj2 = createPerson("张利强",20,"男");
+		var obj3 = createPerson("小美",19,"女");
+
+		console.log(obj2);
+		console.log(obj3);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
