@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>构造函数改进</title>
+	<script type="text/javascript">
+		/*
+			缺陷：构造函数实例化几次sayName的方法function就新建几次
+		 */
+		
+		function Person(name,age,gender){
+			// alert(this);
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			this.sayName = fun;
+			// this.sayName = function(){
+			// 	alert("我是"+this.name);
+			// }
+		}
+		/*
+			将sayName方法在全局作用中定义
+				注意：将函数定义在全局作用域中，污染了全局作用域的命名空间
+					  而且定义在全局作用域中也很不安全
+		 */
+		function fun(){
+			alert("我是"+this.name);
+		}
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
