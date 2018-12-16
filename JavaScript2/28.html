@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链</title>
+	<script type="text/javascript">
+		/*
+			创建一个构造函数
+		 */
+		function MyClass(){
+
+		}
+
+		MyClass.prototype.name = "我是原型中的名字";
+
+		var mc = new MyClass();
+
+		console.log(mc.name);
+
+		//使用in检查对象中是否含有某个属性，如果对象中没有但原型中有，也会返回true
+		console.log("name" in mc);
+
+		//可以使用对象的 hasOwnProperty() 来检查自身中是否含有该属性或方法
+		console.log(mc.hasOwnProperty("name"));    //false
+
+		console.log(mc.hasOwnProperty("hasOwnProperty"));    //false
+
+		/*
+			原型对象也是对象，他也有原型
+			Object对象的原型没有没有
+			思想：一层一层往上找--原型链
+
+		 */
+		console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));   //true
+
+		console.log(mc.__proto__.__proto__.__proto__);   //null
+	</script>   
+</head>
+<body>
+	
+</body>
+</html>
