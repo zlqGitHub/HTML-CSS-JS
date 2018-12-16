@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的遍历</title>
+	<script type="text/javascript">
+		var arr = ["孙悟空","猪八戒","沙和尚","唐僧"];
+		for (var i = 0; i < arr.length; i++) {
+			console.log(arr[i]);
+		}
+
+
+		/*
+			forEach()  只支持IE8以上的浏览器
+				该方法需要一个函数作为参数,函数可以有三个参数
+		 */
+		arr.forEach(function(value,index,obj){
+			console.log(index+":"+value);
+			console.log(obj)
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
