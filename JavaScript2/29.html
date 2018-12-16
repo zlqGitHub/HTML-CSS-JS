@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链+toString()</title>
+	<script type="text/javascript">
+		/*
+			创建一个构造函数
+		 */
+		function Person(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+
+		var per = new Person("孙悟空",18,"男");
+
+		/*
+			当我们在页面中打印一个对象的时候实际上输出的是对象的toString()方法的返回值
+			我们不希望输出 [object Object],可以为对象添加一个 toString() 方法
+		 */
+		
+		per.toString = function(){
+			return "123456789";
+		}
+		
+		var result = per.toString();
+		console.log(per);
+		console.log("result = "+result);
+
+		console.log(per.__proto__.__proto__.hasOwnProperty("toString"));   //true   原型链的使用
+
+
+		//修改原型中的toString()方法
+		Person.prototype.toString = function(){
+			return "Person[name="+this.name+",age="+this.age+",gender="+this.gender+"]";
+		}
+
+		console.log(per);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
