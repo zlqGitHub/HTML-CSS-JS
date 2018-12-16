@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组</title>
+	<script type="text/javascript">
+		/*
+			内建对象  宿主对象   自定义对象
+
+			数组(Array)  也是一个对象
+				索引：从0开始的整数
+		 */
+		
+		//创建数组对象
+		var arr = new Array();
+		console.log(typeof arr);   //返回object
+
+		/*
+			添加元素
+				语法：数组[索引] = 值
+			读取数组：
+				语法：数组[索引]
+			当读取不存在的索引时，不报错，返回 undefined
+		 */
+		arr[0] = 10;
+		arr[1] = 20;
+		arr[2] = 30;
+		arr[3] = 30;
+
+		arr[arr.length] = 50;
+
+		console.log(arr);
+		
+
+		/*
+			获取数组的长度
+				语法：数组.length
+		 */
+		console.log(arr.length);
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
