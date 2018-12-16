@@ -6,14 +6,38 @@
 	<script type="text/javascript">
 		/*
 			原型：prototype
+				我们创建的每一个函数(对象)，解析器都会向函数添加一个属性prototype
+					这个属性对应的一个对象，就是我们所要的原型对象
+				当函数通过构造函数调用时，他创建的对象都会有一个隐含的属性
+					指向该函数的原型对象可以通过 __proto__ 来访问该属性
 
-
+				以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中
+					这样不用分别为每一个对象添加，也不会影响全局作用域，就可以使每个对象都具有这些属性、方法
 		 */
 		
 		function Person(){
 
 		}
-		console.log(Person.prototype);
+		//向原型对象中添加属性
+		Person.prototype.a = 132;
+
+		//向原型对象中添加方法
+		Person.prototype.sayHello = function(){
+			alert("hello");
+		};
+
+
+		// console.log(Person.prototype);
+		/*
+			实例化对象中属性方法包括他自己的和构造函数原型中的
+		 */
+		var per = new Person();
+		
+		console.log(per.__proto__);   //原型中的属性方法
+
+		console.log(per.a);
+		console.log(per.sayHello);
+		// per.sayHello();
 
 	</script>
 
