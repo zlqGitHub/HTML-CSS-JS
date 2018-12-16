@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>垃圾回收</title>
+	<script type="text/javascript">
+		/*
+			通过垃圾回收的机制，来处理程序运行过程中产生的垃圾
+
+			当一个对象没有任何的变量或属性对它进行引用，此时我们将无法操作该对象
+				，这种对象就是一个垃圾，这种对象会占用大量的内存空间，导致程序运行变慢
+
+				因此对这种垃圾需要进行清理
+
+			JS中拥有自动的垃圾回收机制，会自动将这些垃圾从内存中回收
+
+		 */
+		
+		var obj = new Object();
+
+		//当obj为空时，系统可以将该对象识别为垃圾
+		obj = null;
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
