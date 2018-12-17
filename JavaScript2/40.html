@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>包装类</title>
+	<script type="text/javascript">
+		/*
+			String()
+				可以将基本数据类型字符串转化为String对象
+			Number()
+				可以将基本数据类型的数字转化为Number对象
+			Boolean()
+				可以将基本数据类型的布尔值转化为Boolean对象
+
+			注意：实际开发中一般不用基本数据类型对象，因为在比较时可能会出现意想不到的结果
+		 */
+		
+		var num = new Number(5);
+		console.log(typeof num);
+
+		var str = new String("hello");
+		console.log(typeof str);
+
+		var bool = new Boolean(true);
+		console.log(typeof bool);
+
+
+		/*
+			方法和属性只能添加给对象，不能添加给基本数据类型
+				当我们对一些基笨数据类型的值去调用属性和方法时，"浏览器会临时使用包装类将其转化为对象"，
+				然后在调用对象的属性和方法
+				调用完后，再将其转化为基本数据类型
+
+		 */
+		var a = 13;
+		a = a.toString();
+ 
+		console.log(a);   //13
+		console.log(typeof a);    //String
+
+		a.hello = "hello";
+
+		console.log(a.hello);    //undefined
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
