@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date</title>
+	<script type="text/javascript">
+		/*
+			Date对象
+			http://www.w3school.com.cn/jsref/jsref_obj_date.asp
+
+		 */
+
+		 //创建一个Date对    d为当前代码执行的时间
+		 var d = new Date();   
+		 console.log(d);
+
+		 //创建指定的时间对象   需要在构造函数中传递一个表示时间的字符串作为参数
+		 //   格式：  月份/日/年    时:分:秒
+		
+		var d2 = new Date("04/04/1997 08:00:00");     
+		console.log(d2);  
+
+		//获取当前的时间戳
+		var time = Date.now();
+		console.log(time);
+		console.log(time2);   
+		 
+
+
+
+	</script>
+
+</head>
+<body>
+
+	
+</body>
+</html>
+		var time2 = d.getTime();
