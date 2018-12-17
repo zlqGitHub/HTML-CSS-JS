@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arguments</title>
+	<script type="text/javascript">
+		/*
+			在函数调用时都会传递两个隐形函数
+				1.函数的上下文对象 this 
+				2.封装实参的对象arguments
+					arguments是一个类数组对象
+
+				isArray() 方法用于判断一个对象是否为数组。如果对象是数组返回 true，否则返回 false。
+
+		 */
+		function fun(){   //即使不定义形参也可以通过arguments传实参
+			console.log(arguments instanceof Array);   //false
+			console.log(Array.isArray(arguments));     //false
+			console.log(arguments.length);
+			console.log(arguments[1]);
+			var a = 3;
+			console.log(isNaN("zlq"));   //true
+			console.log(isNaN(a));     //false
+		}  
+		fun(1,2,3);   //作为实参传值过去，都会封装在arguments的类数组中
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
