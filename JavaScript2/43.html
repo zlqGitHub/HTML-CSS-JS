@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则字面量</title>
+	<script type="text/javascript">
+		/*
+			使用字面量来创建正则表达式
+				语法：var 变量 = /正则表达式/匹配模式      注意：字符不加引号
+		 */
+		
+		var reg = /a/i;
+		console.log(typeof reg);
+		console.log(reg.test("a"));
+
+
+		/*
+			或的正则表达式
+		 */
+		reg = /a|b|c/;
+		reg = /[a-z]/;
+		reg = /a[bde]c/;
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>
