@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串和正则的相关方法</title>
+	<script type="text/javascript">
+		var str = "a2s3c5d6e8o";
+
+		/*
+			split() 方法用于把一个字符串分割成字符串数组
+				方法中的参数可以是正则表达式
+		 */
+
+		var result = str.split("5");    //按5来划分
+		console.log(result);      //["a2s3c", "d6e8"]
+
+		result = str.split(/[0-9]/);     //按数字来划分
+		console.log(result);  
+
+
+		/*
+			search() 方法用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串
+				成功返回stringObject 中第一个与 regexp 相匹配的子串的起始位置，失败则返回 -1。
+				参数可以接受正则表达式
+				search() 只会查找第一个，即使设置全局匹配也是这样
+		 */
+		str = "hello zlq hello zwq hello zyq";
+
+		result = str.search("zyq");
+		console.log(result); 
+
+		result = str.search(/z[wly]q/);
+		console.log(result); 
+
+
+		/*
+			match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。
+				默认情况下，match只会找第一个符合要求的内容
+		 */
+		str = "a2s3c5d6e8oA5BC";
+
+		// result = str.match(/[A-z]/);
+		result = str.match(/[A-z]/g);
+		// result = str.match(/[a-z]/gi);
+		console.log(result);     //a,s,c,d,e,o,A,B,C
+		console.log(Array.isArray(result));    //true
+
+
+		str = "aaa%12354@dsfsf$1233641#safasfaf!89622";
+		result = str.match(/\d+/g);    //提取字符串中的数字子串
+		console.log(result); 
+
+		result = str.match(/\w+/g);    //提取字符串中的字母子串
+		console.log(result); 
+
+
+		/*
+			replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+				默认只替换第一个
+		 */
+		
+		str = "1a25absA";
+
+		result = str.replace("a","@");   //默认只替换第一个
+		console.log(result); 
+		// console.log(str);    源字符串不变
+		
+
+		result = str.replace(/a/gi,"*");   //将a A 都替换为 *
+		console.log(result); 
+
+		result = str.replace(/[A-z]/g,"");    //将字符串中的所有字母删掉
+		console.log(result);
+
+		str = "file:///D:/微信小程序/HTML+CSS+JS/JavaScript2/44.html";
+		console.log(str)
+
+		result = str.replace(/44/,"00");  //直接替换
+		console.log(result);
+
+
+		reg = /^a$/;    //表示以 a 开头后，立马以 a 结尾
+
+		result = reg.test("aa");
+		console.log(result);  //false
+
+		result = reg.test("a");
+		console.log(result);  //true
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
