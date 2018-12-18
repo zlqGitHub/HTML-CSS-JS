@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则练习</title>
+	<script type="text/javascript">
+		/*
+			手机号：
+				1.第一位以 1 开头    ^1
+				2.第二位为 3-9的任意数字   [3-9]
+				3.3位以后任意数字，共9为   \d{9}$    [0-9]{9}$
+			注意：以为字符时不需要使用量词
+		 */
+		
+		var phoneStr = "15513268481";
+
+		var phoneReg = /^1[3-9]\d{9}$/;
+
+		var result = phoneReg.test(phoneStr);   //true
+
+		console.log(result)
+		
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
