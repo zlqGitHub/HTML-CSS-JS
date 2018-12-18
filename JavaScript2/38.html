@@ -21,12 +21,21 @@
 		console.log(d2);  
 
 		//获取当前的时间戳
-		var time = Date.now();
-		console.log(time);
-		console.log(time2);   
-		 
+		// var time = Date.now();
+		// console.log(time);  
 
+		var start = Date.now();  
+		console.log(start);  
+		var sum = 0;
+		for(var i=1;i<=1000;i++){
+			sum += i;
+		}
+		document.write("sum = "+sum);
+		var end = Date.now();
+		console.log(end);  
 
+		var time = end - start;
+		console.log("所花的时间为："+time);
 
 	</script>
 
@@ -36,4 +45,3 @@
 	
 </body>
 </html>
-		var time2 = d.getTime();
