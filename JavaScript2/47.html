@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则的练习</title>
+	<script type="text/javascript">
+		/*
+			电子邮件
+				hello  .nihao  @  abc  .com   .cn
+
+				1.任意字母数字下划线,3位起                       \w{3,}
+				2.  .nihao  任意字母数字下划线,可有可无         (\.\w+)*
+				3.   @                                            @
+				4.   任意字母数字，至少一位                      [A-z0-9]+
+				5.   .com   .任意字母（2-5位）                  
+				6.   .cn    .任意字母（2-5位）      5、6正则为：  (\.[A-z]{2,5}){1,2}
+		 */
+		
+		var emailReg = /\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}/;
+
+		var email = "1509874021@qq.com";
+
+		console.log(emailReg.test(email));    //true
+
+		email = "1509874021@qq.com.123";
+
+		console.log(emailReg.test(email));    //true   因为正则没有开始符和结束符的显示
+
+		emailReg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
+
+		email = "1509874021@qq.com123";
+
+		console.log(emailReg.test(email));    //false
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
