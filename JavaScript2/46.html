@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则语法</title>
+	<script type="text/javascript">
+		/*
+			检查字符串中是否含有 .
+				. 表示任意字符
+				. 元字符用于查找单个字符，除了换行和行结束符
+				\. 表示 .
+				\\ 表示 \
+		 */
+		var reg = /./;
+		console.log(reg.test("afaf"));    //true
+
+		reg = /\./;
+		console.log(reg.test("afaf"));   //false
+		console.log(reg.test("af.af"));    //true
+
+		reg = /\\/;
+		console.log(reg);
+		console.log(reg.test("a.\\"));    //true    字符串中同样需要使用 转义 字符
+
+
+		/*
+			\w
+				任意字母、数字、_   [A-z0-9]
+			\W
+				除了字母、数字、_    [^A-z0-9]
+			\d
+				数字     [0-9]
+			\D 
+				非数字字符    [^0-9]
+			\s
+				空格    
+			\S
+				除了空格
+			\b
+				单词边界
+			\B
+				除了单词边界
+
+		 */
+
+
+		reg = /\w/;
+		console.log(reg.test("e"));    //true
+		console.log(reg.test("!@!@@"));      //false
+
+		/*
+			创建一个正则表达式检查一个字符串是否含有单词child
+		 */
+		
+		reg = /\bchild\b/;    //\b 表示单词边界  该单词两边没有字母
+
+		console.log(reg.test("hello child"));   //true
+
+
+
+		//接收用户的输入
+		// var str = prompt("请输入用户名");
+		// console.log(str);     有时用户输入时可能会在输入值的左右两边存在空格
+
+
+		//去除空格，使用 “” 来替换空格
+		reg = /\s/g;        //使用 \s 来匹配字符串中的空格
+		var str = "      hello";
+		str = str.replace(reg,"");
+		console.log(str);      //hello   字符串前后没有空格，将所有的空格全部去掉
+
+
+		//去除前面的空格
+		var str = "      hello     ";
+		str = str.replace(/^\s*/g,"");    //^ 表示前面的   加上量词来去除前面所有的空格
+		console.log(str);      //"hello     "   字符串前面没有空格
+
+		//去除后面的空格
+		var str = "      hello     ";
+		str = str.replace(/\s*$/g,"");    //^ 表示前面的   加上量词来去除前面所有的空格
+		console.log(str);      //"      hello"   字符串后面没有空格
+
+		//去除前后面的空格
+		var str = "      hello     ";
+		str = str.replace(/^\s*|\s*$/g,"");    //^ 表示前面的   加上量词来去除前面所有的空格
+		console.log(str);      //"hello"   字符串前后没有空格
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
