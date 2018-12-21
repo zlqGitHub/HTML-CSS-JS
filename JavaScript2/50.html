@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>childNodes、children属性</title>
+	<script type="text/javascript">
+
+	/*   
+		Element 对象的属性和方法： 例如：getElementByTagName()  chidlNodes   children  firstChild  lastChild
+			http://www.w3school.com.cn/jsref/dom_obj_all.asp
+	*/
+
+	window.onload = function(){
+		var ul = document.getElementById('ul');
+		var childNodes = document.getElementById("childNodes");
+		var children = document.getElementById("children");
+
+		/*
+			childNodes属性会包括文本结点在内的所有结点
+		*/
+		childNodes.onclick = function(){
+			var cns = ul.childNodes;
+			console.log(cns.length);   //9
+			console.log(cns);    //NodeList(9) [text, li, text, li, text, li, text, li, text]
+		}
+		// console.log(ul);
+		
+
+		/*
+			children属性可以获取当前元素的所有子元素  不包括文本结点   推荐使用
+
+		 */
+		children.onclick = function(){
+			var cns = ul.children;
+			console.log(cns.length);   //4
+			console.log(cns);    //HTMLCollection(4) [li, li, li, li]
+		}
+	}
+	</script>
+</head>
+<body>
+	<div>
+		<ul id="ul">
+			<li>北京</li>
+			<li>上海</li>
+			<li>广州</li>
+			<li>深圳</li>
+		</ul>
+	</div>
+
+	<button id="childNodes">childNodes</button>
+	<button id="children">children</button>
+	
+</body>
+</html>
