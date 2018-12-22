@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>元素查询</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+				获取body元素
+			 */
+			// var body = document.getElementsByTagName("body")[0];
+			var body = document.body;
+			console.log(body);
+
+			var html = document.documentElement;    //返回文档的根节点
+			console.log(html);
+
+			var all = document.all;     //返回所有的标签结点
+			console.log(all);
+			console.log(all.length);   //9  获取页面中的所有标签
+
+			all = document.getElementsByTagName("*");
+			console.log(all);
+
+			//获取页面中的所有div
+			var divs = document.getElementsByTagName('div');
+			console.log(divs.length);   //3
+
+			/*
+				获取div中的div
+					根据css 选择器
+				document.querySelector()
+					需要一个选择器的字符串作为参数，可以根据css选择器来查询一个元素结点对象
+					返回文档中匹配指定的CSS选择器的第一元素
+				document.querySelectorAll()
+					需要一个选择器的字符串作为参数，可以根据css选择器来查询一个元素结点对象
+					返回文档中匹配的CSS选择器的所有元素节点列表
+			 */
+			var div = document.querySelector(".box1 div");
+			console.log(div);
+			console.log(div.innerHTML);
+
+			var divs = document.querySelectorAll(".box1");
+			console.log(divs);
+			console.log(divs.length);
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div class="box1">
+		<div>我是box1中的div</div>
+	</div>
+
+	<div class="box1"></div>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	
+</body>
+</html>
