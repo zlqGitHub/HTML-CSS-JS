@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM增删改</title>
+	<style type="text/css">
+		#city li{
+			list-style: none;
+			display: block;
+			width: 50px;
+			height: 20px;
+			border:1px solid red;
+			background: green;
+			margin:5px 2px;
+			float: left;
+			text-align: center;
+			line-height: 20px;
+			color: #fff;
+			letter-spacing: 2px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+			//一、创建元素结点并添加到body中
+			btn.onclick = function(){
+				/*
+					1.创建一个元素结点
+					document.createElement()
+						创建一个元素结点
+						需要用一个标签名作为参数，并将创建好的对象作为返回值
+				 */
+				var btn = document.createElement("button");
+				// alert(typeof btn);   object
+				
+
+				/*
+					2.创建文本结点
+						document.createTextNode()
+							用一个文本字符作为参数，
+				 */
+
+				var text = document.createTextNode("Click Me");
+				// console.log(text);
+				
+				/*
+					3.将文本结点添加到对应的父结点中(创建的元素结点)
+						appendChild()   	
+							为元素添加一个新的子元素
+				 */
+				btn.appendChild(text);
+
+				/*
+					4.将创建的元素显示到body中
+						1）获取body
+						2）往body中添加
+				 */
+				var body = document.body;
+				console.log(body);
+				body.appendChild(btn);
+			}
+
+			//二、将新建的结点插入到某个原有结点之前
+				/*
+					insertBefore() 
+						现有的子元素之前插入一个新的子元素
+						语法：父结点.insertBefore(新节点，旧节点);
+
+				*/
+			
+			btn2.onclick = function(){
+				var btn2 = document.getElementById('btn2');
+				var li = document.createElement("li");
+				var text2 = document.createTextNode("吕梁");
+				li.appendChild(text2);
+				var oCity = document.getElementById("city");
+				var oSh = document.getElementById("sh");
+				// oCity.appendChild(li);   添加到后面
+				//将新元素插入到上海之前
+				oCity.insertBefore(li,sh);
+			}
+
+
+			//三、将新建的结点替换到某个原有结点（修改）
+				/*
+					replaceChild()
+						替换一个子元素
+						语法：父结点.replaceChild(新节点，旧节点);
+
+				*/
+			
+			btn3.onclick = function(){
+				var btn2 = document.getElementById('btn2');
+				var li = document.createElement("li");
+				var text3 = document.createTextNode("太原");
+				li.appendChild(text3);
+				var oCity = document.getElementById("city");
+				var oSh = document.getElementById("sh");
+				
+				oCity.replaceChild(li,sh);
+			}
+
+			//四、删除子节点
+				/*
+					removeChild()
+						替换一个子元素
+						语法：父结点.removeChild(子节点);
+
+				*/
+			
+			btn4.onclick = function(){
+				var oBj = document.getElementById("bj");
+				// var oCity = document.getElementById("city");
+				// console.log(oBj);
+				// oCity.removeChild(oBj);
+
+				// parentNode 属性可返回某节点的父节点
+				oBj.parentNode.removeChild(oBj);
+				
+			}
+
+
+
+
+			//使用innerHTML统一可以进行增删改
+			var cities = document.getElementById('city');
+			console.log(cities.innerHTML);
+			//增加一个li元素
+			cities.innerHTML += "<li>临县</li>";
+
+
+			/*
+				推荐使用：两种方法结合使用(折中的方式)
+			*/
+			
+			var li = document.createElement("li");
+			li.innerHTML = "中北";
+			cities.appendChild(li);
+			
+		}
+
+	</script>
+</head>
+<body>
+	<button id="btn">点我试试</button>
+	<button id="btn2">插入节点</button>
+	<button id="btn3">替换节点</button>
+	<button id="btn4">删除节点</button>
+
+	<div>
+		<ul id="city">
+			<li id="bj">北京</li>
+			<li id="sh">上海</li>
+			<li id="gz">广州</li>
+			<li id="sz">深圳</li>
+		</ul>
+	</div>
+</body>
+</html>
