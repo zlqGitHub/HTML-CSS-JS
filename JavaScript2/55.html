@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>删除记录</title>
+	<style type="text/css">
+		#employeeTable{
+			margin:50px auto;
+			border-collapse:collapse;
+			border:1px solid #999;
+			text-align: center;
+		}
+		#employeeTable th{
+			width: 110px;
+		}
+
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+			点击超链接删除员工信息
+			 */
+			//获取所有超链接
+			var oAllA = document.getElementsByTagName('a');
+
+			//为每个超链接绑定一个单击响应事件
+			for(var i=0; i<oAllA.length; i++){
+				oAllA[i].onclick = function(){
+					//这里通过this来确定点点击的是哪一项，并通过parentNode来找到当前元素的祖先
+					var tr = this.parentNode.parentNode;
+					// alert(typeof this);     object
+					
+					var name = tr.childNodes[1].innerHTML;
+					name = tr.getElementsByTagName("td")[0].innerHTML;
+					console.log(tr.childNodes[1].innerHTML);
+
+					//通过parentNode找对父元素进行删除
+				
+					//删除之前弹出提示框，确认删除，增加交互
+					// alert("确认删除吗？");
+					
+					//使用confirm()用于弹出提示框,如果用户点击确定按钮，则 confirm() 返回 true。如果点击取消按钮，则 confirm() 返回 false。
+					var flag = confirm("确认删除"+name+"吗？");
+					// alert(flag);
+					if(flag == true){
+						tr.parentNode.removeChild(tr);
+					}
+					
+					
+					/*
+						此时不想点击超链接后跳转，因此通过在响应函数的最后 return false 来取消这一行为
+					 */
+					return false;
+
+				}
+			} 
+			
+		}
+
+	</script>
+</head>
+<body>
+	<table id="employeeTable" border="1" >
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Salary</th>
+			<th>&nbsp;</th>
+		</tr>
+		<tr>
+			<td>Tom</td>
+			<td>tom@qq.com</td>
+			<td>5000</td>
+			<td><a href="javascript:;">Delete</a></td>
+		</tr>
+		<tr>
+			<td>Jerry</td>
+			<td>Jerry@qq.com</td>
+			<td>7000</td>
+			<td><a href="javascript:;">Delete</a></td>
+		</tr>
+		<tr>
+			<td>Zlq</td>
+			<td>zlq@qq.com</td>
+			<td>50000</td>
+			<td><a href="javascript:;">Delete</a></td>
+		</tr>
+	</table>
+	
+</body>
+</html>
