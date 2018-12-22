@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>全、不、反选2</title>
+	</head>
+	<body>
+		<button id="quanxuan">全选</button>
+		<button id="buxuan">不选</button>
+		<button id="fanxuan">反选</button>
+		<div id="inputs">
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+			<input type="checkbox"><br>
+		</div>
+		<script>
+			//获取全选按钮元素对象
+			var oQuanxuan = document.getElementById('quanxuan');
+
+			//获取不选按钮元素对象
+			var oBuxuan = document.getElementById('buxuan');
+
+			//获取反选按钮元素对象
+			var oFanxuan = document.getElementById('fanxuan');
+
+
+			//获取id为inputs的元素对象
+			var oInputs = document.getElementById('inputs');
+
+			//	getElementsByTagName()返回带有指定标签名的对象集合
+			var aInput = oInputs.getElementsByTagName('input');   
+
+			// alert(aInput.length);
+			
+			//给全选按钮绑定鼠标点击事件，复选框全部选中
+			oQuanxuan.onclick = function(){
+				for(var i=0;i<aInput.length;i++)
+				{
+					aInput[i].checked = true;
+				}
+			}
+
+
+			//给不选按钮绑定鼠标点击事件，复选框全部不选
+			oBuxuan.onclick = function(){
+				for(var i=0;i<aInput.length;i++)
+				{
+					aInput[i].checked = false;
+				}
+			}
+
+			//给反选按钮绑定鼠标点击事件，复选框原来选中的变为不选，原来不选的变为选中
+			oFanxuan.onclick = function(){
+				for(var i=0;i<aInput.length;i++)
+				{
+					if(aInput[i].checked == false)
+					{
+						aInput[i].checked = true;
+					}else{
+						aInput[i].checked = false;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
