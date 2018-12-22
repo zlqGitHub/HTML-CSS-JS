@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全、不、反选1</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var chedkAll = document.getElementById('checkedAllBtn');
+			var chedkNo = document.getElementById("checkedNoBtn");
+			var fanxuan = document.getElementById("fanxuan");
+			var submit = document.getElementById("submit");
+			// getElementsByName() 方法可返回带有指定名称的对象的集合
+			var items = document.getElementsByName("items");
+			// alert(items.length);   5
+			chedkAll.onclick = function(){
+				for (var i = 0; i < items.length; i++) {
+					items[i].checked = true;
+				}
+			}
+
+			chedkNo.onclick = function(){
+				for (var i = 0; i < items.length; i++) {
+					items[i].checked = false;
+				}
+			}
+
+			fanxuan.onclick = function(){
+				for (var i = 0; i < items.length; i++) {
+					if(items[i].checked == true){
+						items[i].checked = false;
+					}
+					else{
+						items[i].checked = true;
+					}
+				}
+			}
+
+			submit.onclick = function(){
+				for (var i = 0; i < items.length; i++) {
+					console.log(i+1+"："+items[i].checked);
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<button id="checkedAllBtn">全选</button>
+	<button id="checkedNoBtn">不选</button>
+	<button id="fanxuan">反选</button>
+	<button id="submit">提交</button><br>
+	<input name="items" type="checkbox"><br>
+	<input name="items" type="checkbox"><br>
+	<input name="items" type="checkbox"><br>
+	<input name="items" type="checkbox"><br>
+	<input name="items" type="checkbox"><br>
+	
+</body>
+</html>
