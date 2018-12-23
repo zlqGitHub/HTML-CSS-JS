@@ -5,19 +5,23 @@
 	<title>函数Function</title>
 	<script type="text/javascript">
 		/*
+			Function类：http://www.w3school.com.cn/js/pro_js_functions_function_object.asp
+
+		 
 			函数：function
 				可以用typeof检查函数对象
 		 */
 		//创建一个函数对象
 		
 		var fun = new Function();
-		console.log(fun);
-		console.log(typeof fun);
+		console.log(fun);     // anonymous  该函数为匿名函数
+		console.log(typeof fun);    //类型为：function 型
 
 		/*
 			调用函数   语法：函数对象()
 		 */
 		fun();
+
 
 
 		/*
@@ -43,8 +47,71 @@
 		var fun3 = function(){
 			console.log("我是一个匿名 函数");
 		}
-		console.log(fun3);
-		fun3();
+		console.log(fun3);   //将匿名函数输出
+		fun3();     //调用匿名函数
+
+
+
+
+		// ***********重点***********
+
+		//构造函数
+		function Person(name,age) {
+			// body...
+			this.name = name;
+			this.age = age; 
+		}
+		var fun = new Person("zlq",18);
+		console.log(fun);     // Person {name: "zlq", age: 18}
+		console.log(typeof fun);    //类型为：object 型
+
+		/*
+			调用函数   语法：函数对象()
+		 */
+		
+		//fun 为生成的Person对象,可以任意添加属性、方法
+		fun = {
+			name:"张利强",
+			age:20,
+			genger:"男"   
+
+		}
+		console.log(fun);  // {name: "张利强", age: 20}
+
+
+
+		/*
+			用 Function 类直接创建函数的语法如下：
+				var function_name = new function(arg1, arg2, ..., argN, function_body)
+					在上面的形式中，每个arg都是一个参数，最后一个参数是函数主体（要执行的代码）。这些参数必须是字符串。
+
+		 */
+		
+		var sayHi = new Function("sName", "sMessage", "alert(\"Hello \" + sName + sMessage);");	
+		sayHi();
+
+
+		//第二个函数重载了第一个函数，使 doAdd(10) 输出了 "20"，而不是 "30"
+		function doAdd(iNum) {
+			alert(iNum + 20);
+		}
+		function doAdd(iNum) {
+			alert(iNum + 10);
+		}
+		doAdd(10);	//输出 "20"
+
+
+		//请观察下面这段代码，很显然，doAdd 的值被改成了指向不同对象的指针。函数名只是指向函数对象的引用值，行为就像其他对象一样。甚至可以使两个变量指向同一个函数
+		var doAdd = new Function("iNum", "alert(iNum + 20)");   //对象的地址不同，重写该代码块
+		var doAdd = new Function("iNum", "alert(iNum + 10)");
+		doAdd(10);    //20
+
+
+
+
+
+
+
 
 
 	</script>
