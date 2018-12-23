@@ -55,7 +55,7 @@
 
 		// ***********重点***********
 
-		//构造函数
+		//构造函数,使用new后生成的是一个对象
 		function Person(name,age) {
 			// body...
 			this.name = name;
@@ -64,6 +64,7 @@
 		var fun = new Person("zlq",18);
 		console.log(fun);     // Person {name: "zlq", age: 18}
 		console.log(typeof fun);    //类型为：object 型
+		console.log("我叫："+fun.name);
 
 		/*
 			调用函数   语法：函数对象()
@@ -107,7 +108,8 @@
 		doAdd(10);    //20
 
 
-
+		var fun = new Function("name","age","console.log('我叫'+name+',今年'+age);");
+		fun("张利强",21);
 
 
 
