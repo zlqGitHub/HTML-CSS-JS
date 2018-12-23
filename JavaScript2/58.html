@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for循环中的索引问题</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var index ;
+			var btn = document.getElementsByTagName('button');
+			console.log(btn.length);
+			for (var i = 0; i < 3; i++) {
+				/*
+					在页面加载完时，for循环已经执行完  i到达3
+				 */
+				alert("for循环正在执行："+i);
+
+				index = i;
+				btn[index].onclick = function(){
+					alert("响应函数正则执行："+i);   //i为3
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<button>点击我</button>
+	<button>点击我</button>
+	<button>点击我</button>
+	
+</body>
+</html>
