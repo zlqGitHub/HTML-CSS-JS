@@ -25,9 +25,9 @@
 
 		var obj = new Object();
 		obj.test = 456;
-		var obj2 = obj;   //obj2与obj指向同一个对象
+		var obj2 = obj;   //obj2与obj指向同一个对象，封装的是同一个对象的地址
 
-		obj.test = 789;
+		obj.test = 789;    //通过对象的地址对属性进行修改值
 
 		console.log(obj);    //789
 		console.log(obj2);   //789
@@ -39,10 +39,10 @@
 		obj4.test = 123;
 
 		/*
-			比较两个对象时，比较的是地址
+			比较两个对象时，比较的是地址,不同的对象地址一定不同
 		 */
 
-		console.log(obj3 == obj4);
+		console.log(obj3 == obj4);   //false
 
 
 	</script>
