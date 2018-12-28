@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getStyle()方法</title>
+	<script type="text/javascript">
+		/*
+			判断浏览器是否有对应的函数
+				参数：obj: 要获取的元素    name：获取的样式名
+		 */
+		function getStyle(obj,name){
+			//火狐谷歌上兼容
+			if(window.getComputedStyle){   //注意：此处的表示用window下的属性
+				return getComputedStyle(obj,null)[name];
+			}
+			//IE上兼容
+			else{
+				return obj.currentStyle[name];
+			}
+
+			// return window.getComputedStyle ? getComputedStyle(obj,null)[name] : obj.currentStyle[name];
+
+		}
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
