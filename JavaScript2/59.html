@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>操作内联样式</title>
+	<style type="text/css">
+		.box1{
+			width: 100px;
+			height: 100px;
+			/*background-color: red!important;*/
+			background-color: pink;
+		}
+
+	</style>
+		
+	<script type="text/javascript">
+		/*
+			通过js修改元素样式
+				语法：   元素.style.样式名 = 样式值；   注意单位
+					该波操作修改的是内联样式   通过在浏览器中观察可知
+
+				对于background-color的修改  使用  backgroundColor
+				当样式属性中加了 !important  时，JS修改样式将失效
+					background:red
+		 */
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+				var box1 = document.getElementById("box1");
+					btn.onclick = function(){
+						alert(box1.style.width);   //空白   只能获取内联样式的值
+						box1.style.width = 200 + "px";    //设置的是内联样式
+						// box1.style.width = "200px";
+						box1.style.backgroundColor = "yellow";
+						alert(box1.style.width);
+				}
+		}
+
+		/*
+			回忆内联样式、内部样式、外部引入
+		*/
+	</script>
+</head>
+<body>
+	<button id="btn">点我试试</button>
+	<div class="box1" id="box1"></div>
+
+	
+</body>
+</html>
