@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS其他相关属性练习</title>
+	<style type="text/css">
+		#content{
+			width: 300px;
+			height: 550px;
+			background: #afb;
+			margin:20px 30px;
+			overflow: auto;
+		}
+		#btn{
+			border:none;
+		}
+	</style>
+	<script type="text/javascript">
+		/*
+			clientHeight 在页面上返回内容的可视高度（不包括边框，边距或滚动条）
+			clientWidth	在页面上返回内容的可视宽度（不包括边框，边距或滚动条）
+
+			offsetHeight 返回任何一个元素的高度包括边框和填充，但不是边距
+			offsetWidth	返回元素的宽度，包括边框和填充，但不是边距
+			offsetLeft	返回当前元素的相对水平偏移位置的偏移容器
+			offsetTop	返回当前元素的相对垂直偏移位置的偏移容器
+			offsetParent	返回元素的偏移容器   相对最近的定位父元素  默认为body
+
+			scrollHeight	返回整个元素的高度（包括带滚动条的隐蔽的地方）
+			scrollWidth	返回元素的整个宽度（包括带滚动条的隐蔽的地方）
+			scrollLeft	返回当前视图中的实际元素的左边缘和左边缘之间的距离
+			scrollTop	返回当前视图中的实际元素的顶部边缘和顶部边缘之间的距离
+		 
+			参考：http://www.runoob.com/jsref/dom-obj-all.html
+		 */
+		
+		/*
+			题目：鼠标滚动到底时，可以点击复选框
+		 */
+		
+		window.onload = function(){
+			var oContent = document.getElementById('content');
+			var oCheckbox = document.getElementById('checkbox');
+			var oBtn = document.getElementById("btn");
+			//绑定鼠标滚动事件
+			oContent.onscroll = function(){
+				/*console.log("scrollHeight:"+oContent.scrollHeight);
+				console.log("clientHeight:"+oContent.clientHeight);
+				console.log("scrollTop:"+oContent.scrollTop);*/
+
+				//判断滚动条是否到底
+				if(this.scrollHeight - this.scrollTop == this.clientHeight){
+					// alert("到底啦！");
+					oCheckbox.disabled = false;
+					oBtn.disabled = false;
+					oBtn.style.backgroundColor = "green";
+					oBtn.style.color = "#FFF";
+				}
+				else{
+					oCheckbox.disabled = true;
+					oBtn.disabled = true;
+					oBtn.style.backgroundColor = null;
+					oBtn.style.color = "";
+				}
+
+			}
+		}
+		
+
+
+	</script>
+</head>
+<body>
+	<div >
+		<p id="content">
+			围绕关键之年的经济工作，会议强调，坚持稳中求进工作总基调，坚持新发展理念，坚持推进高质量发展，坚持以供给侧结构性改革为主线，坚持深化市场化改革、扩大高水平开放，并要求进一步稳就业、稳金融、稳外贸、稳外资、稳投资、稳预期。中国国际经济交流中心学术委员会委员王军说，“五个坚持”和“六个稳”勾勒出明年我国经济工作的主要方向。特别是在改革开放40年之际，强调加快经济体制改革，推动全方位对外开放，重申坚持以市场化为取向的改革方向，具有重要意义。
+			围绕关键之年的经济工作，会议强调，坚持稳中求进工作总基调，坚持新发展理念，坚持推进高质量发展，坚持以供给侧结构性改革为主线，坚持深化市场化改革、扩大高水平开放，并要求进一步稳就业、稳金融、稳外贸、稳外资、稳投资、稳预期。中国国际经济交流中心学术委员会委员王军说，“五个坚持”和“六个稳”勾勒出明年我国经济工作的主要方向。特别是在改革开放40年之际，强调加快经济体制改革，推动全方位对外开放，重申坚持以市场化为取向的改革方向，具有重要意义。
+			围绕关键之年的经济工作，会议强调，坚持稳中求进工作总基调，坚持新发展理念，坚持推进高质量发展，坚持以供给侧结构性改革为主线，坚持深化市场化改革、扩大高水平开放，并要求进一步稳就业、稳金融、稳外贸、稳外资、稳投资、稳预期。中国国际经济交流中心学术委员会委员王军说，“五个坚持”和“六个稳”勾勒出明年我国经济工作的主要方向。特别是在改革开放40年之际，强调加快经济体制改革，推动全方位对外开放，重申坚持以市场化为取向的改革方向，具有重要意义。
+			围绕关键之年的经济工作，会议强调，坚持稳中求进工作总基调，坚持新发展理念，坚持推进高质量发展，坚持以供给侧结构性改革为主线，坚持深化市场化改革、扩大高水平开放，并要求进一步稳就业、稳金融、稳外贸、稳外资、稳投资、稳预期。中国国际经济交流中心学术委员会委员王军说，“五个坚持”和“六个稳”勾勒出明年我国经济工作的主要方向。特别是在改革开放40年之际，强调加快经济体制改革，推动全方位对外开放，重申坚持以市场化为取向的改革方向，具有重要意义。围绕关键之年的经济工作，会议强调，坚持稳中求进工作总基调，坚持新发展理念，坚持推进高质量发展，坚持以供给侧结构性改革为主线，坚持深化市场化改革、扩大高水平开放，并要求进一步稳就业、稳金融、稳外贸、稳外资、稳投资、稳预期。中国国际经济交流中心学术委员会委员王军说，“五个坚持”和“六个稳”勾勒出明年我国经济工作的主要方向。特别是在改革开放40年之际，强调加快经济体制改革，推动全方位对外开放，重申坚持以市场化为取向的改革方向，具有重要意义。
+
+		</p>
+
+	</div>
+	<input type="checkbox" name="" id="checkbox" disabled>我已仔细阅读协议，一定遵守<button id="btn" disabled>注册</button>
+	
+</body>
+</html>
