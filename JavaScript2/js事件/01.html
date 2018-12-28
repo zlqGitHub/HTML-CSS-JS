@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移动 onmousemove 事件</title>
+	<style type="text/css">
+		#areaDiv{
+			width: 300px;
+			height: 70px;
+			border:1px solid #999;
+		}
+		#showMsg{
+			width: 300px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			margin-top: 20px;
+			border:1px solid #999;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			var oAreaDiv = document.getElementById('areaDiv');
+			var oShowMsg = document.getElementById("showMsg");
+			/*
+				鼠标在areaDiv中移动时，在showMsg中显示鼠标坐标
+					onmousemove事件会在鼠标移动时触发
+
+					事件对象：
+						当事件触发时，浏览器每次都会将一个事件对象作为实参传递进去
+						该事件对象中封装了当前事件的相关信息，包括鼠标坐标等
+
+			 */
+
+			oAreaDiv.onmousemove = function(event){
+				/*
+					在IE8中，响应函数触发时，不会传递事件对象
+					在IE8以下的浏览器中，将事件对象作为window对象的属性保存
+						var x = window.event.clientX;
+						var y = window.event.clientY;
+				 */
+
+				/*var x = event.clientX;
+				var y = event.clientY;
+				console.log("x = "+x+"   y = "+y);*/
+
+
+				//注意：兼容性问题
+				/*if(!event){
+					event = window.event;
+				}*/
+
+				event = event || window.event;
+
+				var x = event.clientX;
+				var y = event.clientY;
+
+				//在showMsg中显示鼠标的坐标
+				oShowMsg.innerHTML = "x = "+x+";y = "+y;
+				// oShowMsg.innerText = "x = "+x+";y = "+y;
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="areaDiv"></div>
+	<div id="showMsg"></div>
+	
+</body>
+</html>
