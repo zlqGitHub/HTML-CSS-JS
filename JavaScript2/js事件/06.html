@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件的拖拽(一)</title>
+	<style type="text/css">
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;    /* 拖拽事件会改变div位置，因此需要在定位的基础上进行 */
+			cursor: pointer;
+			z-index: 10000;
+		}
+		#box2{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			position: absolute;
+			left: 300px;
+			top:200px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+				拖拽box1元素
+					1.当鼠标按下被拖拽元素时开始拖拽，onmousedown
+					2.鼠标开始拖地，onmousemove
+					3.当鼠标松开时，元素停留在当前位置，onmouseup
+			 */
+			var oBox1 = document.getElementById('box1');
+			oBox1.onmousedown = function(){
+				//为document绑定一个onmousemove事件
+				document.onmousemove = function(event){
+					//解决兼容性问题
+					event = event || window.event;
+
+					var left = event.clientX;
+					var top = event.clientY;
+
+					oBox1.style.left = left + "px";
+					oBox1.style.top = top + "px";
+				}
+
+
+				//鼠标松开事件    考虑：给oBox1绑定onmouseup事件出现的问题
+				document.onmouseup = function(){
+					//取消document的onmousemove事件
+					document.onmousemove = null;
+
+					//取消document的onmouseup事件
+					document.onmouseup = null;
+				}
+			}
+
+
+		}
+	</script>
+
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+	
+</body>
+</html>
