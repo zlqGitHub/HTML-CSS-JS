@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>div跟随鼠标移动</title>
+	<style type="text/css">
+		#box0{
+			width: 500px;
+			height: 500px;
+			background-color: red;
+			position: absolute;
+		}
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			position: absolute;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+				使div跟随鼠标移动
+			 */
+			var oBox1 = document.getElementById('box1');
+			var oBox0 = document.getElementById('box0');
+
+
+			/*
+				测试给oBox1设置移动事件时的问题？
+			 */
+			
+			//给整个文档设置事件
+			document.onmousemove = function(event){
+				//解决兼容性问题
+				event = event || window.event;
+
+				/*
+					谷歌浏览器认为该滚动条是body的，可以通过body.scrollTop
+					火狐浏览器认为是HTML的
+				 */
+				var st = document.body.scrollTop || document.documentElement.scrollTop;  //垂直距离
+				var sl = document.body.scrollLeft || document.documentElement.scrollLeft;  //水平距离
+				// console.log(st);
+
+
+
+				/*
+					clientX 事件属性返回当事件被触发时鼠标指针向对于浏览器页面（或客户区）的水平坐标。
+					客户区指的是当前窗口  相对于可见窗口
+				*/
+				var left = event.clientX;
+				var top = event.clientY;
+
+				/*var left = event.pageX;
+				var top = event.pageY;*/
+
+				// console.log("left = "+left+",top = "+top);    
+				// console.log(typeof left);    number类型
+
+				//设置div的偏移量  注意： 单位    设置left、top时，是在定位的基础的设置的
+				oBox1.style.left = left + sl + "px";
+				oBox1.style.top = top + st + "px";
+
+			}
+
+
+			/*
+				oBox0取消了冒泡   因此oBox1 不能够移动到oBox0 中
+			 */
+			oBox0.onmousemove = function(event){ 
+				event = event || window.event;
+				event.cancelBubble = true;
+			}
+		}
+
+	</script>
+
+
+</head>
+<body style="height: 1000px;width: 2000px;">
+	<div id="box0"></div>
+	<div id="box1"></div>
+</body>
+</html>
