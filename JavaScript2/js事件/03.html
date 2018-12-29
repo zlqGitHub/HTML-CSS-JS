@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件的冒泡</title>
+	<style type="text/css">
+		#box1{
+			width: 150px;
+			height: 150px;
+			background-color: #afb;
+		}
+		#span{
+			background: blue;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+				事件的冒泡(Bubbles)
+					指事件的向上传导，当后代元素的事件被触发时，其祖先元素的相同事件也会被触发
+					开发阶段冒泡大都是有用的
+					使用event.cancelBubble = true 取消冒泡
+			 */
+			
+			var oBox1 = document.getElementById('box1');
+			var oSpan = document.getElementById('span');
+			var body = document.body;
+
+			oSpan.onclick = function(event){
+				event = event || window.event;
+				alert("我是一个span标签");
+				event.cancelBubble = true;    //取消冒泡
+			}
+
+			oBox1.onclick = function(){
+				alert("我是一个box标签");
+			}
+
+			body.onclick = function(){
+				alert("我是一个body标签 ");
+			}
+		}
+
+	</script>
+</head>
+<body>	
+	<div id="box1">
+		box1
+		<span id="span">我是span标签</span>
+	</div>
+	
+</body>
+</html>
