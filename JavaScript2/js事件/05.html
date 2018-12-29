@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件绑定</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			//获取按钮
+			var oBtn = document.getElementById('btn');
+
+			bind(oBtn,"click",function(){
+				alert(2);
+			});    //调用自定义 函数
+			bind(oBtn,"click",function(){
+				alert("这是第二次绑定事件");
+			});    //调用自定义 函数
+
+			/*
+				使用   对象.事件 = 函数  的形式绑定响应函数
+				缺点：只能为元素同时绑定一个响应函数
+					  最后一个响应函数会覆盖前面的响应函数
+			 */
+			
+			/*
+
+				//为 oBtn 绑定一个点击响应函数
+				oBtn.onclick = function(){
+					alert(1);
+				}
+
+				//为 oBtn 绑定第二个点击响应函数
+				oBtn.onclick = function(){
+					alert(2);
+				}
+
+			*/
+
+			/*
+				addEventListener()用于向文档添加事件句柄
+					参数：1.事件的字符串  不要on  例如用click替换onclick
+					      2.回调函数，当事件触发时该函数会被调用
+					      3.是否 在捕获或冒泡阶段执行
+					      		true - 事件句柄在捕获阶段执行
+								false- 默认。事件句柄在冒泡阶段执行 
+
+				使用addEventListener()可以同时为相同事件同时绑定多个响应函数
+				这样事件被调用时，响应函数将会被按照响应函数的绑定顺序执行 
+			
+				http://www.runoob.com/jsref/met-document-addeventlistener.html
+
+			 */
+			
+			/*
+				oBtn.addEventListener("click",function(){
+					alert(1)
+				},false);
+				oBtn.addEventListener("click",function(){
+					alert(2)
+				},false);
+			 */
+		
+
+			/*
+				注意：Internet Explorer 8 及更早IE版本不支持 addEventListener() 方法
+
+				可以使用attachEvent()解决这一问题
+					参数：1.事件的字符串 要on
+					      2.回调函数
+
+					该函数是后绑定先执行，即执行顺序和addEventListener()相反
+
+			 */
+			
+			/*
+				oBtn.attachEvent("click",function(){
+					alert(1)
+				});
+				oBtn.attachEvent("click",function(){
+					alert(2)
+				});
+			*/
+		
+			/*
+			oBtn.addEventListener("click",function(){
+				alert(this);     this为绑定事件的对象
+			},false);
+			oBtn.attachEvent("click",function(){
+				alert(this)   this为window
+			});
+			*/
+		
+			/*
+				定义个函数，来为指定的元素绑定响应函数
+					参数：1.obj 要绑定事件的duix
+					      2.eventStr 事件的字符串 (不要on)
+					      3.callback 回调函数
+
+			 */
+			function bind(obj,eventStr,callback){
+
+				if(obj.addEventListener){
+					//大部分浏览器
+					obj.addEventListener(eventStr,callback,false);
+				}else{
+					/*
+						this是由调用方式决定
+						callback.call(obj)  可以修改this
+
+					 */
+
+					//IE8一下的浏览器
+					// obj.attachEvent("on"+eventStr,callback);
+					obj.attachEvent("on"+eventStr,function(){
+						/*
+							call()方法为函数对象的方法，可以改变调用函数的对象(参数是谁谁就是this)，此处的this指obj对象
+						 */
+						callback.call(obj);  
+						console.log("IE执行");  
+					});
+
+				}
+
+			
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<button id="btn">Click Me</button>
+	
+</body>
+</html>
