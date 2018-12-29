@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件的拖拽(二)</title>
+	<style type="text/css">
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;    /* 拖拽事件会改变div位置，因此需要在定位的基础上进行 */
+			cursor: pointer;
+			z-index: 10000;
+		}
+		#box2{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			position: absolute;
+			left: 300px;
+			top:200px;
+		}
+	</style>
+	<script type="text/javascript">
+		/*
+			优化：希望鼠标拖拽时，点击哪儿鼠标在div的位置就是哪儿
+				  重新确定oBox1.style.left、top的位置
+		 */
+
+		window.onload = function(){
+			/*
+				拖拽box1元素
+					1.当鼠标按下被拖拽元素时开始拖拽，onmousedown
+					2.鼠标开始拖地，onmousemove
+					3.当鼠标松开时，元素停留在当前位置，onmouseup
+			 */
+			var oBox1 = document.getElementById('box1');
+			oBox1.onmousedown = function(event){
+				/*
+					在鼠标点击的时候计算div偏移量
+						鼠标.clientX - 元素.offsetLeft;
+						鼠标.clientY - 元素.offsetTop;
+				 */
+				event = event || window.event;
+				var ol = event.clientX - oBox1.offsetLeft;
+				var ot = event.clientY - oBox1.offsetTop;
+				// console.log(event.clientX);
+				// console.log(oBox1.offsetLeft);
+
+
+				//为document绑定一个onmousemove事件
+				document.onmousemove = function(event){
+					//解决兼容性问题
+					event = event || window.event;
+
+					var left = event.clientX - ol;
+					var top = event.clientY - ot;
+					// console.log(event.clientX);
+
+					oBox1.style.left = left + "px";
+					oBox1.style.top = top + "px";
+				}
+
+
+				//鼠标松开事件    考虑：给oBox1绑定onmouseup事件出现的问题
+				document.onmouseup = function(){
+					//取消document的onmousemove事件
+					document.onmousemove = null;
+
+					//取消document的onmouseup事件
+					document.onmouseup = null;
+				}
+
+				/*
+					当我们在拖拽网页中也容时，浏览器会默认去搜索引擎中搜索内容
+					此时的拖拽功能就会异常，这是浏览器的默认行为
+					可以通过  return false  来取消默认行为
+
+						注意：IE8以下的浏览器不起作用
+				 */
+				return false;
+
+
+			}
+
+		}
+	</script>
+
+</head>
+<body>
+	张利强
+	<div id="box1"></div>
+	<div id="box2"></div>
+	
+</body>
+</html>
