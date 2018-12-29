@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽三</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBox1 = document.getElementById('box1');
+			var oBox2 = document.getElementById("box2");
+
+			oBox1.onclick = function(){
+				alert("box1");
+			}
+			oBox2.onclick = function(){
+				alert("box2");
+			}
+
+			/*
+				设置oBox1对鼠标按下相关的事件进行捕获
+
+			 */
+			oBox1.setCapture();
+		}
+
+	</script>
+</head>
+<body>
+	<button id="box1">box1</button>
+	<button id="box2">box2</button>
+	
+</body>
+</html>
