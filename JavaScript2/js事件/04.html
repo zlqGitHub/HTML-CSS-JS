@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件的委派之冒泡练习</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+
+			*/
+			var aLists = document.getElementsByTagName('a');
+			var ul = document.getElementById("ul");
+
+			//点击按钮新建一个li元素
+			var oBtn = document.getElementById('btn');
+			oBtn.onclick = function(){
+				var li = document.createElement("li");
+				li.innerHTML = "<a href='javascript:;' class='link'>我是新建超链接~~~</a>";
+				ul.appendChild(li);
+
+			}
+
+
+
+			/*
+				这样的绑定点击事件的缺陷是：新建的链接需要重新绑定点击事件
+
+			 	for(var i=0 ; i<aLists.length ; i++){
+				aLists[i].onclick = function(){
+					alert("我是超链接~~~	");
+				}
+			}*/
+
+
+
+			/*
+				可以通过将事件绑定给他们的共同祖先
+
+				事件委派：
+					指将事件统一绑定给元素共同的祖先元素，这样当后代元素触发时，会一直冒泡到祖先元素
+			 */
+			ul.onclick = function(event){
+				// alert(this);   ul对象,this是事件绑定给谁就是谁
+				
+				// alert("我是超链接");  点击哪儿都会发生
+				
+				//希望是点击的期望元素，则执行否则不执行
+				
+				/*
+					target
+						-event中的target表示触发事件的对象
+					http://www.runoob.com/jsref/event-target.html
+				 */
+				// alert(event.target.className);
+				
+
+				//判断
+				if(event.target.className == "link"){
+					alert("我是超链接~~~");
+				}
+
+				
+			}
+			
+
+		}
+
+
+	</script>
+</head>
+<body>
+	<button id="btn">点击我</button>
+
+	<ul id="ul" style="background-color: pink">
+		<li><a href="javascript:;" class="link">超链接一</a></li>
+		<li><a href="javascript:;" class="link">超链接二</a></li>
+		<li><a href="javascript:;" class="link">超链接三</a></li>
+	</ul>
+	
+</body>
+</html>
