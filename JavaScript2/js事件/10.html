@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>键盘事件</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+				键盘事件
+					onkeydown   
+						按键被按下
+						对于该事件来说，按下不放将一直触发
+						触发时，第一次
+					onkeyup     
+						按键被松开了
+
+				键盘事件适合绑定给可以获取焦点的元素或document
+			 */
+			
+			document.onkeydown = function(event){
+				event = event || window.event;
+				/*
+					可以通过keyCode来获取按键的编码
+						可以通过  console.log(event.keyCode); 来获取当前按键的编码
+					此外还有altKey、ctrlKey、shiftKey 分别开判断 alt、ctrl、shift键是否被按下，是返回true，否则返回false
+				*/
+			
+				console.log(event.keyCode);
+			
+				if(event.keyCode === 89){
+					console.log("\'y\'键被按下了");
+				}
+
+				//判断Ctrl和y是否同时按下
+				if(event.keyCode === 89 && event.ctrlKey){
+					console.log("\'ctrl\'和\'y\'键被按下了");
+				}
+			}
+
+			document.onkeyup = function(){
+				console.log("按键被松开了");
+			}
+
+
+
+
+			//给input绑定此事件
+			var input = document.getElementsByTagName('input')[0];
+
+			input.onkeydown = function(event){
+				event = event || window.event;
+
+				/*
+					功能：输入框中不允许数字输入
+						数字编码：48-57
+				 */
+				if(event.keyCode >= 48 && event.keyCode <= 57){
+					/*
+						在文本框中输入内容，属于onkeydown的默认行为
+						可以通过return false 来取消
+					 */
+					alert("不能输入数字");
+					return false;
+				}
+
+
+
+			}
+
+			input.onkeyup = function(){
+				var content = this.value;    //输入框中键盘没抬起一次获取一次值
+				console.log(content);   
+			}
+
+			
+
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="">
+	
+</body>
+</html>
