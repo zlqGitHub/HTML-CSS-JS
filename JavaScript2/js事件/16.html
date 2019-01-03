@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器应用(一)</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			left:0;   /* 防止输出auto */
+		}
+		#box2{
+			width: 0;
+			height: 1000px;
+			border:0.5px #000 solid;
+			position: relative;
+			left: 600px;
+			top: -100px;
+		}
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			var oBox1 = document.getElementById('box1');
+
+			var timer = null;    //事项定义一个定时器变量
+
+			//向右移动
+			oBtn1.onclick = function(){
+				clearInterval(timer);
+				// alert(styleValue);
+				timer = setInterval(function(){
+					var styleValue = parseInt(getStyle(oBox1,"left"));    //类型转换，便于计算
+					styleValue += 10;
+					if(styleValue >= 600){    //让div恰好停在600px位置的处
+						styleValue = 600;      
+					}
+					oBox1.style.left = styleValue + "px";
+				},30);
+			}
+
+			//向左移动
+			oBtn2.onclick = function(){
+				clearInterval(timer);
+				// alert(styleValue);
+				timer = setInterval(function(){
+					var styleValue = parseInt(getStyle(oBox1,"left"));    //类型转换，便于计算
+					styleValue -= 10;
+					if(styleValue <= 0){    //让div恰好停在600px位置的处
+						styleValue = 0;      
+					}
+					oBox1.style.left = styleValue + "px";
+				},30);
+			}
+
+			
+
+		}
+
+		//获取任何元素的属性值
+		function getStyle(obj,name){
+			//兼容性处理
+			//火狐、谷歌上的兼容
+			if(window.getComputedStyle){
+				return getComputedStyle(obj,null)[name];
+			}
+			//IE上兼容
+			else{
+				return obj.currentStyle[name];
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<button id="btn1">点击后box向右运动</button>
+	<button id="btn2">点击后box向左运动</button>
+	<br><br>
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+</html>
