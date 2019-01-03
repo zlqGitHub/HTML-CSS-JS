@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>n秒后自动跳转……</title>
+	</head>
+	<body>
+		<a href="" id="seconds">10</a>秒后自动跳转……
+	</body>
+	<script>
+		//倒计时函数
+		function countDown(){
+			var oSeconds = document.getElementById('seconds');
+			// console.log(oSeconds.innerText);     超链接的值
+			// console.log(typeof(oSeconds.innerText));   查看其类型   string
+
+			var seconds = parseInt(oSeconds.innerText);   //转化为整型进行运算
+			seconds--; //自减
+			if(seconds > 0)
+			{
+				oSeconds.innerText = seconds;
+				setTimeout(countDown,1000);    //设置定时器，每一秒执行一次函数
+			}
+			else
+			{
+				window.location.href = "http://weui.moocba.com";   //跳转
+			}
+
+		}
+		// countDown();
+
+		setTimeout(countDown,1000);      //执行函数
+	</script>
+</html>
