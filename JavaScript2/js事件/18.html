@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>类的操作class</title>
+	<style type="text/css">
+		.b1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin-top: 10px;
+		}
+
+		.b2{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+		}
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oBox1 = document.getElementById('box1');
+
+			oBtn.onclick = function(){
+				//为btn绑定单击响应函数
+				/*
+					通过 style 属性来修改元素的样式，没修改一个样式，浏览器就需要重新渲染一次页面，这样的比较差，而且对于修改多个样式的情况下，使用起来不太方便
+					对象.style.属性 = 属性值;
+				 */
+				
+				/*
+					通过修改修改元素的class属性
+						可以事先写好样式，此时浏览器只需重新渲染一次页面即可
+						这种方式性能较好，行为与表现进一步分离
+				 */
+				// oBox1.className = " b2";
+				
+				// oBox1.className += " b2";   //使用这种方式可以保留元素原有的样式，注意空格
+
+				// addClass(oBox1,"b2");
+				
+				// removeClass(oBox1,"b2");
+				
+				toggleClass(oBox1 , "b2");
+			}
+			
+		}
+
+		//定义一个函数，用来向一个元素中添加指定的class属性值
+		/*
+			参数：obj 要添加class属性的元素
+				  cn(className) 要添加的属性值
+		 */
+		function addClass(obj , cn){
+			if(!hasClass(obj,cn)){
+				obj.className += " " + cn;
+			}
+	}
+
+		//定义一个函数判断元素中是否含有className
+		/*
+			参数：obj 要判断的元素
+				  cn(className) 要判断的属性值
+			如果有返回true 否则返回false
+
+		 */
+		function hasClass(obj , cn){
+			//通过正则式去判断
+			// var reg = /b2/;      //表示字符串中是否有b2
+			// var reg = /\bb5\b/;   //表示字符串中是否有独立的 b5 存在
+			// var reg = /\bcn\b/;     这样的话cn不能作为变量来使用，因此使用构造函数(new)
+			
+			var reg = new RegExp("\\b"+cn+"\\b");  //转义字符
+			// alert(reg);
+
+			return reg.test(obj.className);
+		}
+
+		//定义一个函数删除元素的class属性值
+		function removeClass(obj , cn){
+			var reg = new RegExp("\\b"+cn+"\\b");
+			//使用replace将class属性值替换为空
+			obj.className = obj.className.replace(reg , "");
+
+		}
+
+		//定义一个函数用来切换class
+		/*
+			toggleClass()
+				如果元素有cn则删除
+				如果没有则添加
+		 */
+		function toggleClass(obj , cn){
+			var reg = /\ {1,}/g;
+			// alert(reg);
+			obj.className = obj.className.replace(reg , " ");     //清除掉多余的空格
+			if(hasClass(obj , cn)){
+				removeClass(obj , cn);
+			}
+			else{
+				addClass(obj , cn);
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<button id="btn">修改div样式</button>
+	<div id="box1" class="b1"></div>
+</body>
+</html>
