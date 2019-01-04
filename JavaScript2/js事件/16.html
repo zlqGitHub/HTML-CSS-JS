@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>定时器应用(一)</title>
+	<title>定时器应用(二)</title>
 	<style type="text/css">
 		*{
 			margin: 0;
@@ -30,40 +30,57 @@
 			var oBtn1 = document.getElementById("btn1");
 			var oBtn2 = document.getElementById("btn2");
 			var oBox1 = document.getElementById('box1');
-
-			var timer = null;    //事项定义一个定时器变量
+			var oBox1 = document.getElementById('box1');
 
 			//向右移动
 			oBtn1.onclick = function(){
-				clearInterval(timer);
-				// alert(styleValue);
-				timer = setInterval(function(){
-					var styleValue = parseInt(getStyle(oBox1,"left"));    //类型转换，便于计算
-					styleValue += 10;
-					if(styleValue >= 600){    //让div恰好停在600px位置的处
-						styleValue = 600;      
-					}
-					oBox1.style.left = styleValue + "px";
-				},30);
+				move(oBox1,600,10);
 			}
 
 			//向左移动
 			oBtn2.onclick = function(){
-				clearInterval(timer);
-				// alert(styleValue);
-				timer = setInterval(function(){
-					var styleValue = parseInt(getStyle(oBox1,"left"));    //类型转换，便于计算
-					styleValue -= 10;
-					if(styleValue <= 0){    //让div恰好停在600px位置的处
-						styleValue = 0;      
-					}
-					oBox1.style.left = styleValue + "px";
-				},30);
+				move(oBox1,0,10);
 			}
 
-			
-
 		}
+
+
+		var timer;    //全局变量定时器
+		//尝试封装一个move移动函数
+		/*
+			参数：obj：要执行的动画对象
+				  target：执行动画的目标位置
+				  speed：移动速度  
+				  	注意：此处只传正值，在move函数内部通过当前位置与目标位置的比较来判断移动的方向
+		 */
+		function move(obj,target,speed){
+			clearInterval(timer);
+			// alert(styleValue);
+			
+			//判断速度的正负   0->800向右移动     800->0向左移动
+			var current = parseInt(getStyle(obj,"left"));
+			if(current >= target){
+				speed = -speed;
+			}
+
+			timer = setInterval(function(){
+				var oldValue = parseInt(getStyle(obj,"left"));    //类型转换，便于计算
+				var newValue =oldValue + speed;
+
+				//通过speed判断
+				if((speed < 10 && newValue <= target) || (speed > 10 && newValue >= target)){    //让div恰好停在600px位置的处
+					newValue = target;    
+				}
+
+				//当到达目的地时关闭定时器
+				if(newValue == target){
+					clearInterval(timer);  
+				}
+
+				obj.style.left = newValue + "px";
+			},30);
+		}
+
 
 		//获取任何元素的属性值
 		function getStyle(obj,name){
