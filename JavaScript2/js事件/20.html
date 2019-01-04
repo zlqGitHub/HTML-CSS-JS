@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>eval()函数</title>
+	<script type="text/javascript">
+		/*
+			兼容性：在IE7以下的浏览器中，JSON未定义，报错
+			eval()
+				-该函数可以用来执行一段字符串形式的JS代码，并将执行的结果返回
+				-如果使用eval()执行的字符串中有{}，它会将{}当成是代码块
+					可以通过在字符串前后各加一个()来解决
+
+				-该函数在在开发过程中一般不用，因为其性能较差，而且存在安全隐患
+		 */
+		
+		// var str = "alert('hello');";
+		// eval(str);      //弹出 hello 
+		
+		var str = '{"name":"zlq","age":20,"gender":"男"}';
+		var obj = eval("("+str+")");
+		console.log(obj);        //{name: "zlq", age: 20, gender: "男"}
+ 
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
