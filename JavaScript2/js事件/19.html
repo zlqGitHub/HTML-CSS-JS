@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON</title>
+	<script type="text/javascript">
+		/*
+			JSON
+				-js中的对象只有js能识别，其他语言不能认识，不能互相通信
+				-json就是一个特殊格式的字符串，该字符串可以被任意的语言所识别
+					并可以转换为任意语言中的对象
+					json主要是在开发中用来数据交互的
+				-JSON
+					-JavaScript Object Notation  JS对象表示法
+					-JSON和JS对象的格式一样，只不过json字符串中的属性名必须加双引号
+
+		 */
+		//创建一个js对象
+		var obj = {'name':'zlq','age':'20','gender':'男'};
+		console.log(typeof obj);     //object
+
+
+		//创建一个json对象
+		var obj = '{"name":"zlq","age":20,"gender":"男"}';
+		console.log(typeof obj);    //string
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
