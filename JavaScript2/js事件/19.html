@@ -3,9 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>JSON</title>
+	<script type="text/javascript" src="json2.js"></script>
 	<script type="text/javascript">
 		/*
-			JSON
+			JSON    http://www.runoob.com/js/js-json.html
 				-js中的对象只有js能识别，其他语言不能认识，不能互相通信
 				-json就是一个特殊格式的字符串，该字符串可以被任意的语言所识别
 					并可以转换为任意语言中的对象
@@ -13,6 +14,11 @@
 				-JSON
 					-JavaScript Object Notation  JS对象表示法
 					-JSON和JS对象的格式一样，只不过json字符串中的属性名必须加双引号
+				JSON分类：
+					1.对象{}
+					2.数组[]
+				JSON中允许的值：
+					字符串、数值、布尔值、null、对象(普通对象)、数组
 
 		 */
 		//创建一个js对象
@@ -21,9 +27,44 @@
 
 
 		//创建一个json对象
-		var obj = '{"name":"zlq","age":20,"gender":"男"}';
+		var json = '{"name":"zlq","age":20,"gender":"男"}';
 		console.log(typeof obj);    //string
 
+		//创建一个json数组
+		var arr = '[1,2,3,"hello",true]';
+		var arr2 = '["arr":[1,2,3]]';
+
+		/*
+			将json字符串转换为JS中的对象
+				在JS中，为我们提供了一个工具类--JSON
+				这个对象可以在JSON与JS对象之间进行转换
+		 */
+		// console.log(JSON);    //[object JSON]
+		
+		/*
+			json-->js
+				JSON.parse()	用于将一个 JSON 字符串转换为 JavaScript 对象
+		 */
+		var obj = '{"name":"zlq","age":20,"gender":"男"}';
+
+		var o = JSON.parse(obj);
+		console.log(o);    //{name: "zlq", age: 20, gender: "男"}
+
+		var o2 = JSON.parse(arr);   
+		console.log(o2);   //[1, 2, 3, "hello", true]
+
+		/*
+			js-->json
+				JSON.stringify()	用于将 JavaScript 值转换为 JSON 字符串
+		 */
+		var obj3 = {name:"张利强",age:18,gender:"男"};
+		var json2 = JSON.stringify(obj3);
+		console.log(json2);  //{"name":"张利强","age":18,"gender":"男"}
+
+		//注意兼容性处理：在IE7以下的浏览器中，JSON未定义，报错
+		/*
+			可以通过引入一个外部的js文件来处理IE7以下的浏览器不兼容问题    ---- json2.js
+		 */
 
 
 	</script>
