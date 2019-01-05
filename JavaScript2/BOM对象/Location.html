@@ -8,8 +8,10 @@
 			Location
 				-该对象封装了浏览器的地址栏信息
 		 */
+		
 		window.onload = function(){
 			var btn = document.getElementById('btn');
+			var btn2 = document.getElementById('btn2');
 			btn.onclick = function(){
 				/*
 					使用location获取到的地址栏信息，往往会出现中文乱码
@@ -42,6 +44,16 @@
 				 */
 				location.replace("https://www.baidu.com");
 			}
+			
+			btn2.onclick = function(){
+				alert("百度你好");
+				/*
+					location.href = ""   值可以是相对地址也可以是绝对地址
+				 */
+				location.href = "https://www.baidu.com";
+				// location.href = "file:///D:/微信小程序/HTML+CSS+JS/JavaScript2/BOM对象/History.html";
+				alert("haha");
+			}
 		}
 
 	</script>
@@ -49,6 +61,7 @@
 <body>
 	<button id="btn">点我一下</button>
 	<input type="text" name="">
+	<button id="btn2">前往百度</button>
 	
 </body>
 </html>
