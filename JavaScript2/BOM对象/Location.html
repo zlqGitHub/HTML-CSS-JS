@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Location</title>
+	<script type="text/javascript">
+		/*
+			Location
+				-该对象封装了浏览器的地址栏信息
+		 */
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				/*
+					使用location获取到的地址栏信息，往往会出现中文乱码
+						可以使用decodeURI进行解码
+						var str=decodeURI(location.href); //取得整个地址栏
+				 */
+				console.log(decodeURI(location));
+
+				/*
+					如果直接将location属性的修改为一个完整的路径，或相对路劲，则我们页面会自动跳转到对应的路径
+				 */
+				// location = "https://www.baidu.com";
+				
+				/*
+					assign()方法加载一个新的文档
+					作用和直接修改location一样
+				 */
+				// location.assign("https://www.baidu.com");
+				
+				/*
+					reload()	重新载入当前文档
+						-作用和刷新按钮一样
+						-当在方法中传递一个true时，会强制清空缓存刷新页面
+				 */
+				// location.reload(true);
+				
+				/*
+					replace() 方法可用一个新文档取代当前文档
+						-不会生成历史记录，不能够使用回退按钮
+				 */
+				location.replace("https://www.baidu.com");
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<button id="btn">点我一下</button>
+	<input type="text" name="">
+	
+</body>
+</html>
