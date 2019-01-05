@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style type="text/css">
+		/*首先去掉默认的样式*/
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		/* 设置outer样式 */
+		#outer{
+			width: 840px;
+			height: 335px;
+			background-color: yellow;
+			margin: 50px auto;
+			padding: 5px 0;
+			position: relative;
+			overflow: hidden;
+		}
+		#imgList{
+			/*去除项目符合*/
+			list-style: none;
+			position: absolute;
+			left: 0;
+			/*width: 3320px;    给ul来设置宽度*/
+		}
+		#imgList li{
+			float: left;
+			margin: 0 5px;
+		}
+		#navDiv{
+			position: absolute;
+			bottom: 15px;
+			/*left: 380px;     居中处理			*/
+		}
+		#navDiv a{
+			float: left;
+			width: 10px;
+			height: 10px;
+			margin: 0 5px;
+			background-color: blue;
+			opacity: 0.5;
+			filter: alpha(opacity=50);
+		}
+		#navDiv a:hover{
+			background-color: black;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			//动态设置ul的宽度
+			var imgList = document.getElementById('imgList');
+			var imgArr = document.getElementsByTagName('img');
+			imgList.style.width = 840 * imgArr.length + "px";
+
+			//动态设置navDiv居中
+			var navDiv = document.getElementById("navDiv");
+			var outer = document.getElementById("outer");
+			navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px";
+
+			//默认图片的索引
+			var index = 0;
+			var aArr = document.getElementsByTagName("a"); 
+			aArr[index].style.backgroundColor = "black";   //设置默认效果
+
+			/*
+				点击超链接切换到指定图片
+			 */
+			for (var i = 0; i < aArr.length; i++) {
+				//为超链接添加num属性,将其索引保存起来
+				aArr[i].num = i;
+				//为超链接绑定响应函数
+				aArr[i].onclick = function(){	
+					//获取当前点击超链接的索引
+					index = this.num;
+					// alert(imgList.style.left);
+					//切换图片--移动图片的位置left
+					imgList.style.left = (-840 * index) + "px";
+
+					//修改正在选中的a
+					//点击切换图片时先将图片的背景色设置
+					for(var j = 0; j < aArr.length; j++){
+						// aArr[j].style.backgroundColor = "blue";    会覆盖a:hover的效果
+						aArr[j].style.backgroundColor = "";
+					}
+					aArr[index].style.backgroundColor = "black";
+					
+				}
+			}
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="outer">
+		<ul id="imgList">
+			<li><img src="images/1.png"></li>
+			<li><img src="images/2.png"></li>
+			<li><img src="images/3.png"></li>
+			<li><img src="images/4.png"></li>
+		</ul>
+		<div id="navDiv">
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+		</div>
+	</div>
+	
+</body>
+</html>
