@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Navigator对象</title>
+	<script type="text/javascript">
+		/*
+			BOM
+				-Browser Object Model 浏览器对象模型
+				-在BOM中为我们提供了一组对象，用来对浏览器进行操作
+				-BOM对象
+					Window
+						-代表整个浏览器窗口，同时window也是网页中的全局对象
+					Navigator
+						-代表的当前浏览器的信息，通过该对象可以来识别不同的浏览器
+					Location
+						-代表当前浏览器的地址栏信息，通过Location可以获取地址栏信息，或者操作浏览器跳转
+					History
+						-代表浏览器的历史记录，可以通过该对象来操作浏览器的历史记录
+							由于隐私原因，该对象不能获取到具体的历史记录，只能操作浏览器向前或向后翻页
+							而且该操作只在当次访问时有效
+					Screen
+						-代表用户屏幕的信息，即显示器的相关信息
+
+
+				这些BOM对象都是作为window对象的属性保存
+					可以通过window对象来使用，也可以直接使用
+		 */
+		
+		/*console.log(window.navigator);
+		console.log(navigator);
+		console.log(location);*/
+
+		/*
+			Navigator
+				-代表当前浏览器，可以用来识别不同的浏览器
+				-目前Navigator对象中的大部分属性不能帮助我们来识别浏览器
+				-一般我们只会使用useAgent来判断浏览器的信息
+					userAgent是一个字符串，用来描述浏览器的信息
+		 */
+		// alert(navigator.appName);   返回浏览器的名称   浏览器名称: Netscape
+		
+		console.log(navigator.userAgent);
+		var ua = navigator.userAgent;
+		//正则式中的i表示忽略大小写
+		if(/QQBrowser/i.test(ua)){
+			alert("我是QQ浏览器");
+		}else if(/firefox/i.test(ua)){
+			alert("我是火狐浏览器");
+		}else if(/msie/i.test(ua)){
+			alert("我是IE浏览器(IE10以下的版本)");
+		}else if("ActiveXObject" in window){
+			alert("我是IE11浏览器");
+		}
+
+		/*
+			注意：在IE11中已将微软和IE相关的标识都已经去除，所有基本不能通过uerAgent来识别一个浏览器是否是IE浏览器
+			可以通过浏览器中特有的对象，来判断浏览器的信息
+				比如：ActiveXObject
+				浏览器中有返回true，否则返回false
+		 */
+		// alert(!window.ActiveXObject);     !转换为bool类型
+		// alert("ActiveXObject" in window);    判断一个对象是否含有该属性 
+		
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
