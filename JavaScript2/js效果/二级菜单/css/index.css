@@ -1,0 +1,44 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.sdmenu{
+	margin: 0 auto;
+	width: 160px;
+	box-shadow: 3px 15px 5px #DADADA;
+	/*background-color: red;*/
+	
+}
+.menuSpan{
+	display: block;
+	width: 132px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-size: 15px;
+	padding-left: 28px;
+	background: url(../imgs/right.png) 5px 10px no-repeat #131210;
+	background-size: 20px 20px;
+	border-top: 1px solid #fff;
+}
+.sdmenu a{
+	display: block;
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	padding-left: 10px;
+	text-decoration: none;
+	color: #24744D;
+}
+.sdmenu a:hover{
+	color: #FFF;
+	background:url(../imgs/right2.png) 130px 2px no-repeat #24744D;
+	background-size: 25px 25px;
+}
+.collapsed{
+	width: 160px;
+	height: 40px;
+	overflow: hidden;
+}
