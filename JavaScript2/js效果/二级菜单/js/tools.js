@@ -23,7 +23,8 @@ function move(obj,attr,target,speed,callback){
 		if(newValue == target){
 			clearInterval(obj.timer);  
 			//动画执行完毕后，调用回调函数
-			callback && callback();   //首先判断是否有回调函数
+			// callback && callback();   //首先判断是否有回调函数
+			if(callback)callback();
 		}
 		obj.style[attr] = newValue + "px";
 	},30);
@@ -45,7 +46,7 @@ function move2(obj,attr,iTarget,fnEnd){
 			current = parseInt(getStyle(obj,attr));
 		}
 
-		var speed = (iTarget - current)/6;
+		var speed = (iTarget - current)/2;   //速度跟随项目进行调整
 		speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
 
 		if(current == iTarget)
