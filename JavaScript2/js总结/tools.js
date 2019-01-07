@@ -1,4 +1,4 @@
-//元素的运动函数
+//一、元素的运动函数
 /*
 	参数；obj--对象  attr--属性  target--目标值  speed--速度  callback--回调函数
  */
@@ -89,5 +89,89 @@ function getStyle2(obj,name){
 	}
 	else{
 		return getComputedStyle(obj,false)[name];  //兼容FF等
+	}
+}
+
+
+//二、为对象绑定事件   https://github.com/zlqGitHub/HTML-CSS-JS/commit/ddec754292d5f39d6a8274a706a691f723d87031
+/*
+	定义个函数，来为指定的元素绑定响应函数
+		参数：1.obj 要绑定事件的duix
+		      2.eventStr 事件的字符串 (不要on)
+		      3.callback 回调函数
+
+ */
+function bind(obj,eventStr,callback){
+	if(obj.addEventListener){
+		//大部分浏览器
+		obj.addEventListener(eventStr,callback,false);
+	}else{
+		/*
+			this是由调用方式决定
+			callback.call(obj)  可以修改this
+
+		 */
+
+		//IE8一下的浏览器
+		// obj.attachEvent("on"+eventStr,callback);
+		obj.attachEvent("on"+eventStr,function(){
+			/*
+				call()方法为函数对象的方法，可以改变调用函数的对象(参数是谁谁就是this)，此处的this指obj对象
+			 */
+			callback.call(obj);   //使得对象obj执行回调函数
+			console.log("IE执行");  
+		});
+
+	}
+}
+
+//三、类的操作
+//定义一个函数，用来向一个元素中添加指定的class属性值
+/*
+	参数：obj 要添加class属性的元素
+		  cn(className) 要添加的属性值
+ */
+function addClass(obj , cn){
+	if(!hasClass(obj,cn)){
+		obj.className += " " + cn;
+	}
+}
+//定义一个函数判断元素中是否含有className
+/*
+	参数：obj 要判断的元素
+		  cn(className) 要判断的属性值
+	如果有返回true 否则返回false
+ */
+function hasClass(obj , cn){
+	//通过正则式去判断
+	// var reg = /b2/;      //表示字符串中是否有b2
+	// var reg = /\bb5\b/;   //表示字符串中是否有独立的 b5 存在
+	// var reg = /\bcn\b/;     这样的话cn不能作为变量来使用，因此使用构造函数(new)
+	
+	var reg = new RegExp("\\b"+cn+"\\b");  //转义字符
+	// alert(reg);
+	return reg.test(obj.className);
+}
+//定义一个函数删除元素的class属性值
+function removeClass(obj , cn){
+	var reg = new RegExp("\\b"+cn+"\\b");
+	//使用replace将class属性值替换为空
+	obj.className = obj.className.replace(reg , "");
+}
+//定义一个函数用来切换class
+/*
+	toggleClass()
+		如果元素有cn则删除
+		如果没有则添加
+ */
+function toggleClass(obj , cn){
+	var reg = /\ {1,}/g;
+	// alert(reg);
+	obj.className = obj.className.replace(reg , " ");     //清除掉多余的空格
+	if(hasClass(obj , cn)){
+		removeClass(obj , cn);
+	}
+	else{
+		addClass(obj , cn);
 	}
 }
