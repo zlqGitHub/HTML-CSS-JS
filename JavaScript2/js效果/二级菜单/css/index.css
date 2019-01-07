@@ -18,8 +18,7 @@
 	color: #FFFFFF;
 	font-size: 15px;
 	padding-left: 28px;
-	background: url(../imgs/right.png) 5px 10px no-repeat #131210;
-	background-size: 20px 20px;
+	background: url(../imgs/right3.png) 5px 10px no-repeat #131210;
 	border-top: 1px solid #fff;
 }
 .sdmenu a{
@@ -32,11 +31,12 @@
 	text-decoration: none;
 	color: #24744D;
 }
-.sdmenu a:hover{
+/*.sdmenu a:hover{
 	color: #FFF;
-	background:url(../imgs/right2.png) 130px 2px no-repeat #24744D;
+	background:url(../imgs/right2.png) 130px 2px no-repeat;
+	background-color: #24744D;
 	background-size: 25px 25px;
-}
+}*/
 .collapsed{
 	width: 160px;
 	height: 40px;
