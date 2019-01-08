@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>初识jQuery</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		/*
+			元素JS和jQuery入口函数的加载模式不同
+			原生JS会等到DOM元素加载完毕，并且图片也加载完毕之后才会执行
+			jQuery会等到DOM元素加载完毕，但不会等到图片加载完毕后就执行
+
+			JavaScript 入口函数:
+				JavaScript 的 window.onload 事件是等到所有内容，包括外部图片之类的文件加载完后，才会执行
+
+			jQuery 入口函数:
+				 jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行。
+
+			原生JS编写了多个入口函数，后面的会覆盖前面的入口函数
+			jQuery中的多个入口函数，不会出现覆盖现象
+
+		 */
+
+		//原生js的固定写法
+		window.onload = function(){
+			// alert("hello js");
+			//通过原生js获取dom元素
+			var img = document.getElementsByTagName('img')[0];
+			console.log(img);
+
+			//原生js获取dom元素的高度  注意：兼容性问题--调用工具类tool.js中的getStyle()方法
+			var width = window.getComputedStyle(img,null).width;
+			console.log("onload",width);
+
+		}
+
+
+		//jQuery的固定写法
+		$(document).ready(function(){
+			//开始写jQuery代码
+			// alert("hello jquery");
+			// 通过jQuery获取dom元素
+			// var $img = $("img")[0];   //img是标签名
+			var $img = $("img");     //为了能够操作$img,将[0]去掉
+			console.log($img);
+
+			//通过jQuery入口函数无法拿到DOM元素的高度
+			var $width = $img.width();   //使用前清理缓存
+			console.log("ready",$width);
+		});
+	</script>
+</head>
+<body>
+	<button>jQuery</button>
+	<img src="https://www.baidu.com/img/bd_logo1.png?where=super">
+</body>
+</html>
