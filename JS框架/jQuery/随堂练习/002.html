@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery入口函数的总结</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		//入口函数的总结
+		
+		//第一种写法
+		$(document).ready(function(){
+			console.log("hello1");
+		});
+
+		//第二种写法
+		jQuery(document).ready(function(){
+			console.log("hello2");
+		});
+
+		//第三种写法   推荐使用：write less do more
+		$(function(){
+			console.log("hello3");
+		});
+
+		//第四种写法 
+		jQuery(function(){
+			console.log("hello4");
+		});
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
