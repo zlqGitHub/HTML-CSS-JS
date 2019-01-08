@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>each方法、map方法等其他静态方法</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var arr = [1,3,5,7,9];
+			var obj = {0:1 , 1:3 , 2:5 , 3:7 , 4:9 , length:5};    //定义一个伪数组
+			
+			/*
+				元素js使用forEach()函数遍历数组
+					但是forEach()不能够遍历伪数组
+			 */
+			console.log("*****原生forEach******");
+			arr.forEach(function(value , index){
+				console.log(index , value);
+			});
+
+			/*obj.forEach(function(value , index){
+				console.log(index , value);
+			});*/
+
+
+			/*
+				使用jQuery中的each()静态方法遍历数组
+					该镜头方法可以遍历伪数组
+				注意：该方法中的参数与forEach中的相反
+			 */
+			console.log("*****jQuery中的each******");
+			$.each(arr , function(index , value){
+				console.log(index , value);
+			});
+
+			$.each(obj , function(index , value){
+				console.log(index , value);
+			});
+
+
+			//同理  map() 方法遍历数组
+			/*
+				原生js的map方法  不能遍历伪数组
+			 */
+			console.log("*****原生map******");
+			arr.map(function(value , index , array){
+				console.log(index , value , array);
+			});
+
+			/*
+				jQuery中的map() 方法遍伪数组
+			 */
+			console.log("*****jQuery中的map******");
+			$.map(obj , function(value , index){
+				console.log( index , value)
+			});
+
+
+			/*
+				$.trim()
+					去除字符串中左右两端的空格，并将最终结果返回
+
+				原生js中需要使用正则式来去除左右字符串中两端的空格
+			 */			
+			var str = "      zlq     ";
+			console.log("----"+str+"----");
+			var res = $.trim(str);
+			console.log("----"+res+"----");
+
+			/*
+				$.isWindow()
+					判断传入的对象是否是window对象
+					返回 true/false
+			 */
+			var res = $.isWindow(arr);
+			console.log(res);   //false
+
+			var w= window;
+			var res = $.isWindow(w);  
+			console.log(res);   //true
+
+			/*
+				$.isArray()
+					明确的判断传入的对象是否是真数组
+			 */
+			var res = $.isArray(arr);
+			console.log(res);  //true
+			var res = $.isArray(obj);
+			console.log(res);   //false
+
+			/*
+				$.isFunction()
+					判断传入的对象是否是函数
+
+				注意：jQuery框架本质就是一个函数
+					(function(window,undefined){
+						
+					})(window);
+			 */
+			var res = $.isFunction(arr);
+			console.log(res);   //false
+
+			var fn = function(){};
+			var res = $.isFunction(fn);
+			console.log(res);  //true
+
+			var res = $.isFunction(jQuery);
+			console.log(res);  //true
+
+			/*
+				$.holdReady()
+					$.holdReady(true); --暂停
+						在jQuery入口函数之前使用，可以暂停jQuery的加载
+					$.holdReady(false) --恢复
+						可以启动jQuery
+			 */
+
+
+		});
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
