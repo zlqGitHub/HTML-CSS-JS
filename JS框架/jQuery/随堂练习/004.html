@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>jQuery核心函数</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		//$();  代表jQuery的核心函数
+		
+		//接收一个函数作为入口函数
+		$(function(){
+			alert("ok");
+
+			//接收一个字符串
+			/*
+				接收一个字符串选择器
+				返回了一个jQuery对象，对象保存了找到的DOM对象
+			*/
+			var $box1 = $(".box1");
+			var $box2 = $("#box2");
+			console.log($box1);
+			console.log($box2);
+
+			/*
+				接收一个字符串代码片段
+				返回一个jQuery对象，对象保存了创建的DOM元素
+			 */
+			var $p = $("<p>我是p标签</p>");
+			console.log($p);
+			$box1.append($p);    //将创建的p元素添加到box1中
+
+
+			/*
+				接收DOM元素
+				将会包装成一个jQuery对象返回给我们
+			 */
+			var span = document.getElementsByTagName('span')[0];
+			console.log(span);
+			var $span = $(span);
+			console.log($span);
+
+		});
+
+	</script>
 </head>
 <body>
-	
+	<div class="box1"></div>
+	<div id="box2"></div>
+	<p>我是p标签</p>
+	<span>我是span标签</span>
 </body>
 </html>
