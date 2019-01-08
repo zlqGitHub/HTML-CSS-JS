@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery冲突问题</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="003test.js"></script>
+	
+	<script type="text/javascript">
+		// 003test.js总定义了一个 $ 的变量，因此在jQuery中再次使用 $ 时就会产生冲突
+		
+		//1.释放 $ 的使用权
+		/*
+			注意：释放操作必须在编写其他jQuery代码之前，释放之后不能再使用 $ ,需改为jQuery
+		 */
+		jQuery.noConflict();
+		jQuery(function(){
+			alert("hello");
+		});
+
+		//2.自定义访问符号
+		var zlq = jQuery.noConflict();
+		zlq(function(){
+			alert("hello zlq");
+		});
+		
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>
