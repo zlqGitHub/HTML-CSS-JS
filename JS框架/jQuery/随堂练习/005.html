@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery对象</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			/*
+				jQuery对象是一个伪数组
+					伪数组：有 0 到 length-1 的属性，并且有length 属性
+			 */
+			var $div = $("div");   //获取页面中的所有div
+			console.log($div);
+
+			var arr = [1,2,3];
+			console.log(arr);
+		});
+
+
+	</script>
+</head>
+<body>
+	<div>div1</div>
+	<div>div2</div>
+	<div>div3</div>
+	
+</body>
+</html>
