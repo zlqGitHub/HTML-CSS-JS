@@ -8,7 +8,7 @@ function move(obj,attr,target,speed,callback){
 	
 	//判断速度的正负   0->800向右移动     800->0向左移动
 	var current = parseInt(getStyle(obj,attr));
-	// console.log(current);
+	console.log(current);
 	if(current >= target){
 		speed = -speed;
 	}
