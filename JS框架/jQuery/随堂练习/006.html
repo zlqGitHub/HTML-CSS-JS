@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>静态方法和实例方法--理解</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//定义一个类
+			function AClass(){
+
+			}
+
+			/*
+				给类添加一个静态方法
+					直接给类添加的方法就是静态方法
+					通过类名调用
+			 */
+			
+			AClass.staticMethod = function(){
+				alert("staticMethod");
+			}
+			AClass.staticMethod();
+
+			/*
+				给类添加一个实例方法
+					通过原型添加的方法就是实例方法
+					通过一个实例来调用
+			 */
+			AClass.prototype.instanceMethod = function(){
+				alert("instanceMethod");
+			}
+			var a = new AClass();
+			a.instanceMethod();
+
+			
+		});
+
+
+	</script>
+</head>
+<body>
+	<div>div1</div>
+	<div>div2</div>
+	<div>div3</div>
+	
+</body>
+</html>
