@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS样式操作</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            //设置css样式
+            //1.逐个设置
+            $("div").css("width" , "100px");
+            $("div").css("height" , "100px");
+            $("div").css("background" , "red");
+
+            //2.链式设置（一般链式3个）
+            $("div").css("width" , "100px").css("height" , "100px").css("background" , "blue");
+
+            //3.批量设置  推荐使用
+            $("div").css({
+                width:'100px',
+                height:'100px',
+                background:"pink",
+                opacity:0.3
+            });
+
+            //4.获取元素样式值
+            console.log($("div").css("width"));
+
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
