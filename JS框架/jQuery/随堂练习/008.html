@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内容选择器</title>
+    <style>
+            div{
+                width:100px;
+                height: 100px;
+                background-color: red;
+                margin-bottom: 5px;
+            }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            /*  内容选择器
+                :contains(text)
+                :empty
+                :has(selector)
+                :parent
+            */
+
+            // :empty  找到既没有内容又没有子元素的指定元素
+            var $div = $("div:empty");
+            console.log($div);
+
+            // :parent  查找所有含有子元素或者文本的元素
+            var $div = $("div:parent");
+            console.log($div);
+
+            // :contains(text)  找到含有指定文本内容的hiding元素
+            var $div = $("div:contains('我是div')");
+            console.log($div);
+
+            // ：has(selector)  找到包含指定子元素的指定元素
+            var $div = $("div:has('span')");
+            console.log($div);
+
+        });
+    </script>
+    <script src="../../../JavaScript2/js总结/tools.js"></script>
+
+</head>
+<body>
+    <div></div>
+    <div>我是div</div>
+    <div>我是div2</div>
+    <div><span></span></div>
+    <div><p></p></div>
+    <div><p></p></div>
+</body>
+</html>
