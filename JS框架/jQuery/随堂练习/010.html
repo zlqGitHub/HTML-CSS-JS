@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery类相关操作方法</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .class1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .class2{
+            border:10px solid black;
+        }
+
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            /*
+                addClass(class|fn)
+                removeClass([class|fn])
+                toggleClass(class|fn[,sw])
+
+                注意原生js中对类的相关操作  --tools.js
+                    https://github.com/zlqGitHub/HTML-CSS-JS/blob/master/JavaScript2/js总结/tools.js
+            */
+            var btns = document.getElementsByTagName("button");
+            //添加类
+            btns[0].onclick = function () {
+                $("div").addClass("class1 class2");
+            }
+
+            //删除类
+            btns[1].onclick = function () {
+                // $("div").removeClass("class1");
+                $("div").removeClass("class1 class2");
+            }
+
+            //切换类
+            btns[2].onclick = function () {
+                $("div").toggleClass("class1 class2");
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <button>添加类</button>
+    <button>删除类</button>
+    <button>切换类</button>
+    <div></div>
+</body>
+</html>
