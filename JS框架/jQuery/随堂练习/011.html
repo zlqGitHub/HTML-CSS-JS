@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML代码/文本/值的操作</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            /*
+                html([val|fn])
+                    和原生js中的innerHTML一样
+                text([val|fn])
+                    和原生js中的innerText一样
+                val([val|fn|arr])
+            */
+            var btns = document.getElementsByTagName("button");
+
+            btns[0].onclick = function () {
+                $("div").html("<p>我是p</p>");
+            }
+
+            btns[1].onclick = function () {
+                console.log($("div").html());;
+            }
+
+            btns[2].onclick = function () {
+                $("div").text("<span>我是span</span>");
+            }
+
+            btns[3].onclick = function () {
+                console.log($("div").text());
+            }
+
+            btns[4].onclick = function () {
+                $("input").val("请输入文本内容：");
+            }
+
+            btns[5].onclick = function () {
+                console.log($("input").val());
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <button>设置html</button>
+    <button>获取html</button>
+    <button>设置text</button>
+    <button>获取text</button>
+    <button>设置value</button>
+    <button>获取value</button>
+
+    <div class="box"></div>
+    <input type="text">
+
+</body>
+</html>
