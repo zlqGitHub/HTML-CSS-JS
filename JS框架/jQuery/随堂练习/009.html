@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery对属性结点及属性的操作</title>
+        <script src="jquery-1.12.4.js"></script>
+        <script>
+            $(function () {
+                /*
+                    属性结点操作：
+                        attr(name|pro|key,val|fn)
+                        removeAttr(name)
+                */
+
+                /*
+                   attr(name|pro|key,val|fn)
+                        获取匹配的元素集合中的第一个元素的属性的值 或 设置每一个匹配元素的一个或多个属性
+                */
+                console.log($("span").attr("class"));  //获取第一个
+                $("span").attr("class", "box");    //设置找到的所有
+
+                /*
+                    removeAttr(name)
+                        从每一个匹配的元素中删除一个属性
+                */
+                $("span").removeAttr("name");
+                $("span").removeAttr("class name");   //删除所有找到名为class name的属性
+
+                /*
+                     属性的操作
+                        prop(n|p|k,v|f)
+                            特点和attribute相同
+                        removeProp(name)
+                            特点：和remoteAttr一致
+                */
+
+                $("span").eq(0).prop("demo", "abc");
+                $("span").eq(1).prop("demo", "def");
+
+                console.log($("span").prop("demo"));
+
+                $("span").removeProp("demo");
+
+
+                /*
+                    注意：prop方法不仅可以操作属性，还可以操作属性结点
+                */
+
+                $("span").prop("class" , "box");
+                console.log($("span").prop("class"));
+
+                console.log($("input").prop("checked"));   //true  或  false
+                console.log($("input").attr("checked"));   //checked  或  undefined
+            });
+        </script>
+</head>
+<body>
+    <span class="span1" name="sp1"></span>
+    <span class="span2" name="sp2"></span>
+    <span class="span3" name="sp3"></span>
+    <input type="checkbox" checked>
+</body>
+</html>
