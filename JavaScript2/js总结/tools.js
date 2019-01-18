@@ -28,6 +28,50 @@ function move(obj,attr,target,speed,callback){
 		obj.style[attr] = newValue + "px";
 	},30);
 }
+// 完美运动框架
+function move(obj,json,fnEnd){
+	clearInterval(obj.timer);
+
+	obj.timer = setInterval(function(){
+		var oStop = true;
+		for(var attr in json){
+
+			var current = 0;
+			if(attr == "opacity")
+			{
+				current = Math.round(parseFloat(getStyle(obj,attr))*100);   //Math.round 四舍五入
+			}
+			else
+			{
+				current = parseInt(getStyle(obj,attr));
+			}
+
+			var speed = (json[attr] - current)/6;
+			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+			if(current != json[attr])
+			{
+				oStop = false;
+			}
+
+			if(attr == "opacity")
+			{
+				obj.style.opacity = ( current + speed )/100;
+				obj.style.filter = "alpha(opacity:"+ (current + speed) +")";
+			}
+			else
+			{
+				obj.style[attr] = current + speed + "px";
+			}
+		}
+		if(oStop){
+			clearInterval(obj.timer);
+			if(fnEnd)fnEnd();
+		}
+
+	},30);
+
+}
 
 //链式运动框架  (带有对透明度的处理)  而且运动的速度有快到慢   推荐使用
 //https://github.com/zlqGitHub/HTML-CSS-JS/tree/master/JS框架
