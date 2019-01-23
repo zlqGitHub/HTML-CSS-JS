@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery事件移除</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            function test1() {
+                alert("123");
+            }
+            function test2() {
+                alert("456");
+            }
+            //事件移除
+            $("button").click(test1);
+
+            $("button").click(test2);
+
+            $("button").mouseleave(function () {
+                alert("onmouseleave");
+            });
+
+            $("button").mouseenter(function () {
+                alert("mouseenter");
+            });
+
+            //off()方法移除元素绑定的事件
+            /*
+                不传递参数，会移除所有的事件
+                传递参数，会移除所有指定类型的指定事件
+            */
+            // $("button").off();   取消button的全部事件
+            // $("button").off("click");  取消button的点击事件
+            $("button").off("click",test2);  //取消button点击事件中的test2行为
+            $("button").off("mouseenter");   //取消button的鼠标移入事件
+        });
+    </script>
+</head>
+<body>
+<button>事件绑定</button>
+</body>
+</html>
