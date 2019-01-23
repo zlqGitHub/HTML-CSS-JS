@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CSS位置和尺寸的操作</title>
+    <title>CSS位置和尺寸的操作2</title>
     <style>
         *{
             margin: 0;
@@ -13,7 +13,8 @@
         }
         .scroll{
             width: 150px;
-            height: 150px；
+            height: 200px;
+            overflow: auto;
         }
     </style>
     <script src="jquery-1.12.4.js"></script>
@@ -24,31 +25,19 @@
 
             //监听获取
             btns[0].onclick = function () {
-                console.log($(".father").width());
-
-                // offset([coordinates])  获取元素距离窗口的偏移量
-                console.log($(".son").offset());
-                console.log($(".son").offset().left);
-
-                // position()  获取元素距离定位元素的偏移量
-                console.log($(".son").position().left);
+                //获取滚动的偏移位
+                console.log("scroll",$(".scroll").scrollTop());
+                //获取网页的偏移位
+                //注意：不同了浏览器间的兼容性问题 (有些浏览器的是body有些是html)
+                console.log("html",$("html").scrollTop() + $("body").scrollTop());
             }
             //监听设置
             btns[1].onclick = function () {
-                $(".father").width("300px");
+                //设置滚动的偏移位
+                $(".scroll").scrollTop(300);
 
-                $(".son").offset({
-                    left:20
-                })
-
-                //注意：position方法只能获取不能设置
-                // $(".son").position({
-                //     left:50
-                // });
-
-                $(".son").css({
-                    left:220
-                });
+                //设置网页的偏移位
+                $("html,body").scrollTop(300);
             }
         });
 
@@ -60,9 +49,15 @@
     我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div
     我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div
     我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div
+    我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div
+    我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div
+    我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div
+    <我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div></我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div我是div>
 </div>
 
 <button>获取</button>
 <button>设置</button>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
