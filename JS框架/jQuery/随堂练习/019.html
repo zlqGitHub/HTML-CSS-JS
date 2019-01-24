@@ -2,9 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>jQuery事件命名空间</title>
+    <style>
+        *{
+            marign: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .son{
+            width: 60px;
+            height: 60px;
+            background: green;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            /*
+                命名空间的有效性需要满足：
+                    1.事件通过on来绑定
+                    2.通过trigger来自动触发事件
+            */
+            $(".father").on("click.zs",function () {
+                alert("father click1");
+            });
+            $(".father").on("click",function () {
+                alert("father click2");
+            });
+
+            $(".son").on("click.zs",function () {
+                alert("son click1");
+            });
+            $(".son").on("click.ls",function () {
+                alert("son click2");
+            });
+
+            /*
+                利用trigger触发子元素带命名空间的事件，那么父元素相同命名空间的事件也会被触发，
+              而父元素没有命名空间的事件不会被触发
+                利用trigger触发子元素带不带命名空间的事件，那么子元素所有相同类型的事件和父元素
+              所有相同类型的事件都会被触发
+            */
+            // $(".son").trigger("click.zs");
+            $(".son").trigger("click");
+
+        })
+
+    </script>
 </head>
 <body>
-$END$
+<div class="father">
+    <div class="son"></div>
+</div>
+<a href="https://www.baidu.com"><span>我是百度</span></a>
+<form action="https://www.baidu.com" class="form">
+    <input type="text">
+    <input type="submit">
+</form>
+
 </body>
 </html>
