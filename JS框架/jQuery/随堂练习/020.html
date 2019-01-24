@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>jQuery事件委托</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        /*
+            事件委托：
+                委托别人做的事情，然后将做完的结果反馈给我们
+        */
+        $(function () {
+            //编写jQuery相关代码
+            $("button").click(function () {
+                $("ul").append("<li>我是新增的li</li>");
+            });
+
+            /*
+                为ul下的li元素绑定事件
+                    缺点：新增的 li 元素没有点击事件
+            */
+            // $("ul>li").click(function () {
+            //     console.log($(this).html());
+            // });
+
+            $("ul").delegate("li","click",function () {
+                console.log($(this).html());
+            })
+
+        });
+    </script>
 </head>
 <body>
-$END$
+<ul>
+    <li>我是第1个li元素</li>
+    <li>我是第2个li元素</li>
+    <li>我是第3个li元素</li>
+</ul>
+<button>新增一个li</button>
 </body>
 </html>
