@@ -2,9 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>jQuery事件自动触发及自定义事件</title>
+    <style>
+        *{
+            marign: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .son{
+            width: 60px;
+            height: 60px;
+            background: green;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            $(".son").click(function () {
+                alert("son");
+            });
+            $(".father").click(function () {
+                alert("father");
+            });
+
+            /*
+                自动触发事件trigger  triggerHandler
+                    trigger:如果利用trigger自动触发事件，会触发事件冒泡,会触发默认行为
+                    triggerHandler:如果利用triggerHandler自动触发事件，则不会触发冒泡事件，不会触发默认行为
+            */
+            // $(".father").trigger("click");
+            // $(".father").triggerHandler("click");
+
+            // $(".son").trigger("click");
+            $(".son").triggerHandler("click");
+
+            $("input[type=\'submit\']").click(function () {
+                alert("submit");
+            });
+            // $("input[type=\'submit\']").trigger("click");
+            $("input[type=\'submit\']").triggerHandler("click");
+
+
+            /*
+                *** 面试题 ***
+                    注意：超链接的使用，想要自动触发时默认行为时，可以将超链接内容放到span里
+            */
+            $("span").click(function () {
+                alert("span");
+            });
+            $("span").triggerHandler("click");
+            // $("span").trigger("click");
+
+
+            /*
+                自定义事件：
+                    1.事件必须通过 on 来绑定
+                    2.事件必须通过 trigger 来触发
+            */
+
+            $(".son").on("myClick" , function () {
+                alert("我是自定义事件");
+            });
+            $(".son").trigger("myClick");
+
+        });
+    </script>
 </head>
 <body>
-$END$
+<div class="father">
+    <div class="son"></div>
+</div>
+<a href="https://www.baidu.com"><span>我是百度</span></a>
+<form action="https://www.baidu.com" class="form">
+    <input type="text">
+    <input type="submit">
+</form>
 </body>
 </html>
