@@ -2,9 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>jQuery事件冒泡和默认行为</title>
+    <style>
+        *{
+            marign: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .son{
+            width: 60px;
+            height: 60px;
+            background: green;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            /*
+                1.什么是事件冒泡 ?
+                2.如何阻止事件冒泡
+            */
+            $(".son").click(function (event) {
+                alert("son");
+                // return false;   取消事件的冒泡
+                event.stopPropagation();
+            });
+
+            $(".father").click(function () {
+                alert("father");
+            });
+
+            /*
+                 3.什么是默认行为 ?
+                 4.如何阻止默认行为
+            */
+            $("a").click(function (event) {
+                alert("阻止默认行为，不要跳转！");
+                // return false;
+                event.preventDefault();
+            });
+
+        });
+    </script>
 </head>
 <body>
-$END$
+<div class="father">
+    <div class="son"></div>
+</div>
+<a href="https://www.baidu.com">我是百度</a>
+<form action="https://www.baidu.com" class="form">
+    <input type="text">
+    <input type="submit">
+</form>
+
 </body>
 </html>
