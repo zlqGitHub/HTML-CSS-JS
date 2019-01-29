@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影排行榜</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 300px;
+            height: 450px;
+            margin:50px auto;
+            border: 1px solid black;
+        }
+        .box>h1{
+            font-size: 20px;
+            line-height: 35px;
+            color: deeppink;
+            padding-left: 10px;
+            border-bottom: 1px dashed #CCC;
+        }
+        ul>li{
+            list-style: none;
+            padding: 5px 10px;
+            border: 1px dashed #CCC;
+        }
+        ul>li:nth-child(-n+3) span{
+            background: deeppink;
+        }
+        ul>li>span{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #CCC;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 10px;
+        }
+        .content{
+            /*height: 130px;*/
+            overflow: hidden;   /* 清除浮动 */
+            margin-top: 5px;
+            display: none;
+        }
+        .content img{
+            width: 80px;
+            height: 120px;
+            float: left;
+        }
+        .content p{
+            width: 180px;
+            height: 120px;
+            font-size: 12px;
+            line-height: 20px;
+            float: right;
+        }
+        .current .content{
+            display: block;
+        }
+    </style>
+     <script src="jquery-1.12.4.js"></script>
+     <script>
+         $(function () {
+             //编写jQuery相关代码
+             /*
+            //监听li的移入事件
+             $("li").mouseenter(function () {
+                 $(this).addClass("current");
+             });
+             //监听li元素的移出事件
+             $("li").mouseleave(function () {
+                 $(this).removeClass("current");
+             });
+         */
+
+             //使用hover简化
+             $("li").hover(function () {
+                 $(this).addClass("current");
+             },function () {
+                 $(this).removeClass("current");
+             })
+
+         });
+     </script>
+</head>
+<body>
+    <div class="box">
+        <h1>电影排行榜</h1>
+        <ul>
+            <li>
+                <span>1</span>电影名称
+                <div class="content">
+                    <img src="https://img02.sogoucdn.com/v2/thumb/resize/w/81/h/104/zi/on/iw/60.75/ih/78.0?t=2&url=https%3A%2F%2Fimg3.doubanio.com%2Fview%2Fphoto%2Fs_ratio_poster%2Fpublic%2Fp2494701965.jpg&appid=200524" alt="">
+                    <p>故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划.</p>
+                </div>
+            </li>
+            <li>
+                <span>2</span>电影名称
+                <div class="content">
+                    <img src="https://img02.sogoucdn.com/v2/thumb/resize/w/81/h/104/zi/on/iw/60.75/ih/78.0?t=2&url=https%3A%2F%2Fimg3.doubanio.com%2Fview%2Fphoto%2Fs_ratio_poster%2Fpublic%2Fp2494701965.jpg&appid=200524" alt="">
+                    <p>故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划.</p>
+                </div>
+            </li>
+            <li>
+                <span>3</span>电影名称
+                <div class="content">
+                <img src="https://img02.sogoucdn.com/v2/thumb/resize/w/81/h/104/zi/on/iw/60.75/ih/78.0?t=2&url=https%3A%2F%2Fimg3.doubanio.com%2Fview%2Fphoto%2Fs_ratio_poster%2Fpublic%2Fp2494701965.jpg&appid=200524" alt="">
+                <p>故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划.</p>
+            </div>
+            </li>
+            <li>
+                <span>4</span>电影名称
+                <div class="content">
+                    <img src="https://img02.sogoucdn.com/v2/thumb/resize/w/81/h/104/zi/on/iw/60.75/ih/78.0?t=2&url=https%3A%2F%2Fimg3.doubanio.com%2Fview%2Fphoto%2Fs_ratio_poster%2Fpublic%2Fp2494701965.jpg&appid=200524" alt="">
+                    <p>故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划.</p>
+                </div>
+            </li>
+            <li>
+                <span>5</span>电影名称
+                <div class="content">
+                    <img src="https://img02.sogoucdn.com/v2/thumb/resize/w/81/h/104/zi/on/iw/60.75/ih/78.0?t=2&url=https%3A%2F%2Fimg3.doubanio.com%2Fview%2Fphoto%2Fs_ratio_poster%2Fpublic%2Fp2494701965.jpg&appid=200524" alt="">
+                    <p>故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划.</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+</body>
+</html>
