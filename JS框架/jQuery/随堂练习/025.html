@@ -2,9 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>对联广告</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .left{
+            position: fixed;
+            left:0;
+            top:200px;
+            display: none;
+        }
+        .right{
+            position: fixed;
+            right:0;
+            top:200px;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            //监听网页的滚动
+            $(window).scroll(function () {
+                // console.log("滚动了");
+                console.log($("html,body").scrollTop());
+                var offset = $("html,body").scrollTop();
+                //判断滚动条是否到达一定的位置
+                if(offset >= 500){
+                    $("img").show(1000);
+                }
+                else{
+                    $("img").hide(1000);
+                }
+            });
+
+        });
+    </script>
 </head>
 <body>
-$END$
+    <img src="./images/02.jpg" class="left">
+    <img src="./images/02.jpg" class="right">
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
