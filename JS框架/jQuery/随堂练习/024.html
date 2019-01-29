@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>显示隐藏动画</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            /*
+                使用show()、hide()方法时自带动画效果
+
+                    注意：滑动：slideDown([s],[e],[fn])
+                                slideUp([s,[e],[fn]])
+                                slideToggle([s],[e],[fn])
+                          滑动效果的使用同show、hide、toggle
+            */
+            $("button").eq(0).click(function () {
+                // $("div").css("display","block");
+                // $("div").show(1000,function () {
+                //     alert("显示动画执行完毕！");
+                // });
+                // $("div").slideDown(1000,function () {
+                //
+                // });
+                $("div").slideDown("display");
+
+            });
+            $("button").eq(1).click(function () {
+                // $("div").css("display","none");
+                $("div").hide(1000,function () {
+                    alert("隐藏动画执行完毕！");
+                });
+            });
+            $("button").eq(2).click(function () {
+                // alert("切换");
+                $("div").toggle("display",function () {
+                    alert("切换动画完毕！");
+                });
+            });
+
+        });
+    </script>
 </head>
 <body>
-$END$
+<button>显示</button>
+<button>隐藏</button>
+<button>切换</button>
+<div class="box"></div>
+
 </body>
 </html>
