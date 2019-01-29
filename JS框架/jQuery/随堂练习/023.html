@@ -2,9 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 420px;
+            height: 365px;
+            border: 1px solid black;
+            margin: 50px auto;
+        }
+        .nav li{
+            list-style: none;
+            width: 105px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: orange;
+            float: left;
+        }
+        .nav .current{
+            background: #CCC;
+        }
+        .content li{
+            list-style: none;
+            display: none;
+        }
+        .content .show{
+            display: block;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            /*
+                //监听选项卡移入事件
+                $(".nav>li").mouseenter(function() {
+                    $(this).addClass("current");
+                    //获取当前移入选项卡的索引
+                    // console.log($(this).index());
+                    var index = $(this).index();
+                    //根据索引找到对应的图片
+                    var $li = $(".content>li").eq(index);
+                    //显示找到的图片
+                    $li.addClass("show");
+                });
+                //监听选项卡移出事件
+                $(".nav>li").mouseleave(function() {
+                    $(this).removeClass("current");
+                    var index = $(this).index();
+                    var $li = $(".content>li").eq(index);
+                    $li.removeClass("show");
+                });
+            */
+
+            //终极版：
+            //监听选项卡移入事件
+            $(".nav>li").mouseenter(function() {
+                $(this).addClass("current");
+                // console.log($(this).siblings());
+                //将飞当前li元素的curren类清除掉
+                /*
+                    siblings()函数进行排他处理
+                */
+                $(this).siblings().removeClass("current");
+                //获取当前li的索引
+                var index = $(this).index();
+                // console.log(index);
+                //根据索引找到对应的图片
+                var $li =  $(".content>li").eq(index);
+                //切换图片
+                $li.siblings().removeClass("show");
+                $li.addClass("show");
+            });
+
+        });
+    </script>
 </head>
 <body>
-$END$
+    <div class="box">
+        <ul class="nav">
+            <li class="current">糖果机</li>
+            <li>银色菠萝</li>
+            <li>花朵</li>
+            <li>棒棒糖</li>
+        </ul>
+
+        <ul class="content">
+            <li class="show">
+                <img src="http://stdl.qq.com/stdl/skin/upload/production/3a3660c28927c46ed6a4438c1caf1c3a.png" alt="">
+            </li>
+            <li>
+                <img src="http://stdl.qq.com/stdl/skin/upload/production/536bfdfba80cbe9eb52a4480913289c9.png" alt="">
+            </li>
+            <li>
+                <img src="http://stdl.qq.com/stdl/skin/upload/production/be857054273c200951b9c19039ad7005.png" alt="">
+            </li>
+            <li>
+                <img src="http://stdl.qq.com/stdl/skin/upload/production/b6fcd148526d19c166692b7935488058.png" alt="">
+            </li>
+        </ul>
+        
+    </div>
+
 </body>
 </html>
