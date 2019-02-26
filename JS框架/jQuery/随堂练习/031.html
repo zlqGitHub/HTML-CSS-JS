@@ -22,6 +22,7 @@
             list-style: none;
             width: 1620px;
             height: 202px;
+            background: #000000;
         }
         ul>li{
             float: left;
@@ -34,13 +35,34 @@
             //定义变量保存偏移量
             var offset = 0;
             //设置定时器进行移动
-            var timer = setInterval(function () {
-                offset += -10;
-                if(offset <= -1080){
-                    offset = 0;
-                }
-                $("ul").css("marginLeft",offset);
-            },30);
+            var timer;
+
+            function autoPlay(){
+                timer = setInterval(function () {
+                    offset += -10;
+                    if(offset <= -1080){
+                        offset = 0;
+                    }
+                    $("ul").css("marginLeft",offset);   //设置ul的偏移量
+                },30);
+            }
+
+            autoPlay();
+            
+            //监听鼠标移入移除事件
+            $("li").hover(function () {
+                //移入停止滚动
+                clearTimeout(timer);
+                //给非当前选中添加蒙版
+                $(this).siblings().fadeTo(100,0.5);
+                //去除当前选中的蒙版
+                $(this).fadeTo(100,1);
+            },function () {
+                //移除继续滚动
+                autoPlay();
+                //去除所有的蒙版
+                $("li").fadeTo(100,1)
+            })
         });
     </script>
 </head>
