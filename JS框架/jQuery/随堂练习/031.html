@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无线循环滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 540px;
+            height: 202px;
+            border: 1px solid black;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            width: 1620px;
+            height: 202px;
+        }
+        ul>li{
+            float: left;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //编写jQuery相关代码
+            //定义变量保存偏移量
+            var offset = 0;
+            //设置定时器进行移动
+            var timer = setInterval(function () {
+                offset += -10;
+                if(offset <= -1080){
+                    offset = 0;
+                }
+                $("ul").css("marginLeft",offset);
+            },30);
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><img src="images/a.png" alt=""></li>
+            <li><img src="images/b.png" alt=""></li>
+            <li><img src="images/c.jpg" alt=""></li>
+            <li><img src="images/d.jpg" alt=""></li>
+            <li><img src="images/a.png" alt=""></li>
+            <li><img src="images/b.png" alt=""></li>
+        </ul>
+    </div>
+
+</body>
+</html>
