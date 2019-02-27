@@ -75,7 +75,7 @@
     padding-top: 200px;
     box-sizing: border-box;
     text-align: center;
-    /*display: none;*/
+    display: none;
 }
 .mask>h1{
     color: #f84f03;

@@ -35,15 +35,6 @@ $(function () {
 
         //开启定时器，进度条长度逐渐减短
         var timer=setInterval(function () {
-            /*
-            （1）.当这个进度条的长度放在定时器里面的时候，下面有个进度条的长度随分数变化的代码，要写成如下所示的那个样子，
-            （2）若进度条的长度放在定时器外面，即window.$progressWidth，那么下面的代码只需写成
-                if(flag){window.$progressWidth+=10}else{window.$progressWidth-=10}即可。
-            因为（1）情况下，是先开启了定时器，然后再拿到定时器的长度，即定时器的长度是不断更新的。如果下面的代码不变，
-            而将var $progressWidth=$(".progress").width();放在定时器上面的话，就是说先拿到定时器的长度，然后开启定时器，
-            下面的代码 $(".progress").css({ width: $(".progress").width()+10})是改变定时器的值，而不是$progressWidth
-            的值，所以会出现视觉上猛的一增长，但也会瞬间恢复原长的视觉效果，在根本上不起作用。
-            * */
             //拿到进度条的长度
             var $progressWidth=$(".progress").width();
             $progressWidth-=1;
@@ -133,7 +124,7 @@ $(function () {
             window.wolfEndIndex=9;
             //获取图片的地址
             var $src=$(this).attr("src");
-            //    根据图片判断是否是灰太狼
+            //根据图片判断是否是灰太狼
             var flag=$src.indexOf("h")>-1;
             if (flag){
                 //如果是灰太狼，那么分数+10，并且进度条的长度就+10
