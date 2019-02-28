@@ -22,7 +22,7 @@ body{
     height: auto;
     overflow: hidden;
     background: #64a7d1;
-    margin: 80px auto 0;
+    margin: 30px auto 0;
 }
 .content>.left{
     float: left;
@@ -73,6 +73,7 @@ body{
 }
 .info>.infoOperation{
     width: 100%;
+    /* 此处浮动是因为下面的时间和操作一个左浮一个有浮，使得高度变化 */
     overflow: hidden;
 }
 .infoOperation>.infoTime{
