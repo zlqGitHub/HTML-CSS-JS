@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跑马灯效果</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="浪起来" v-on:click="lang">
+        <input type="button" value="低调" @click="stop">
+        <h4>{{ msg }}</h4>
+    </div>
+
+    <script>
+        //在vue实例中，如果要获取data或methods中的值、方法，需要使用this.属性名或this.方法名。
+        //此处的this表示实例化出来的 vm 实例对象
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"猥琐发育，别浪~~!",
+                intervalId:null,   //定义一个定时器id
+            },
+            methods:{
+                lang:function(){
+                    if(this.intervalId != null)  return;
+                    // alert(this.msg);
+                    // var _this = this;    函数中this的只想问题
+                    //箭头函数解决了this 的指向问题：箭头函数没有自己的this，其内部的this就是外层代码块的this
+                    this.intervalId = setInterval(() => {
+                        //获取到头的第一个字符
+                        var start = this.msg.substring(0,1);
+                        //获取到后面的所有字符
+                        var end = this.msg.substring(1);
+                        //更新msg  vm实例中，会时刻监听数据的变化，并更新视图层，因此程序员只需要关心数据的变化即可，无需考虑视图层
+                        this.msg = end + start;
+                    },300)
+                },
+                stop(){
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
