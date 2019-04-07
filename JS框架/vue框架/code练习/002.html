@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本指令1</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+    <!--<script src="./vue.js"></script>-->
+</head>
+<body>
+    <div id="app">
+        <!--两种内容渲染方式：插值表达式、v-text-->
+        <!-- v-cloak能够解决表达式（插值）闪烁的问题 -->
+        <p v-cloak>{{msg}}</p>
+        <h4 v-text="msg"></h4>
+        <!--
+            区别：v-text 不存在闪烁问题
+                  v-text会覆盖元素中原有的内容，但是插值表达式不会，
+                  二者均不能解析html代码
+        -->
+
+        <p>{{msg2}}</p>
+        <p v-text="msg2"></p>
+
+        <!-- 可以解析html代码 -->
+        <p v-html="msg2"></p>
+
+        <!-- v-bind: 是Vue中提供的用于绑定属性的指令    简写 :要绑定的属性  -->
+        <input type="button" value="按钮" v-bind:title="mytitle+'123'">
+        <!-- 注意：v-bind:  中可以写合法的js表达式 -->
+        <input type="button" value="按钮" :title="mytitle">
+
+        <!-- v-on:  事件绑定机制    简写  @事件名称-->
+        <!-- v-on: 事件绑定中，不能够识别出alert()方法，需要在methods中定义 -->
+        <!--<input type="button" value="事件绑定" :title="mytitle" v-on:click="alert('aa')">-->
+        <input type="button" value="事件绑定" :title="mytitle" v-on:click="show">
+
+    </div>
+
+    <!-- 此处导入包时，刷新页面将会闪一下p标签里的内容 -->
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"132",
+                msg2:"<h1>我是一个h1标签！</h1>",
+                mytitle:"我是一个按钮",
+            },
+            methods:{
+                show(){
+                    alert("我是v-on：绑定的点击事件");
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
