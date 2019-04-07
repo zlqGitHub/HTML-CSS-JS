@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>认识vue</title>
+    <!-- 1.导入Vue.js包 -->
+    <script src="./vue.js"></script>
+
+</head>
+<body>
+<!-- 将来 new 的vue实例会控制这个元素中的所有内容 -->
+
+<!-- Vue实例所控制的这个元素区域就是v -->
+<div id="app">
+    <p>{{ msg }}</p>
+</div>
+
+<script>
+    //2.创建一个vue实例
+    //当我们导入vue的包时，浏览器中就多了一个Vue构造函数
+
+    //new出来的这个vm对象就是MVVM中VM
+    var vm = new Vue({
+        el: '#app',   //el:element,当前new的这个vue实例，会控制这个页面上的区域
+
+        //data就是MVVM中的M，专门用来保存每个页面的数据
+        data:{   //data属性中，要存放 el 需要的数据
+            msg:'第一个学习vue'  //通过Vue提供的指令，很方便的就能把数据渲染到页面上，程序员不在需要手动操作DOM元素，
+            //vue之类的的框架，不提倡我们去手动操作DOM元素
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
