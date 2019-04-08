@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件修饰符</title>
+    <style>
+        .inner{
+            width: 100%;
+            height: 50px;
+            background: aquamarine;
+        }
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--使用 .stop 来阻止冒泡-->
+        <div class="inner" @click="div1Handler">
+            <input type="button" value="点我" @click.stop="btnHandler">
+        </div>
+
+        <!--使用 .prevent 来阻止默认行为-->
+        <a href="http://wwww.baidu.com" @click.prevent="linkClick">点我去百度</a>
+
+        <!--使用 .capture 来实现捕获事件的触发机制-->
+        <div class="inner" @click.capture="div2Handler">
+            <input type="button" value="点我" @click="btn2Handler">
+        </div>
+        <br>
+
+        <!--使用 .self 实现只触发当前元素的时间，只能够起到对当前元素的作用，不同于.stop-->
+        <div class="inner" @click.self="div2Handler">
+            <input type="button" value="点我" @click="btn2Handler">
+        </div>
+
+        <!--使用 .one 只能触发一次事件处理函数-->
+        <a href="http://wwww.baidu.com" @click.prevent.once="linkClick">点我去百度</a>
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: { },
+            methods: {
+                btnHandler(){
+                    console.log("这是btnHandle的点击");
+                },
+                div1Handler(){
+                    console.log("第一个div");
+                },
+                linkClick(){
+                    console.log("点我去百度");
+                },
+                div2Handler(){
+                    console.log("第二个div");
+                },
+                btn2Handler(){
+                    console.log("这是btn2Handle的点击");
+                },
+            }
+        });
+    </script>
+
+</body>
+</html>
