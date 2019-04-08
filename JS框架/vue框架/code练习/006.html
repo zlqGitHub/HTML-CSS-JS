@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class与style绑定</title>
+    <style>
+        .red{color:red;}
+        .thin{font-weight: 100;}
+        .italic{font-style: italic;}
+        .active{letter-spacing: 0.2em}
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 传统的写法 -->
+        <h1 class="red thin italic active">我是一个h1标签，很大很大的！</h1>
+        <!-- vue实现 -->
+        <!-- 数组语法：需要用属性绑定v-bind，传递一个数组即可
+             注意：属性不加引号时，会在data里面进行查找
+        -->
+        <h1 v-bind:class="['red','thin',flag ? 'active' : '']">我是一个h1标签，很大很大的！</h1>
+        <!--对象格式-->
+        <h1 v-bind:class="['red','thin',{'active':flag}]">我是一个h1标签，很大很大的！</h1>
+
+        <!--直接使用对象
+            对象中对象属性可加引号，也可不加引号  属性值是一个标识符
+        -->
+        <h1 v-bind:class="{red:true, thin:true, italic:false, active:false}">我是一个h1标签，很大很大的！</h1>
+        <h1 v-bind:class="classObj">我是一个h1标签，很大很大的！</h1>
+
+
+        <!--style绑定-->
+
+        <h1>style绑定</h1>
+        <!--fontWeight 还可以写成 font-weight  s-->
+        <h1 :style="{color:'red',fontWeight:'lighter'}">这是另一个h1！</h1>
+        <!--将其封装成对象-->
+        <h1 :style="styleObj1">这是另一个h1！</h1>
+        <!--数组语法-->
+        <h1 :style="[styleObj1,styleObj2]">这是另一个h1！</h1>
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag:true,
+                classObj:{red:true, thin:true, italic:false, active:false},
+                styleObj1:{color:'red',fontWeight:'lighter',fontStyle:'italic'},
+                styleObj2:{fontSize:'20px'},
+            },
+            methods: { }
+        });
+    </script>
+
+</body>
+</html>
