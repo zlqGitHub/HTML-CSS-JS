@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for指令</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <!-- <p>{{arr1[0]}}</p>
+        <p>{{arr1[1]}}</p>
+        <p>{{arr1[2]}}</p>
+        <p>{{arr1[3]}}</p>
+        <p>{{arr1[4]}}</p>-->
+
+        <!--循环数组-->
+        <p v-for="item in arr1">{{item}}</p>
+        <p v-for="(item,index) in arr1">索引值：{{index}}----对应值：{{item}}</p>
+        <br>
+        <p v-for="(item,index) in list">索引值：{{index}}----对应值：{{item}}----姓名：{{item.name}}</p>
+        <br>
+        <!--同理循环对象-->
+        <!--第三个index可有可无-->
+        <p v-for="(val,key,index) in people">索引：{{index}}----key：{{key}}----val：{{val}}</p>
+
+        <!--in后面可以是普通数组、对象、还可以是数字-->
+        <!--注意：遍历数字时，从1开始-->
+        <p v-for="count in 5">这是第{{count}}次遍历</p>
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                arr1:[1,2,3,4,5],
+                list:[
+                    {name:'zs',age:18},
+                    {name:'lisi',age:28},
+                    {name:'wangwu',age:20},
+                ],
+                people:{
+                    id:0,
+                    name:'zlq',
+                    age:20
+                }
+            },
+            methods: { }
+        });
+    </script>
+
+</body>
+</html>
