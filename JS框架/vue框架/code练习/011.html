@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过滤器的基本使用</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--过滤器可以传递参数,也可传多个参数，同样可以多次调用过滤器-->
+        <p>{{ msg | msgFormat('北京') }}</p>
+    </div>
+
+    <script>
+        //定义个处理msg的过滤器msgFormat
+        Vue.filter('msgFormat',function (msg,arg) {
+            return msg.replace(/中北/g,arg);
+        })
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg:"中北大学，中北大学，中北大学软件学院",
+            },
+            methods: { }
+        });
+
+        /*
+            定义一个过滤器：Vue.filter('过滤器名称',function(){});
+            过滤器调用格式：{{ name | 过滤器名称 }}
+        */
+    </script>
+
+</body>
+</html>
