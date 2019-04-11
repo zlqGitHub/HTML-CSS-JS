@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>钩子函数实现小球的半场动画</title>
+    <style>
+        .ball{
+            width: 15px;
+            height: 15px;
+            border-radius:50%;
+            background: red;
+        }
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="加入购物车" @click="flag = !flag">
+        <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter">
+            <div v-show="flag" class="ball"></div>
+        </transition>
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag:false
+            },
+            methods: {
+                // 注意： 动画钩子函数的第一个参数：el，表示要执行动画的那个DOM元素，是个原生的 JS DOM对象
+                // 可以看作 el 是通过 document.getElementById('') 方式获取到的原生JS DOM对象
+                beforeEnter(el){
+                    //该函数表示动画入场前进行
+                    el.style.transform = "translate(0,0)";  //设置动画的起始位置
+                },
+                enter(el, done){
+                    //动画进入过程中执行
+                    //如果不写el.offsetWidth,则没有动画效果
+                    el.offsetWidth;   //offsetHeight、offsetLeft等均可
+                    el.style.transform = "translate(150px,450px)";
+                    el.style.transition = "all 1s ease";
+
+                    // 这里的 done，其实就是 afterEnter 这个函数，也就是说：done 是 afterEnter 函数的引用
+                    //调用了done函数后，动画执行完毕后，将立即消失
+                    done();
+                },
+                afterEnter(el){
+                    //动画完成之后执行
+                    this.flag = !this.flag;
+                }
+
+            }
+        });
+    </script>
+
+</body>
+</html>
