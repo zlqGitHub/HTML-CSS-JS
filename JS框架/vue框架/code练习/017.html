@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表动画（transition-group）</title>
+    <style>
+        li{
+            width: 100%;
+            border: 1px dashed #999;
+            margin: 5px;
+            padding-left: 5px;
+            line-height: 35px;
+            font-size: 14px;
+        }
+        li:hover{
+            background-color: hotpink;
+            transition: all 0.8s ease;
+        }
+        /*定义两组动画类*/
+        .v-enter,.v-leave-to{
+            opacity: 0;
+            transform:translateY(80px);
+        }
+        .v-enter-active,.v-leave-active{
+            transition: all 0.6s ease;
+        }
+
+        /* .v-move .v-leave-active配合使用，才能实现动画效果 */
+        .v-move{
+            transition: all 0.6s ease;
+        }
+        .v-leave-active{
+            position: absolute;
+        }
+
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <label for="id">
+            id:
+            <input type="text" v-model="id">
+        </label>
+        <label for="name">
+            name:
+            <input type="text" v-model="name">
+        </label>
+        <input type="button" value="添加" @click="add">
+
+        <!--注意：需要执行的动画的元素需要用特定的标签包起来-->
+        <!--<ul>-->
+            <!--在实现过渡列表的时候，如果过度的元素是通过 v-for 循环渲染出来的，不能使用transition来包裹，
+                需要使用 transition-group来包裹-->
+            <!-- 给 transition-group 添加 appear 属性，实现页面刚展示出来时候，入场时候的效果 -->
+            <!-- 通过 为 transition-group 元素，设置 tag 属性，指定 transition-group 渲染为指定的元素，如果不指定 tag 属性，默认，渲染为 span 标签 -->
+            <transition-group appear tag="ul">
+                <li v-for="(item,index) in list" :key="item.id" @click="del(index)">
+                    {{item.id}}----{{item.name}}
+                </li>
+            </transition-group>
+        <!--</ul>-->
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id:'',
+                name:'',
+                list:[
+                    {id:1,name:"张三"},
+                    {id:2,name:"李四"},
+                    {id:3,name:"王五"},
+                    {id:4,name:"赵六"}
+                ]
+            },
+            methods: {
+                add:function () {
+                    this.list.push({id:this.id,name:this.name});
+                },
+                del(index){
+                    this.list.splice(index,1);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
