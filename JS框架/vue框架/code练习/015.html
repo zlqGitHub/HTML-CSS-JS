@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用第三方的animate.css类库</title>
+    <link rel="stylesheet" href="animate.css">
+    <script src="lib/vue.js"></script>
+    <!-- 入场 bounceIn    离场 bounceOut -->
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="toggle" @click="flag=!flag">
+        <!--注意：必须给添加一个默认类 animated，才能实现动画效果-->
+        <!--<transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">
+            <h3 v-if="flag">我是一个H3标签！</h3>
+        </transition>-->
+
+        <!--使用 :duration="毫秒值" 来统一设置 入场和 离场 的时间-->
+        <!--<transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="200">
+            <h3 class="animated" v-if="flag">我是一个H3标签！</h3>
+        </transition>-->
+
+        <!--使用 :duration="{enter:200,leave:40}" 对象来分别设置入场和离场的时间-->
+        <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="{enter:200,leave:400}">
+            <h3 class="animated" v-if="flag">我是一个H3标签！</h3>
+        </transition>
+
+    </div>
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag:false
+            },
+            methods: { }
+        });
+    </script>
+
+</body>
+</html>
