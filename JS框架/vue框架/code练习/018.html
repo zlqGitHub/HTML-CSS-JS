@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建组件</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-com1></my-com1>
+        <mycom1></mycom1>
+        <mycom2></mycom2>
+
+        <mycom3></mycom3>
+
+        <mycom4></mycom4>
+
+        <!--<mycom5></mycom5>   报错，不能使用 app2 的私有组件-->
+    </div>
+
+    <div id="app2">
+        <mycom3></mycom3>
+        <mycom5></mycom5>
+    </div>
+
+    <!--结合第三种方式-->
+    <template id="tmp1">
+        <div>
+            <h1>这是通过 template 元素,在外部定义的组件结构,这个方式,有代码的只能提示和高亮</h1>
+            <h4>这是经常用到的自定义组件方法</h4>
+        </div>
+    </template>
+
+    <template id="tmp2">
+        <h4>我是h4标签，用私有组件创建而成的</h4>
+    </template>
+
+    <script>
+        //第一种方式
+        //使用Vue.extend()和Vue.component()来创建
+        var com1 = Vue.extend({
+            //通过template属性来指定组件要展示的HTML结构
+            template:"<h3>这是使用Vue.extend()来创建的组件</h3>"
+        });
+        //Vue.component("组件名称","要展示的组件模板对象")
+        /*
+            组件名称使用了驼峰命名，则在引用组件的时候，需要把大写的驼峰改为小写的字母，同时两个单词之前，使用 - 链接；
+            如果不使用驼峰,则直接拿名称来使用即可;
+        */
+        Vue.component("myCom1",com1);
+        Vue.component("mycom1",com1);
+
+        //还可将Vue.extend()和Vue.component()组合到一起
+        Vue.component("mycom2",Vue.extend({
+            template:"<h3>这是使用Vue.extend()来创建的组件</h3>"
+        }));
+
+        //第二种方式
+        Vue.component("mycom3",{
+            //注意:不论是哪种方式创建出来的组件,组件的 template 属性指向的模板内容,必须有且只能有唯一的一个根元素
+            // template:"<h3>这是使用了第二种方式创建组件</h3><span>我跟h3平级</span>",
+            template:"<div><h3>这是使用了第二种方式创建组件</h3><span>我跟h3平级</span></div>"
+        });
+
+        //第三种方式
+        Vue.component("mycom4",{
+            template:"#tmp1",
+        });
+
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: { },
+            methods: { }
+        });
+
+        //定义一个私有的组件
+        var vm2 = new Vue({
+            el:'#app2',
+            data:{ },
+            methods:{ },
+            filters:{ },
+            directives:{ },
+            //私有组件
+            components:{
+                mycom5:{
+                    // template:"<h4>我是h4标签，用私有组件创建而成的</h4>",
+                    template:"#tmp2"
+                }
+            },
+
+            //生命周期函数
+            beforeCreate(){ },
+            created(){ },
+            beforeMount(){ },
+            mounted(){ },
+            beforeUpdate(){ },
+            updateed(){ },
+            beforeDestroy(){ },
+            destroyed(){ }
+
+
+        });
+    </script>
+
+</body>
+</html>
