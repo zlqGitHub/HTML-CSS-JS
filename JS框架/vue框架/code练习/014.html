@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用过渡类名实现动画(自定义v-前缀)</title>
+    <style>
+        /*均为时间点，进入前和离开后 的状态*/
+        .v-enter,.v-leave-to{
+            opacity: 0;
+            transform: translateX(180px);
+        }
+        /*均为时间段，进入和离开过程中发生的动画效果*/
+        .v-enter-active,.v-leave-active{
+            transition: all 0.8s ease;
+        }
+
+        /*均为时间点，进入前和离开后 的状态*/
+        .my-enter,.my-leave-to{
+            opacity: 0;
+            transform: translateX(180px);
+        }
+        /*均为时间段，进入和离开过程中发生的动画效果*/
+        .my-enter-active,.my-leave-active{
+            transition: all 0.8s ease;
+        }
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="toggle" @click="flag = !flag">
+        <!-- 使用 transition 元素(是 Vue 官方提供的)，把需要被动画控制的元素，包裹起来 -->
+        <transition>
+            <h3 v-if="flag">我是一个h3标签</h3>
+        </transition>
+        <br><br><br>
+        <input type="button" value="toggle" @click="flag2 = !flag2">
+        <!-- 使用 transition 元素(是 Vue 官方提供的)，把需要被动画控制的元素，包裹起来 -->
+        <transition name="my">
+            <h3 v-if="flag2">我是一个h3标签</h3>
+        </transition>
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: false,
+                flag2: false
+            },
+            methods: { }
+        });
+    </script>
+
+</body>
+</html>
