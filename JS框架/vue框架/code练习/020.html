@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件切换component</title>
+    <style>
+        .v-enter,.v-leave-to{
+            opacity: 0;
+            transform:translateX(150px);
+        }
+        .v-enter-active,.v-leave-to{
+            transition: all 0.5s ease;
+        }
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<!--组件切换第一种方式-->
+<!--<body>
+    <div id="app">
+        <a href="" @click.prevent = "flag=true">登录</a>
+        <a href="" @click.prevent = "flag=false">注册</a>
+
+        <login v-if="flag"></login>
+        <register v-else="flag"></register>
+    </div>
+
+    <script>
+        //创建组件
+        Vue.component('login',{
+            template:"<h3>登录组件</h3>"
+        });
+        Vue.component('register',{
+            template:"<h3>注册组件</h3>"
+        });
+
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag:true
+            },
+            methods: { }
+        });
+    </script>
+
+</body>-->
+
+<!--组件切换的第二种方式-->
+
+<body>
+    <div id="app">
+        <a href="" @click.prevent="comName='login'">登录</a>
+        <a href="" @click.prevent="comName='register'">注册</a>
+
+        <!-- Vue提供了 component ,来展示对应名称的组件 -->
+        <!-- component 是一个占位符, :is 属性,可以用来指定要展示的组件的名称 -->
+        <!--<component :is="comName"></component>-->
+
+        <!--为组件切换添加动画,通过设置mode属性来规定组件切换的模式-->
+        <transition mode="out-in">
+            <component :is="comName"></component>
+        </transition>
+
+        <!-- 总结:当前学习了几个 Vue 提供的标签了 -->
+        <!-- component,  template,  transition,  transitionGroup  -->
+    </div>
+
+    <script>
+        //自定义组件
+        Vue.component("login",{
+            template:"<h3>登录组件</h3>"
+        });
+        Vue.component("register",{
+            template:"<h3>注册组件</h3>"
+        });
+
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                comName: "login"   //默认显示登录状态下的组件
+            },
+            methods:{
+
+            }
+
+        });
+    </script>
+</body>
+</html>
