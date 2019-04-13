@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父组件给子组件传递方法然后子组件通过该方法传递参数从而向父组件传递值</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--父组件向子组件传递方法通过事件绑定机制(v-on  @),子组件可以通过某些方法来使用传递过去的方法-->
+        <!--show是方法的引用  show()是方法的调用-->
+        <com1 @fun="show"></com1>
+    </div>
+    <!--自定义组件模块结构-->
+    <template id="temp1">
+        <div>
+            <h3>这是一个h3标签</h3>
+            <input type="button" value="这是子组件中的按钮，点击它将会触发父组件传递过来的方法" @click="myclick">
+        </div>
+    </template>
+
+    <script>
+        //自定义组件
+        var com1 = {
+            template:"#temp1",
+            data:function(){
+                return {
+                    people:{name:"zlq",age:20}
+                }
+            },
+            methods:{
+                myclick(){
+                    // alert("aa");
+                    // 当点击子组件的按钮的时候，通过 emit 英文原意： 是触发，调用、发射的意思
+                    // this.$emit('func123', 123, 456)  来执行传递过来的方法
+                    //this.$emit("fun","我是子组件传递过来的参数，哈哈哈");    //第二个参数之后的是给fun方法传递的参数
+                    this.$emit("fun",this.people);
+                }
+            }
+        }
+
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                datamsgFormSon:null,
+            },
+            methods: {
+                //可以给show传递参数
+                show(data){
+                    console.log("调用了父组件上的 show 方法----"+data);
+                    //可以通过子组件传递过来的data数据绑定给父组件的data中，从而实现了子组件向父组件传值的问题
+                    this.datamsgFormSon = data;
+                }
+            },
+            components:{
+                com1,
+                // com1:com1
+            }
+        });
+    </script>
+
+</body>
+</html>
