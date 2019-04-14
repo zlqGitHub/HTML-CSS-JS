@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通过watch监视来实现名称案例</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="firstname">
+        <input type="text" v-model="lastname">
+        <input type="text" v-model="fullname">
+
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstname:'',
+                lastname:'',
+                fullname:''
+            },
+            methods: { },
+            watch:{//使用该属性可以监听data中数据的变化，然后出发watch中对应function的处理函数
+                //处理函数可以传递两个参数，分别是修改后的值，修改前的值
+                firstname: function (newVal,oldVal) {
+                    // console.log("a");
+                    // this.fullname = this.firstname + '-' + this.lastname
+                    // console.log(newVal + ' --- ' + oldVal)
+                    this.fullname = newVal + "-" + this.lastname;
+                },
+                lastname: function (newVal,oldVal) {
+                    this.fullname = this.firstname + "-" + newVal;
+                }
+
+            //注意：watch在此处并没有显示出优势，假如说data中数据过多的时候，watch需要监听多个函数
+            }
+        });
+    </script>
+
+</body>
+</html>
