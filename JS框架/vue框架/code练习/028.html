@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>命名视图实现经典布局</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            background: orangered;
+            height: 80px;
+        }
+        h3{
+            margin: 0;
+            font-size: 1em;
+        }
+        .container{
+            height: 600px;
+            display: flex;
+        }
+        .left{
+            background: lightgreen;
+            flex: 2;
+        }
+        .mainBox{
+            background: lightcoral;
+            flex: 8;
+        }
+    </style>
+    <script src="lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--router-view可以通过设置name属性来指定要显示的组件模块对象-->
+        <router-view></router-view>
+        <div class="container">
+            <router-view name="left"></router-view>
+            <router-view name="mainBox"></router-view>
+        </div>
+    </div>
+
+    <script>
+        var header = {
+            template:"<h3 class='header'>头部区域</h3>"
+        }
+        var left = {
+            template:"<h3 class='left'>左部区域</h3>"
+        }
+        var mainBox = {
+            template:"<h3 class='mainBox'>主区域</h3>"
+        }
+        var router = new VueRouter({
+            routes:[
+                /*{path:'/',component:header},
+                {path:'/left',component:left},
+                {path:'/mainBox',component:mainBox},*/
+
+                {path:'/',components:{
+                        'default':header,
+                        'left':left,
+                        'mainBox':mainBox
+                    }
+                }
+            ]
+        });
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: { },
+            methods: { },
+            router
+        });
+    </script>
+
+</body>
+</html>
