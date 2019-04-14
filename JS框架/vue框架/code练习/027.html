@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路由嵌套</title>
+    <script src="lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/account">Account</router-link>
+        <router-view></router-view>
+    </div>
+
+    <template id="temp">
+        <div>
+            <h3>这是Account组件</h3>
+
+            <router-link to="/account/login">登录</router-link>
+            <router-link to="/account/register">注册</router-link>
+
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <script>
+        var account = {
+            template:"#temp",
+        }
+
+        var login = {
+            template:"<h3>登录组件</h3>"
+        }
+        var register = {
+            template:"<h3>注册组件</h3>"
+        }
+        var router = new VueRouter({
+            routes:[
+                //实现子路由的嵌套
+                {
+                    path:'/account',
+                    component:account,
+                    children: [
+                        //注意：不能是 /login  表示从根目录下开始
+                        { path: 'login', component: login },
+                        { path: 'register', component: register }
+                    ]
+                },
+                // {path:'/account/login',component:login},
+                // {path:'/account/register',component:register}
+            ]
+        });
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: { },
+            methods: { },
+            router
+        });
+    </script>
+
+</body>
+</html>
