@@ -7,7 +7,7 @@ import $ from 'jquery'
 // const $ = require('jquery');
 
 $(function () {
-    $('li:odd').css('background','lightblue');
+    $('li:odd').css('background','red');
     $('li:even').css('background',function () {
         return "#"+"D97634";
     });
