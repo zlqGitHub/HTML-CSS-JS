@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-resource发起get、post、jsonp请求</title>
+    <script src="./vue.js"></script>
+    <!--注意：vue-resource 依赖于vue，所有在vue.js之后导入-->
+    <!--this.$http.jsonp-->
+    <script src="vue-resource.js"></script>
+<!--注意：引用的先后顺序是：先引用 `Vue` 的脚本文件，再引用 `vue-resource` 的脚本文件；-->
+
+</head>
+<body>
+<div id="app">
+    <input type="button" value="get请求" @click="getInfo">
+    <input type="button" value="post请求" @click="postInfo">
+    <input type="button" value="jsonp请求" @click="jsonpInfo">
+</div>
+
+<script>
+    //创建一个Vue实例，得到View Model
+    var vm = new Vue({
+        el: '#app',
+        data: { },
+        methods: {
+            getInfo(){  //发起get请求
+                console.log("a");
+                //当发起get请求之后，通过 .then 来设置成功的回调函数
+                this.$http.get('').then(response  => {
+                    console.log("b");
+                    console.log(response );
+                },response  => {
+                    console.log("c");
+                    console.log(response );
+                });
+            },
+            postInfo(){   //发起post请求
+                //手动发起的post请求，默认没有表单格式，所以有的服务器处理不了
+                //通过post的第三个参数，设置提交的内容的类型为普通表单的类型
+                this.$http.post('http://vue.studyit.io/api/post',{},{emulateJSON:true}).then(result => {
+                    console.log(result);
+                },function (error) {
+                    console.log(error);
+                });
+            },
+            jsonpInfo(){  //发起jsonp请求
+                this.$http.jsonp('http://vue.studyit.io/api/json').then(function (result) {
+                    console.log(result.body);
+                },function (error) {
+                    console.log(error);
+                });
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
