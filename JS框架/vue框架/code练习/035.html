@@ -8,9 +8,24 @@
     <title>通过vue-resource改造品牌列表</title>
     <link rel="stylesheet" href="./lib/bootstrap.css">
     <script src="lib/vue.js"></script>
+    <script src="./lib/vue-resource.js"></script>
+    <script src="./lib/axios.js"></script>
 </head>
 <body>
     <div id="app">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加品牌</h3>
+            </div>
+            <div class="panel-body form-inline">
+                <label>
+                    Name:
+                    <input type="text" v-model="name" class="form-control">
+                </label>
+                <input type="button" value="添加" @click="add" class="btn btn-primary">
+            </div>
+        </div>
+
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
@@ -18,12 +33,14 @@
                     <th>Name</th>
                     <th>Ctime</th>
                     <th>Operation</th>
-
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
+                <tr v-for="item in list" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td><a href="">删除</a></td>
                 </tr>
             </tbody>
 
@@ -34,8 +51,63 @@
         //创建一个Vue实例，得到View Model
         var vm = new Vue({
             el: '#app',
-            data: { },
-            methods: { }
+            data: {
+                name:'',
+                list:[
+                    {id:1,name:'宝马',ctime:new Date()},
+                    {id:2,name:'奔驰',ctime:new Date()},
+                ]
+            },
+            methods: {
+                add(){
+
+                },
+                getAllList(){   //从后台获取所有的汽车列表
+                    /*
+                        分析：
+                        1.通过 this.$http发起数据请求，并且根据文档可知是get请求
+                        2.this.$http.get('url).then(function(result){});
+                        3.通过then指定回调函数，在回调函数中拿到返回的result结果集
+                        5.通过result.status 判断请求状态
+                    */
+                    this.$http.get('D:\\微信小程序\\HTML+CSS+JS\\JS框架\\vue框架\\code练习\\035.json').then(result=>{
+                        //注意：通过 $http 获取到的数据都在 result.body 中存放着
+                        var result = result.body;
+                        if(result.status === 0){
+                            //成功了
+                            // console.log(result.message);
+                            this.list = result.message;
+                        }
+                        else{
+                            //失败了
+                            alert("获取数据失败！");
+                        }
+                    });
+
+                },
+                getAllList2(){
+                    axios.get('./035.json').then(result=>{
+                        //注意：通过 $http 获取到的数据都在 result.body 中存放着
+                        console.log("aa");
+                        var result = result.body;
+                        if(result.status === 0){
+                            //成功了
+                            console.log(result.message);
+                            this.list = result.message;
+                        }
+                        else{
+                            //失败了
+                            alert("获取数据失败！");
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }
+            },
+            created(){
+                //调用该函数时vm实例中的data和methods中的数据已经初始化完成了
+                this.getAllList2();
+            }
         });
     </script>
 
