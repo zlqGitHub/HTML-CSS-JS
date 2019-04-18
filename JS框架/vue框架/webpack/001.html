@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用vue实例中的render方法渲染组件</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>你好</h4>
+        <login></login>
+    </div>
+
+    <script>
+        //自定义组件模板
+        var login = {
+            template:"<h3>我是登录组件</h3>",
+        }
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: { },
+            methods: { },
+            render:function (createElements) {
+                //createElements 是一个方法，调用它之后可以把指定的模板组件渲染为 html 结构
+                return createElements(login);
+                //注意：此处的 return 结果将会替换 vm 实例中 el 所控制的容器
+            }
+           /* components:{
+                login,
+            }*/
+        });
+    </script>
+
+</body>
+</html>
