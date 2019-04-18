@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--
+        首先打开终端在当前文件下执行npm init -y，用来初始化一个 package.json 文件
+        其次过程中使用到了 jQuery ，因此需要先来装jQuery
+            1.执行 npm i jquery -S         同理可以下载bootstrap: npm i bootstrap -S    vue:npm i vue -S
+            2.此时文件夹下就会多了几个文件，即可
+            3.可以通过cls来对终端清屏
+            4.可以通过 Ctrl c 来退出 npm run dev
+    -->
+    <!--注意：不推荐在这里直接引用任何包和任何css文件，可以把所有文件都写在main.js下，这样我们只需要导入一个包即可-->
+    <!--<script src="main.js"></script>-->
+
+    <!--通过webpack打包好后，需要导入 ../dist/bundle.js 下的文件-->
+    <!--<script src="../dist/bundle.js"></script>-->
+
+    <!--通过webpack-dev-server工具打包好，需要导入根目录下的 /bundle.js 文件（注意：该文件在电脑内存中，所有我们在项目中看不到）-->
+    <!--<script src="/bundle.js"></script>-->
+
+    <!--
+        当我们使用了 html-webpack-plugin 插件之后，我们就不需用手动去处理 bundle.js 文件了，
+        该插件就会帮我创建一个script标签，并引入到文件中去
+     -->
+
+    <!--此处不提倡引入css文件  注意文件路径：http://localhost:8080/src/css/index.css-->
+    <!--<link rel="stylesheet" type="text/css" href="./src/css/index.css">-->
+
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <!--<login></login>-->
+    </div>
+</body>
+</html>
