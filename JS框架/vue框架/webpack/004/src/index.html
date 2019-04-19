@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+
+       <!--
+        此处不行，因为使用了 render 函数，替换了el所控制的容器
+            <router-link to="/account">account</router-link>
+            <router-link to="goodsList">goodsList</router-link>
+
+            <router-view></router-view>
+        -->
+    </div>
+</body>
+</html>
