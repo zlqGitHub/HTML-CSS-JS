@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栅格系统</title>
+    <style>
+        /*取消浏览器默认行为*/
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .container{
+            width: 100%;
+            height: 40px;
+            margin: 0 auto;
+            background-color: pink;
+        }
+        /*通过css3中的媒体查询来监听当前也页面的宽度*/
+        @media screen and (max-width: 768px){
+            .container{
+                width: 100%;
+            }
+        }
+        @media screen and (min-width: 768px) and (max-width: 992px){
+            .container{
+                width: 750px;
+            }
+        }
+        @media screen and (min-width: 992px) and (max-width: 1200px){
+            .container{
+                width: 970px;
+            }
+        }
+        @media screen and (min-width: 1200px){
+            .container{
+                width: 1170px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+
+   <!-- <script type="text/javascript">
+        // 通过addEventListener来给window绑定事件
+        window.addEventListener("load",function () {
+            //获取变量
+            var container = document.querySelector(".container");
+            var clientW = 0;
+
+            resize();   //一上来就进行执行
+
+            //监听窗口大小的变化,给window绑定resize事件
+            window.addEventListener("resize",resize);
+            function resize() {
+                console.log(window.innerWidth);
+                clientW = window.innerWidth;
+                //通过判断来设置屏幕的当前大小
+                if(clientW >= 1200){
+                    container.style.width = "1170px";
+                }else if(clientW >= 992){
+                    container.style.width = "970px";
+                }else if(clientW >= 768){
+                    container.style.width = "750px";
+                }else{
+                    container.style.width = "100%";
+                }
+            }
+
+
+        });
+    </script>-->
+
+
+
+</body>
+</html>
