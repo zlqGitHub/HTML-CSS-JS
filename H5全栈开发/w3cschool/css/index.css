@@ -1,0 +1,243 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+body{
+	background: #FDFCF8;
+}
+.left{float: left;}
+.right{float: right;}
+.clear{overflow: hidden;}
+.container{
+	width: 1239px;
+	height: 900px;
+	margin: 0 auto;
+}
+/* 头部样式 */
+.header{
+	width: 1210px;
+	height: 100px;
+	margin: 0 0 0 13px;
+}
+.header_left{
+	cursor: pointer;
+	display: inline-block;
+	width: 500px;
+	height: 100px;
+	background: url(../imgs/bg.png) no-repeat 0 -150px;
+}
+.header_left:hover{
+	background: url(../imgs/bg.png) no-repeat 0 -250px;
+}
+.header_right{
+	width: 306px;
+	height: 100px;
+	float:right;
+}
+.header_right .input{
+	width: 258px;
+	height: 28px;
+	margin-top: 35px;
+}
+.header_right .submit{
+	width: 30px;
+	height: 30px;
+	margin-top: 35px;
+	border: none;
+	background: #AE4141;
+	color: #fff;
+}
+
+/* 中间内容区 */
+.main{
+	width: 1210px;
+	margin: 0 0 0 13px;
+}
+.menu{
+	width: 1210px;
+	height: 48px;
+	background: #E8E7E3;
+}
+.menu li{
+	float: left;
+	line-height: 48px;
+	padding: 0 40px;
+}
+.menu li:hover{
+	background: #3F3F3F;
+	color: #FFF;
+}
+/* 中间内容 */
+.menu_left{
+	width: 180px;
+	border-left: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+}
+
+.menu_left_bar h4,.menu_right_bar h4{
+	padding: 10px 0px 5px 8px;
+	font-size: 14px;
+}
+.menu_left_bar li,.menu_right_bar li{
+	font-size: 12px;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+.menu_left_bar li:hover{
+	background: #AAAAAA;
+}
+.menu_right_bar li:hover{
+	background: #BD2D30;
+}
+.menu_left_bar li:hover a,.menu_right_bar li:hover a{
+	color: #fff;
+}
+.menu_left_bar li:active{
+	background: #BD2D30;
+}
+.menu_left_bar li a{
+	text-decoration: none;
+	color:#000;
+}
+.menu_right_bar li a{
+	text-decoration: none;
+	color:#BD2D30;
+}
+
+.menu_right{
+	width: 180px;
+	border-left: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+}
+/* 中间内容区的中间模块 */
+.menu_content{
+	width: 846px;
+}
+.menu_content_col{
+	width: 805px;
+	margin: 0 auto;
+	color: #3F3F3F;
+	border-bottom: 1px solid #AAAAAA;
+}
+.menu_content_col p{
+	margin: 15px 0;
+}
+.menu_content_1{
+	text-align: center;
+	padding: 55px 0 25px 0;
+}
+.public h1,.public p{
+	margin-left: 100px;
+}
+.menu_content_2{
+	background: url(../imgs/icon2.png) no-repeat;
+}
+.menu_content_3{
+	background: url(../imgs/icon3.png) no-repeat;
+}
+.menu_content_4{
+	background: url(../imgs/icon4.png) no-repeat;
+}
+.menu_content_5{
+	background: url(../imgs/icon5.png) no-repeat;
+}
+.menu_content_6{
+	background: url(../imgs/icon6.png) no-repeat;
+}
+.menu_content_7{
+	background: url(../imgs/icon7.png) no-repeat;
+}
+.menu_content_8{
+	background: url(../imgs/icon8.png) no-repeat;
+}
+.public{
+	padding: 30px 0 20px 0;
+	background-position: -5px 25px;
+}
+.public a{
+	color: #900B09;
+}
+.public a:hover{
+	color: #FF0000;
+}
+.menu_content_6,.menu_content_7,.menu_content_8{
+	padding-bottom: 55px;
+}
+.menu_content_8{
+	border: none;
+	overflow: hidden;   /* 消除浮动造成的影响 */
+}
+.menu_content_8 a{
+	color: #000;
+	text-decoration: none;
+	border-bottom: 1px solid #900B09;
+}
+.menu_content_8 a:hover{
+	border-bottom: 1px solid #FF0000;
+}
+.menu_content_8_left{
+	width: 289px;
+	height: 87px;
+	background: url(../imgs/icon9.png);
+	float: left;
+	margin:30px 0 0 45px;
+}
+.menu_content_8_right{
+	width: 297px;
+	height: 87px;
+	background: url(../imgs/icon10.png);
+	float: right;
+	margin:30px 80px 0 0;
+}
+.menu_content_8_left h5,.menu_content_8_right h5{
+	color: #777777;
+	margin:25px 0 0 58px;
+}
+.menu_content_8_left a,.menu_content_8_right a{
+	margin-left: 58px;
+	font-size: 14px;
+}
+
+/* 底部样式 */
+.footer{
+	width: 1210px;
+	height: 94px;
+	margin: 0 0 20px 13px;
+}
+.footer_top{
+	width: 100%;
+	height: 55px;
+	background: #E8E7E3;
+	text-align: center;
+	line-height: 55px;
+	color: #777777;
+	font-size: 12px;
+}
+.footer_top .icon-warp{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background: url(../imgs/alert.png) no-repeat;
+	margin-right: 20px;
+	position: relative;
+	top: 3px;
+}
+.footer_bottom{
+	padding: 15px 0;
+	text-align: center;
+	color: #777;
+	font-size: 14px;
+}
+.footer_bottom a{
+	color: #777;
+	font-size: 14px;
+	text-decoration: none;
+}
+.footer_bottom a:hover{
+	color: #000;
+	text-decoration: underline;
+}
+.footer_bottom .ad{
+	color: #000;
+}
