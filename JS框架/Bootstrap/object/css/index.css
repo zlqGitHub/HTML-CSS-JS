@@ -1,0 +1,114 @@
+/***************通用样式****************/
+body{
+    font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+    color:#000;
+}
+@font-face {
+    font-family: lk;
+    src: url("../fonts/lk.eot") format("embedded-opentype"),
+        url("../fonts/lk.svg") format("svg"),
+        url("../fonts/lk.ttf") format("truetype"),
+        url("../fonts/lk.woff") format("woff");
+}
+[class^="icon-"],
+[class*="icon-"]{
+    font-family: lk;
+    font-style: normal;
+}
+/***************通用样式****************/
+
+/*头部样式*/
+.top-bar{
+    height: 40px;
+    line-height: 39px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.top-bar .container .row>div+div{
+    border-left: 1px solid #e0e0e0;
+}
+.top-bar .container .row .top-bar-1 a{
+    position: relative;
+}
+.top-bar .container .row .top-bar-1 a img{
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: -10px;
+ }
+.top-bar .container .row .top-bar-1 a:hover img{
+    display: block;
+}
+.icon-iphone::before{
+    content: '\e958';
+    font-size: 13px;
+}
+.icon-tel::before{
+    content: '\e942';
+    font-size: 13px;
+}
+.btn-register {
+    color: #FFFFFF;
+    background-color: #0AB4F7;
+    border-color: #F4F7F7;
+}
+
+.btn-register:hover,
+.btn-register:focus,
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+    color: #FFFFFF;
+    background-color: #086DF2;
+    border-color: #F4F7F7;
+}
+
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+    background-image: none;
+}
+
+.btn-register.disabled,
+.btn-register[disabled],
+fieldset[disabled] .btn-register,
+.btn-register.disabled:hover,
+.btn-register[disabled]:hover,
+fieldset[disabled] .btn-register:hover,
+.btn-register.disabled:focus,
+.btn-register[disabled]:focus,
+fieldset[disabled] .btn-register:focus,
+.btn-register.disabled:active,
+.btn-register[disabled]:active,
+fieldset[disabled] .btn-register:active,
+.btn-register.disabled.active,
+.btn-register[disabled].active,
+fieldset[disabled] .btn-register.active {
+    background-color: #0AB4F7;
+    border-color: #F4F7F7;
+}
+
+.btn-register .badge {
+    color: #0AB4F7;
+    background-color: #FFFFFF;
+}
+#header .navbar-lk{
+    margin-bottom: 0;
+    background: #fff;
+}
+.navbar-lk .navbar-header .navbar-brand{
+    height: 70px;
+    padding: 10px 15px;
+}
+#header .navbar-lk .navbar-nav a{
+    height: 70px;
+    line-height: 40px;
+}
+#header .navbar-lk .navbar-nav li.active a,
+#header .navbar-lk .navbar-nav li a:hover{
+    background-color: transparent;
+    border-bottom: 2px solid #0AB4F7;
+}
+.navbar-toggle {
+    margin-top: 18px;
+}
