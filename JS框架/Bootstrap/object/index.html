@@ -18,30 +18,30 @@
         <!--头部上部分-->
         <div class="top-bar hidden-sm hidden-xs text-center text-muted">
            <div class="container">
-               <div class="row">
-                   <div class="top-bar-1 col-md-2">
-                       <a href="#" class="text-muted">
-                           <i class="icon-iphone"></i>
-                           <span>关注微信号</span>
-                           <span class="caret"></span>
-                           <img src="./imgs/ewm_xzh.jpg" alt="" width="120px">
-                       </a>
-                   </div>
-                   <div class="top-bar-2 col-md-5">
-                       <i class="icon-tel"></i>
-                       <span>8888-555-6666（服务时间：9:00-21:00）</span>
-                   </div>
-                   <div class="top-bar-3 col-md-2">
-                       <a href="#" class="text-muted">校企合作</a>
-                       <a href="#" class="text-muted">培训师</a>
-                   </div>
-                   <div class="top-bar-4 col-md-3">
-                       <!--注意：此处的 btn-register 可以通过http://blog.koalite.com/bbg/来进行修改、设置-->
-                       <a class="btn btn-default btn-sm btn-primary btn-register" href="#" role="button">免费注册</a>
-                       <a href="#" role="button" class="text-muted">立即注册</a>
-                   </div>
-               </div>
-           </div>
+            <div class="row">
+                <div class="top-bar-1 col-md-2">
+                    <a href="#" class="text-muted">
+                        <i class="icon-iphone"></i>
+                        <span>关注微信号</span>
+                        <span class="caret"></span>
+                        <img src="./imgs/ewm_xzh.jpg" alt="" width="120px">
+                    </a>
+                </div>
+                <div class="top-bar-2 col-md-5">
+                    <i class="icon-tel"></i>
+                    <span>8888-555-6666（服务时间：9:00-21:00）</span>
+                </div>
+                <div class="top-bar-3 col-md-2">
+                    <a href="#" class="text-muted">校企合作</a>
+                    <a href="#" class="text-muted">培训师</a>
+                </div>
+                <div class="top-bar-4 col-md-3">
+                    <!--注意：此处的 btn-register 可以通过http://blog.koalite.com/bbg/来进行修改、设置-->
+                    <a class="btn btn-default btn-sm btn-primary btn-register" href="#" role="button">免费注册</a>
+                    <a href="#" role="button" class="text-muted">立即注册</a>
+                </div>
+            </div>
+        </div>
         </div>
         <!--头部下部分-->
         <nav class="navbar navbar-default navbar-static-top navbar-lk">
@@ -76,10 +76,62 @@
     </header>
 
     <!--轮播图-->
-    <section id="carousel">轮播图</section>
+    <section id="carousel" class="carousel slide" data-ride="carousel">
+        <!--指示器-->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <!-- 中间内容 -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active" data-sm-img="./imgs/slide_01_640x340.jpg" data-lg-img="./imgs/slide_01_2000x410.jpg">
+                <!--大图用背景图，小图通过插入img元素来实现-->
+            </div>
+            <div class="item" data-sm-img="./imgs/slide_02_640x340.jpg" data-lg-img="./imgs/slide_02_2000x410.jpg">
+
+            </div>
+            <div class="item" data-sm-img="./imgs/slide_03_640x340.jpg" data-lg-img="./imgs/slide_03_2000x410.jpg">
+
+            </div>
+        </div>
+        <!-- 控制器 -->
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+            <!--注意：此处的类中用到了 -icon ，所以匹配到了之前的定义好的类，需要进行处理-->
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </section>
 
     <!--关于我们-->
-    <section id="about">关于我们</section>
+    <section id="about" class="hidden-xs hidden-sm">
+        <div class="title text-center">
+            <h1><strong>关于我们</strong></h1>
+            <div>
+                <img src="./imgs/star.png" class="img-responsive" alt="">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="text-muted">撩课学院是秣码教育旗下线上教育品牌。成立于2017年06月， 集聚强大的IT讲师资源，
+                        独特的课程服务模式，通过M2O等新型 教育方式， 真正解决开发者在成长过程中的各
+                        种技术瓶颈，帮助学生在IT职场取得成功。</p>
+                    <p class="text-muted">撩课学院明星讲师云集，包括李南江、叶建华、王顺子、高新强等十几位专业实战型讲师团队，
+                        悉心打造六大综合体系课程，细致且全面，全面助力学生成长。</p>
+                    <p class="text-muted">撩课学院课程体系完善，包含HTML5+全栈开发、Python+人工智能、JavaEE、Go语言+区块链、
+                        UI/UE设计、新媒体、电商运营等系列课程。</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-responsive img-rounded" src="./imgs/team.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!--产品特色-->
     <section id="product">产品特色</section>
