@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通过data在标签与js间传递参数</title>
+    <script src="./object/lib/jQuery/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <div data-name="张利强" data-age="18"></div>
+    <button id="btn1">获取值</button>
+    <button id="btn2">设置值</button>
+
+    <script type="text/javascript">
+        $(function () {
+            //获取值
+            $("#btn1").on("click",function () {
+                console.log($("div").data("name"));
+                console.log($("div").data("age"));
+            });
+            //设置值
+            $("#btn2").on("click",function () {
+                $("div").data("name","王楚");
+                $("div").data({"age":20});
+            });
+        });
+    </script>
+</body>
+</html>
