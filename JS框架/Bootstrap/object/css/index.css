@@ -11,7 +11,7 @@ body{
         url("../fonts/lk.woff") format("woff");
 }
 [class^="icon-"],
-[class*="icon-"]{
+[class*=" icon-"]{
     font-family: lk;
     font-style: normal;
 }
@@ -35,6 +35,7 @@ body{
     left: 50%;
     margin-left: -60px;
     margin-top: -10px;
+    z-index: 9999;
  }
 .top-bar .container .row .top-bar-1 a:hover img{
     display: block;
@@ -111,4 +112,34 @@ fieldset[disabled] .btn-register.active {
 }
 .navbar-toggle {
     margin-top: 18px;
+}
+
+#carousel .item{
+    background: no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+/* 通过媒体查询监听页面的大小并进行设置，使得背景图片能够正常展示 */
+@media screen and (min-width: 800px) {
+    #carousel .item{
+        height: 410px;
+    }
+}
+
+#about{
+    padding: 20px 0;
+}
+#about .title{
+    /* 注意：flex布局时，作用的是子元素样式 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#about .title img{
+    padding-bottom: 15px;
+}
+#about .container .row p{
+    line-height: 29px;
+    font-size: 15px;
 }
