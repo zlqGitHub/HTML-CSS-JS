@@ -3,6 +3,7 @@ body{
     font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
     color:#000;
 }
+/*定义字体*/
 @font-face {
     font-family: lk;
     src: url("../fonts/lk.eot") format("embedded-opentype"),
@@ -14,6 +15,17 @@ body{
 [class*=" icon-"]{
     font-family: lk;
     font-style: normal;
+}
+
+#about,#hot,#link{
+    padding: 20px 0;
+}
+#about .title,#hot .title,#link .title{
+    /* 注意：flex布局时(伸缩布局)，作用的是子元素样式 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 /***************通用样式****************/
 
@@ -31,7 +43,7 @@ body{
 }
 .top-bar .container .row .top-bar-1 a img{
     display: none;
-    position: absolute;
+    position: absolute;   /* 定位元素，默认浮动，不占位 */
     left: 50%;
     margin-left: -60px;
     margin-top: -10px;
@@ -126,16 +138,7 @@ fieldset[disabled] .btn-register.active {
     }
 }
 
-#about{
-    padding: 20px 0;
-}
-#about .title{
-    /* 注意：flex布局时，作用的是子元素样式 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+/***************关于我们****************/
 #about .title img{
     padding-bottom: 15px;
 }
@@ -143,3 +146,98 @@ fieldset[disabled] .btn-register.active {
     line-height: 29px;
     font-size: 15px;
 }
+
+/***************产品特色*****************/
+#product{
+    background: #f0f0f0;
+    padding: 30px 0;
+}
+/* li.active 指当前激活的li元素下的a元素 */
+#product .nav li.active a{
+    border: none;
+    border-bottom: 2px solid #0AB4F7;
+}
+#product .nav a{
+    background: transparent;
+    color: #999;
+    font-size: 17px;
+}
+
+#product1,#product2,#product3{
+    padding-top: 20px;
+}
+#product1 .col-md-8{
+    padding: 40px 0;
+}
+#product1 .col-md-8 .media-body{
+    padding-top: 100px;
+}
+#product1 .col-md-8 #pd_one_2 .breadcrumb{
+    background: transparent;
+    margin: 15px 0;
+}
+#product2 .col-md-8{
+    padding: 100px 0;
+}
+#product3 .pd-left{
+    padding: 40px 0;
+}
+
+
+/*************热门课程****************/
+#hot .media .media-left{
+    width: 20%;
+}
+#hot .media .media-body{
+    width: 60%;
+    vertical-align:middle;
+}
+#hot .media .media-right{
+    width: 20%;
+    vertical-align: middle;
+}
+
+/*************友情链接**************/
+#link .logos{
+    text-align: center;
+}
+#link .logos li{
+    list-style: none;
+    display: inline-block;
+    padding: 20px 30px;
+}
+
+/*************底部信息**************/
+#footer{
+    width: 100%;
+    height: 200px;
+    background: url("../imgs/ft_bg.png");
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding-top: 20px;
+    color: #fff;
+}
+#footer .row ul{
+    list-style: none;
+}
+#footer .row ul li{
+    line-height: 40px;
+}
+#footer .row ul li a{
+    color: #fff
+}
+#footer .one,#footer .two{
+    height: 180px;
+    border-right: 1px solid #666;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#footer .three{
+    margin: 50px 0 0 40px;
+}
+#footer .three a{
+    text-decoration: none;
+}
+
