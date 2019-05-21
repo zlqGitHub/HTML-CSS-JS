@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>广告3D效果</title>
+		<style type="text/css">
+			.container{
+				width: 160px;
+				height: 500px;
+				border: 1px solid red;
+				margin: 50px auto;
+				position: relative;
+				transform-style: preserve-3d;
+				/* perspective: 500px; 加上后会有透视效果 */
+				transition: 3s;
+				-webkit-transition:3s;
+				-mox-transition:3s;
+			}
+			.container:hover{
+				transform: rotateY(360deg);
+			}
+			.container div{
+				position: absolute;
+				width: 160px;
+				height: 100%;
+			}
+			.container .box1{
+				background: url(./imgs/1.jpg) no-repeat 0 0/100% 100%;
+				transform: rotateY(0deg) translateZ(46px);
+			} 
+			.container .box2{
+				background: url(./imgs/2.jpg) no-repeat 0 0/100% 100%;
+				transform: rotateY(120deg) translateZ(46px);
+			}
+			.container .box3{
+				background: url(./imgs/3.jpg) no-repeat 0 0/100% 100%;
+				transform: rotateY(240deg) translateZ(46px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box1"></div>
+			<div class="box2"></div>
+			<div class="box3"></div>
+		</div>
+	</body>
+</html>
