@@ -1,0 +1,57 @@
+{
+  "status": 0,
+  "message": [
+    {
+      "id": 1,
+      "title": "Apple/苹果 iPhone XR",
+      "add_time": "2015-04-16T03:50:28.000Z",
+      "zhaiyao": "摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要",
+      "click": 0,
+      "img_url": "http://img.alicdn.com/bao/uploaded/i3/1917047079/O1CN0122AEDTONiTEEAnd_!!1917047079.jpg",
+      "sell_price": 6188,
+      "market_price": 6666,
+      "stock_quantity": 60
+    },
+    {
+      "id": 2,
+      "title": "Apple/苹果 iPhone XR",
+      "add_time": "2015-04-16T03:50:28.000Z",
+      "zhaiyao": "摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要",
+      "click": 0,
+      "img_url": "http://img.alicdn.com/bao/uploaded/i3/1917047079/O1CN0122AEDTONiTEEAnd_!!1917047079.jpg",
+      "sell_price": 6188,
+      "market_price": 6666,
+      "stock_quantity": 60
+    },{
+      "id": 3,
+      "title": "Apple/苹果 iPhone XR",
+      "add_time": "2015-04-16T03:50:28.000Z",
+      "zhaiyao": "摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要",
+      "click": 0,
+      "img_url": "http://img.alicdn.com/bao/uploaded/i3/1917047079/O1CN0122AEDTONiTEEAnd_!!1917047079.jpg",
+      "sell_price": 6188,
+      "market_price": 6666,
+      "stock_quantity": 60
+    },{
+      "id": 4,
+      "title": "Apple/苹果 iPhone XR",
+      "add_time": "2015-04-16T03:50:28.000Z",
+      "zhaiyao": "摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要",
+      "click": 0,
+      "img_url": "http://img.alicdn.com/bao/uploaded/i3/1917047079/O1CN0122AEDTONiTEEAnd_!!1917047079.jpg",
+      "sell_price": 6188,
+      "market_price": 6666,
+      "stock_quantity": 60
+    },{
+      "id": 5,
+      "title": "Apple/苹果 iPhone XR",
+      "add_time": "2015-04-16T03:50:28.000Z",
+      "zhaiyao": "摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要",
+      "click": 0,
+      "img_url": "http://img.alicdn.com/bao/uploaded/i3/1917047079/O1CN0122AEDTONiTEEAnd_!!1917047079.jpg",
+      "sell_price": 6188,
+      "market_price": 6666,
+      "stock_quantity": 60
+    }
+  ]
+}
