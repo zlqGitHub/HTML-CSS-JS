@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			ul {
+				list-style: none;
+			}
+			img {
+				vertical-align: middle;
+			}
+			html {
+				background: black;
+				perspective: 1000px;
+			}			
+			#wrap {
+				width: 133px;
+				height: 200px;
+				margin: 150px auto;
+				position: relative;
+				transform-style: preserve-3d;
+				transform: rotateX(-30deg);
+				/* animation: move 50s linear infinite alternate; */
+				/* animation: move2 10s linear infinite; */
+			}
+			#wrap:hover{
+				animation-play-state: paused;
+			}
+			#wrap li {
+				position: absolute;
+				left: 0;
+				top: 0;
+				border: 1px solid red;
+				border-radius: 25px;
+				overflow: hidden;
+				-webkit-box-reflect: below 20px linear-gradient(to top, red, transparent 80%);
+			}
+			#wrap li img{
+				width: 100px;
+			}
+			/*总共九个图*/
+			#wrap li:nth-child(1) {
+				transform: translateZ(300px);
+			}		
+			#wrap li:nth-child(2) {
+				transform: rotateY(-40deg) translateZ(300px);
+			}			
+			#wrap li:nth-child(3) {
+				transform: rotateY(-80deg) translateZ(300px);
+			}			
+			#wrap li:nth-child(4) {
+				transform: rotateY(-120deg) translateZ(300px);
+			}			
+			#wrap li:nth-child(5) {
+				transform: rotateY(-160deg) translateZ(300px);
+			}			
+			#wrap li:nth-child(6) {
+				transform: rotateY(-200deg) translateZ(300px);
+			}			
+			#wrap li:nth-child(7) {
+				transform: rotateY(-240deg) translateZ(300px);
+			}			
+			#wrap li:nth-child(8) {
+				transform: rotateY(-280deg) translateZ(300px);
+			}			
+			#wrap li:nth-child(9) {
+				transform: rotateY(-320deg) translateZ(300px);
+			}
+			
+			/* 注册要执行的一个动画 */
+			@keyframes move {
+				0% {
+					transform: rotateX(-30deg) rotateY(0) rotateZ(0);
+				}
+				50% {
+					transform: rotateX(30deg) rotateY(1800deg) rotateZ(20deg);
+				}
+				100% {
+					transform: rotateX(-30deg) rotateY(3600deg) rotateZ(30deg);
+				}
+			}
+		
+			@keyframes move2 {
+				0% {
+					transform: rotateX(0deg) rotateY(0) rotateZ(0);
+				}
+				100% {
+					transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="wrap">
+			<li><img src="imgs2/1.jpg" alt="" /></li>
+			<li><img src="imgs2/2.jpg" alt="" /></li>
+			<li><img src="imgs2/3.jpg" alt="" /></li>
+			<li><img src="imgs2/4.jpg" alt="" /></li>
+			<li><img src="imgs2/5.jpg" alt="" /></li>
+			<li><img src="imgs2/6.jpg" alt="" /></li>
+			<li><img src="imgs2/7.jpg" alt="" /></li>
+			<li><img src="imgs2/8.jpg" alt="" /></li>
+			<li><img src="imgs2/9.jpg" alt="" /></li>
+		</ul>
+	</body>
+
+</html>
