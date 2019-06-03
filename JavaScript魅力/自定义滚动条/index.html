@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            margin: 0 auto;
+            background: pink;
+            position: relative;
+        }
+        .content{
+            min-height: 400px;
+            /*width: 280px;*/
+            /*height: 400px;*/
+            background: red;
+            float: left;
+            position: absolute;
+        }
+        .parent{
+            width: 10px;
+            height: 400px;
+            background: transparent;
+            float: right;
+            position: relative;
+            display: none;
+        }
+        .child{
+            width: 10px;
+            height: 20px;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.4);
+            position: absolute;
+        }
+    </style>
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="content">
+            众所周知JSHTMl元素的交互几乎都是通过“事件”来完成的，事件从触发到完成响应一般分为3个阶段：捕获阶段，目标阶段，和冒泡阶段。
+            那么事件是在捕获阶段响应 还是在冒泡阶段响应那？？ 我们是可以手动设置事件是在捕获阶段响应还是在冒泡阶段响应。
+            那么事件是在捕获阶段响应 还是在冒泡阶段响应那？？ 我们是可以手动设置事件是在捕获阶段响应还是在冒泡阶段响应。
+            理解JS的事件流机制对充分理解JS的事件至关重要，那么什么是JS的事件流那？？
+            可以理解为当事件发生时，响应事件的顺序。这个顺序就按照一个流进行的。这就是事件流。这个流是从里向外流，还是从外向里流那？？不同的浏览器事件流的流向不太一样。
+            可以理解为当事件发生时，响应事件的顺序。这个顺序就按照一个流进行的。这就是事件流。这个流是从里向外流，还是从外向里流那？？不同的浏览器事件流的流向不太一样。
+            例如IE采用的是 “事件冒泡流”(从里向外流），自然响应事件的顺序也是从里向外的，事件冒泡流也是大部分浏览器采用的默认方式；而网景采用的是 “事件捕获流”(从外向里流)
+            事件冒泡流也是大部分浏览器采用的默认方式；而网景采用的是 “事件捕获流”(从外向里流)
+            众所周知JSHTMl元素的交互几乎都是通过“事件”来完成的，事件从触发到完成响应一般分为3个阶段：捕获阶段，目标阶段，和冒泡阶段。
+            那么事件是在捕获阶段响应 还是在冒泡阶段响应那？？ 我们是可以手动设置事件是在捕获阶段响应还是在冒泡阶段响应。
+            那么事件是在捕获阶段响应 还是在冒泡阶段响应那？？ 我们是可以手动设置事件是在捕获阶段响应还是在冒泡阶段响应。
+            理解JS的事件流机制对充分理解JS的事件至关重要，那么什么是JS的事件流那？？
+            可以理解为当事件发生时，响应事件的顺序。这个顺序就按照一个流进行的。这就是事件流。这个流是从里向外流，还是从外向里流那？？不同的浏览器事件流的流向不太一样。
+            可以理解为当事件发生时，响应事件的顺序。这个顺序就按照一个流进行的。这就是事件流。这个流是从里向外流，还是从外向里流那？？不同的浏览器事件流的流向不太一样。
+            例如IE采用的是 “事件冒泡流”(从里向外流），自然响应事件的顺序也是从里向外的，事件冒泡流也是大部分浏览器采用的默认方式；而网景采用的是 “事件捕获流”(从外向里流)
+            事件冒泡流也是大部分浏览器采用的默认方式；而网景采用的是 “事件捕获流”(从外向里流)
+            众所周知JSHTMl元素的交互几乎都是通过“事件”来完成的，事件从触发到完成响应一般分为3个阶段：捕获阶段，目标阶段，和冒泡阶段。
+            那么事件是在捕获阶段响应 还是在冒泡阶段响应那？？ 我们是可以手动设置事件是在捕获阶段响应还是在冒泡阶段响应。
+            那么事件是在捕获阶段响应 还是在冒泡阶段响应那？？ 我们是可以手动设置事件是在捕获阶段响应还是在冒泡阶段响应。
+            理解JS的事件流机制对充分理解JS的事件至关重要，那么什么是JS的事件流那？？finish
+        </div>
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+    </div>
+
+</body>
+</html>
