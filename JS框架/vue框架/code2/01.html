@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue常用指令综合练习</title>
+    <title>Vue常用指令综合练习之网络请求</title>
     <style type="text/css">
         [v-cloak]{
             display: none;
@@ -162,9 +162,11 @@
                     //将新用户添加进去
                     // this.students.push(this.newStudent);
                     this.$http.post('http://127.0.0.1:3000/api/insertStu',this.newStudent,{emulateJSON:true}).then(response => {
-                        console.log(response);
+                        console.log(response.body);
                         if(response.body.success_code === 200){
                             console.log("数据插入成功");
+                            //更新数据
+                            this.getStuList();
                         }
                     }, response => {
                         alert("学生信息添加失败");
