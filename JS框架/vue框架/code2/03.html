@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue事件修饰符</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 原生默认情况 -->
+       <!-- <div class="box" @click="boxClick()">
+            <button @click="btnClick()">点击我</button>
+        </div>-->
+
+        <!-- .stop 阻止冒泡事件，由内向外 -->
+       <!-- <div class="box" @click="boxClick()">
+            <button @click.stop="btnClick()">点击我</button>
+        </div>-->
+
+        <!-- .prevent 取消默认行为 -->
+        <a href="https://www.baidu.com" @click.prevent="aClick()">我是超链接</a>
+
+        <!-- .capture 添加事件侦听器，事件捕获   由外向内 -->
+        <div class="box" @click.capture="boxClick">
+            <button @click="btnClick">点击我</button>
+        </div>
+
+        <!-- .self 事件绑定在自身上，不是子元素   可以取消自身的冒泡 -->
+        <!--<div class="box" @click.self="boxClick()">-->
+            <!--<button @click="btnClick()">点击我</button>-->
+        <!--</div>-->
+
+
+        <!-- .once 事件只触发一次  -->
+        <a href="https://www.baidu.com" @click.prevent.once="aClick()">我是超链接</a>
+
+    </div>
+
+    <div id="app2">
+
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            methods:{
+                btnClick:function () {
+                    console.log("点击了button按钮");
+                },
+                boxClick(){
+                    console.log("点击了box盒子");
+                },
+                aClick(){
+                    console.log("点击了超链接");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
