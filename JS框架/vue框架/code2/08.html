@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component组件中:is属性</title>
+    <link rel="stylesheet" href="./lib/animate.css">
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="comName = 'login'">登录</button>
+        <button @click="comName = 'register'">注册</button>
+
+        <!--
+            Vue提供了 component 组件，来展示对应的组件
+            component 是一个占位符, :is 属性,可以用来指定要展示的组件的名称
+        -->
+        <transition
+            enter-active-class="animated bounceIn"
+        >
+            <component :is="comName"></component>
+        </transition>
+
+    </div>
+
+    <script>
+        Vue.component("login",{
+            template:"<h2 style='width: 100px;height: 100px;background: red'>我要登录</h2>",
+        });
+        Vue.component("register",{
+            template:"<h2 style='width: 200px;height: 200px;background: blueviolet'>我要注册</h2>",
+        });
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                comName:"login"
+            },
+            methods: { }
+        });
+    </script>
+
+</body>
+</html>
