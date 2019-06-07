@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中class、style的绑定</title>
+    <style>
+        .box1{
+            width: 600px;
+            height: 50px;
+            background: orangered;
+        }
+        .box2{
+            font-size: 30px;
+        }
+        .box3{
+            font-style: italic;
+            color: yellow;
+        }
+
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            class绑定
+                直接在数组中实现，但是需要在 v-bind 下来绑定，数组的类名需要添加引号，不然会去data中寻找
+                可以在数组中中使用表达式
+                可以在数组中使用对象代替三元表达式，提高代码的可读性
+                可以只用对象来实现class的绑定
+                    注意：对象中的 key  可以有引号，也可没有
+        -->
+        <p class="box1 box2 box3">众人千里寻百度</p>
+        <p :class="['box1','box2']">众人千里寻百度</p>
+        <p :class="['box1','box2',isShow ? 'box3' : '']">众人千里寻百度</p>
+        <p :class="['box1','box2',{'box3':isShow}]">众人千里寻百度</p>
+        <p :class="classObj">众人千里寻百度</p>
+
+        <hr>
+
+        <!--
+            style绑定
+                直接通过在 :style 下来书写样式对象
+                可以直接传递一个样式对象
+                可以在数组中传递多个样式对象
+        -->
+        <p style="color: #2AC845;font-size: 30px">众人千里寻百度...</p>
+        <p :style="{'color':'pink'}">众人千里寻百度...</p>
+        <p :style="styleObj1">众人千里寻百度...</p>
+        <p :style="[styleObj1,styleObj2]">众人千里寻百度...</p>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                isShow:true,
+                classObj:{'box2':true,'box3':true,'box1':false},
+                styleObj1:{'color':'yellow','font-size':'40px'},
+                styleObj2:{'font-weight':'700','font-style':'italic'},
+            }
+        });
+    </script>
+
+
+</body>
+</html>
