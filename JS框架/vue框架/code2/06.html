@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 500px;
+            margin: 20px auto;
+        }
+        p input{
+            width: 380px;
+            height: 30px;
+            padding-left: 5px;
+            outline: none;
+            border: 1px solid #2AC845;
+        }
+        table{
+            width: 485px;
+            border: 2px solid orangered;
+        }
+        th{
+            font-size: 16px;
+            font-weight: 400;
+            background: orangered;
+        }
+        td{
+            text-align: center;
+            font-size: 15px;
+        }
+    </style>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>搜索关键字：<input type="text" v-model="keyWords"></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>手机</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="stu in searchkeyWords(keyWords)">
+                    <td>{{ stu.name }}</td>
+                    <td>{{ stu.sex }}</td>
+                    <td>{{ stu.age }}</td>
+                    <td>{{ stu.tel }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //创建一个Vue实例，得到View Model
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                keyWords:'',   //搜索关键字
+                students:[
+                    {"name":"张三","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"李四","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"王五","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"赵六","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"李四","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"赵六","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"张三","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"王五","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"张利强","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"李四","sex":"男","age":20,"tel":"15513268481"},
+                    {"name":"王五","sex":"男","age":20,"tel":"15513268481"}
+                ]
+            },
+            methods: {
+                searchkeyWords:function (keyWords) {
+                    //通过过滤器来搜索
+                    return this.students.filter((stu) => {
+                        //任何字符串都含有空串
+                        if(stu.name.includes(keyWords)){
+                            // console.log("aa")
+                            return stu;
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
