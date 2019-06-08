@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>初识React</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <!--导入包-->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="./js/babel.min.js"></script>     <!--将高语法转化为低级语法-->
+
+    <script type="text/babel">
+        //1.获取页面的真实容器
+        const containerDiv = document.getElementById("app");
+        console.log(containerDiv);
+        //2.JSX 创建虚拟DOM    类似html标签
+        const vDom = <div>初识React</div>;
+        //3.将虚拟的DOM渲染到页面中去
+        ReactDOM.render(vDom,containerDiv);
+    </script>
+
+    <script type="text/babel">
+        //1.创建虚拟DOM
+        const vDom = <div>你好，世界！</div>
+        //2.将虚拟DOM渲染到页面中去
+        ReactDOM.render(vDom,document.getElementById("app"))
+    </script>
+
+</body>
+</html>
