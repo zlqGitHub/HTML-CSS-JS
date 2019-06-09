@@ -1,0 +1,121 @@
+body{
+  background: #fff;
+}
+.btn{
+  display: inline-block;
+  padding: 8px 10px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: inset 0 1px rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.5);
+}
+.btn-warning{
+  color: #ffffff;
+  background: orange;
+  border:none;
+}
+.btn-warning:hover{
+  color: #ffffff;
+  background: red;
+}
+.btn:hover{
+  outline: none;
+}
+
+/* 主面板 */
+.todo_container{
+  width: 600px;
+  margin: 0 auto;
+}
+.todo_container .todo_warp{
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* 头部 */
+.todo_header input{
+  width: 560px;
+  height: 28px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  padding: 4px 7px;
+  outline: none;
+  border-radius: 4px;
+}
+.todo_header input:focus{
+  outline: none;
+  border-color: rgba(255,0,0,0.8);
+  box-shadow: inset 0 1px 1px rgba(255,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+  /*box-shadow: 0 0 8px rgba(255,0,0,0.6);*/
+}
+
+/* 类表 */
+.todo_main{
+  margin-left: 0;
+  border: 1px solid #ddd;
+  padding: 0;
+  border-radius: 2px;
+}
+.todo_empty{
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  margin-top: 10px;
+  padding-left: 5px;
+}
+
+/* 类表选项 */
+li{
+  list-style: none;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+li label{
+  float: left;
+  cursor: pointer;
+}
+li label input{
+  vertical-align: middle;
+  margin-right: 6px;
+  position: relative;
+  top: -1px;
+}
+li button{
+  background: orangered;
+  padding: 4px 10px;
+  border-radius: 5px;color: #fff;
+  outline: none;
+  border: none;
+  float: right;
+  margin-top: 5px;
+  cursor: pointer;
+}
+li:before{
+  content: inherit;
+}
+li:last-child{
+  border: none;
+}
+
+/* 尾部 */
+.todo_footer{
+  height: 40px;
+  line-height: 40px;
+  padding-left: 6px;
+  margin-top: 5px;
+}
+
+.todo_footer button{
+  float: right;
+  margin-right: 8px;
+}
+
