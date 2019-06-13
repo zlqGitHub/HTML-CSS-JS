@@ -33,7 +33,11 @@
       isShowPanel:Function
     },
     mounted(){
-      this.$refs.mySearch.focus();
+      // this.$refs.mySearch.focus();
+      // console.log(document.getElementsByTagName("input")[0]);
+      setTimeout(()=>{
+        document.getElementsByTagName("input")[0].focus()
+      },50)
     }
   }
 </script>

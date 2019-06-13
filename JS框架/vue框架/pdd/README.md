@@ -45,6 +45,14 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 8. package.json -- 配置文件             
 ```
 
+<br>
+
+``` bash
+运用技术栈：
+    vue、vuex、mysql
+``` 
+
+
 未完待续......
 
 

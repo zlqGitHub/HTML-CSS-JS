@@ -10,7 +10,7 @@ const BASE_URL = 'http://127.0.0.1:3000';
 //请求轮播图数据
 export const getHomeCasual = () => ajax(BASE_URL+'/api/homecasual');
 
-//请求Nav导航栏的数据ss
+//请求Nav导航栏的数据
 export const getHomeNav = () => ajax(BASE_URL + '/api/homenav');
 
 //请求首页商品列表数据
