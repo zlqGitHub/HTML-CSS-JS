@@ -1,7 +1,7 @@
 <template>
   <div class="Search">
     <!-- 顶部搜索框 -->
-    <SearchNav class="search_nav"/>
+    <SearchNav :isShowPanel="isShowPanel" class="search_nav"/>
 
     <!-- 中间内容区 -->
     <div class="shop">
@@ -12,7 +12,7 @@
             class="menu_item"
             v-for="(item,index) in searchGoods"
             :key="index"
-            :class="currentIndex === index ? 'current' : ''"
+            :class="{current: index === currentIndex}"
             @click="clickLeftItem(index)"
           >
             <span>{{item.name}}</span>
@@ -43,12 +43,15 @@
       </div>
     </div>
 
+    <!-- 搜索弹框页面 -->
+    <SearchPanel :isShowPanel="isShowPanel" v-show="isShow" />
   </div>
 </template>
 
 <script>
   import {mapState} from 'vuex';
   import SearchNav from './Children/SearchNav';
+  import SearchPanel from './Children/SearchPanel'
   import BScroll from 'better-scroll';      //第三方库，实现滚动
   export default {
     name: "Search",
@@ -56,6 +59,7 @@
       return {
         scrollY:0,   //滚动的纵坐标
         rightTops:[],   //报错右边li元素加载时对应的高度
+        isShow:false,  //控制搜索框面板的显示与隐藏
       }
     },
     computed:{
@@ -63,11 +67,11 @@
       currentIndex(){
         return this.rightTops.findIndex((item,index) => {
           this._leftScroll(index);
-          return this.scrollY >= item && this.scrollY <= this.rightTops[index+1];
+          return this.scrollY >= item && this.scrollY < this.rightTops[index+1];
         })
       }
     },
-    watch:{
+    watch:{   //深度监听
       searchGoods(){
         this.$nextTick(() => {
           //左右两边栏的滚动
@@ -81,6 +85,7 @@
     },
     components:{
       SearchNav,
+      SearchPanel,
     },
     mounted(){
       //获取发送请求
@@ -107,7 +112,7 @@
       _initRightScrollTop(){
         // console.log(this.$refs.shopsParent);
         let tempArr = [];   //临时数组来存放li元素的高度
-        let top = 0
+        let top = 0;
         tempArr.push(top);
         let lis = this.$refs.shopsParent.getElementsByClassName("shop_li");
         Array.prototype.slice.call(lis).forEach( (item,index) => {    //注意：伪  ->  真
@@ -120,7 +125,7 @@
         })
         //更新数据
         this.rightTops = tempArr;
-        // console.log(this.rightTops);
+        console.log(this.rightTops);
       },
 
       //左侧菜单的联动效果    使用第三方库中 scrollToElement
@@ -133,15 +138,21 @@
 
       //左侧菜单栏点击事件
       clickLeftItem(index){
+        console.log(index);
         this.scrollY = this.rightTops[index];
-        this.scrollRight.scrollTo(0,-this.rightTops[index],300);
-      }
+        this.scrollRight.scrollTo(0,-this.scrollY,300);
+      },
 
+      //面板的显示隐藏
+      isShowPanel(flag){
+        this.isShow = flag;
+      }
     }
   }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+  @import "./../../common/stylus/mixins.styl"
   .Search
     width 100%
     height 100%
@@ -207,16 +218,18 @@
                 font-weight lighter
             .ad_img
               width 94%
-              margin 0 auto
+              margin 0 auto 8px;
               display flex
               align-items center
               flex-wrap wrap
+              justify-content center
+              border-bottom-1px(#F9F9F9)
               li
                 width 33.3%
                 display flex
                 align-items center
                 justify-content center
-                margin 10px 0
+                margin 12px 0
                 img
                   width 78%
             .shop_li_items
