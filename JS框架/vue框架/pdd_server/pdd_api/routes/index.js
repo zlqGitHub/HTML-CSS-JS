@@ -95,21 +95,26 @@ router.get("/api/homeshoplist",(req,res) => {
 
 //推荐页面的数据
 router.get("/api/recommendshoplist",(req,res)=>{
-  const data = require("./../data/recommend");
-  res.json({success_code:200,message:data});
+  // const data = require("./../data/recommend");
+  // res.json({success_code:200,message:data});
+  //参数
+  let page = req.query.page || 1;   //页码
+  let count = req.query.count || 20;   //每页 的数量
 
-  /*
-    从数据库中来获取数据
-  * */
-  // let sqlStr = "select * from pdd_recommend";
-  // conn.query(sqlStr,(error,results,fields) => {
-  //   if(error){
-  //     res.json({error_code:0,message:"获取数据失败"});
-  //   }else{
-  //     // console.log(results.message.length);
-  //     res.json({success_code:200,message:results});
-  //   }
-  // });
+    /*
+      从数据库中来获取数据
+    * */
+  let sqlStr = "select * from pdd_recommend limit "+(page-1)+","+count;
+  conn.query(sqlStr,(error,results,fields) => {
+    if(error){
+      res.json({error_code:0,message:"获取数据失败"});
+    }else{
+      // console.log(results.message.length);
+      setTimeout(()=>{
+        res.json({success_code:200,message:results});
+      },500)
+    }
+  });
 
 });
 
