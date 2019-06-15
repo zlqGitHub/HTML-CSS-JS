@@ -54,15 +54,13 @@
         color #ccc
         font-size 12px
         margin-left 3px
-
       .item_btn
         flex 1
         background transparent
         border 1px solid orangered
         height 25px
         color red
-        margin-right 2px
-        font-size 12px
+        font-size 10px
         border-radius 5px
 
 </style>

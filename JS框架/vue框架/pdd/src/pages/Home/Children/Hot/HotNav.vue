@@ -24,7 +24,7 @@
     data() {
       return {
         screenW: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,     //屏幕宽度
-        scrollContentW: 720,   //内容宽度
+        scrollContentW: 600,   //内容宽度
         bgBarW: 100,    //滚动条背景宽度
         barXWidth: 0,    //滚动条宽度
         currentPageX: 0,   //当前点击位置
@@ -91,33 +91,33 @@
 <style scoped lang="stylus" ref="stylesheet/stylus">
   .hot_nav
     width 100%
-    height 180px
+    height 170px
     overflow-x: auto
     position relative
     background #fff
     margin-top 8px
     .hot_nav_content
       width 100%
-      height 180px
+      height 170px
       overflow-x: auto
 
       .hot_nav_inner
-        width 720px
+        width 600px
         display flex
         flex-wrap wrap
         overflow-x: auto
 
         .hot_item
-          width 90px
-          height 80px
+          width 75px
+          height 75px
           display flex
           flex-direction column
           justify-content center
           align-items center
           color: #666
-          font-size 14px
+          font-size 13px
           img
-            width 35px
+            width 30px
             margin-bottom 8px
     .bgScroll
       width 100px

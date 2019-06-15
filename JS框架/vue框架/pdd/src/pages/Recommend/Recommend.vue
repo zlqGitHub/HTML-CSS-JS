@@ -19,40 +19,95 @@
         :item=item
       />
     </ul>
+
   </div>
 </template>
 
 <script>
+  import { Indicator } from 'mint-ui';
   import {mapState} from 'vuex';
   //引入组件
   import ShopList from './../../components/ShopList/ShopList'
+  //引入better-scroll库
+  import BScroll from 'better-scroll';
 
   export default {
     name: "Recommend",
+    data(){
+      return {
+        page:1,
+        count:20
+      }
+    },
     components: {
       ShopList
     },
     mounted() {
-      this.$store.dispatch("reqRecommendShopList");
+      Indicator.open("正在加载数据...");
+      this.$store.dispatch("reqRecommendShopList",{page:this.page,count:this.count,callback:()=>{
+        Indicator.close();
+      }});
     },
     computed: {
       ...mapState(['recommendShopList'])
+    },
+    watch:{
+      recommendShopList(){
+        this.$nextTick(()=>{
+          //只要有数据的变化就需要page+1
+          this.page += 1;
+          //初始化
+          this._initScroll();
+          //关闭加载
+          Indicator.close();
+        });
+      }
+    },
+    methods:{
+      _initScroll(){
+        //实力化
+        this.scroll = new BScroll('.Recommend-container',{
+          scrollY: true,
+          click: true,
+          probeType: 3
+        })
+        //监听触摸结束
+        this.scroll.on("touchEnd",(pos) => {
+          if(pos.y >= 50){
+            console.log("下拉刷新");
+            // Indicator.open({
+            //   spinnerType: 'fading-circle'
+            // });
+          }else if(this.scroll.maxScrollY > pos.y + 20){
+            console.log(this.page);
+            console.log("上拉刷新");
+            Indicator.open("正在加载数据...");
+            this.$store.dispatch("reqRecommendShopList",{page:this.page,count:this.count,callback:()=>{
+              Indicator.close();
+            }});
+          }
+        });
+
+        //监听滚动结束
+        this.scroll.on("scrollEnd",(pos) => {
+          this.scroll.refresh();  // 当 DOM 结构发生变化的时候务必要调用确保滚动的效果正常
+        });
+      }
     }
   }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+  @import "https://unpkg.com/mint-ui/lib/style.css"
   .Recommend-container
     width 100%
-    /*height 100%*/
+    height 100%
     background #f5f5f5
-    margin-bottom 50px
-
+    /*overflow hidden*/
     .Recommend
-      width 100%
       display flex
       flex-wrap wrap
       flex-direction row
       justify-content space-between
-
+      padding-bottom 50px
 </style>

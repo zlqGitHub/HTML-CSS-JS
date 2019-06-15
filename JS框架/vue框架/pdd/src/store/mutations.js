@@ -24,12 +24,12 @@ export default {
 
   //设置推荐页面商品列表数据
   [RECOMMEND_SHOP_LIST](state,{recommend_shop_list}){
-    state.recommendShopList = recommend_shop_list;
+    state.recommendShopList = state.recommendShopList.concat(recommend_shop_list);
   },
 
   //设置搜索页面的数据
   [SEARCH_GOODS](state,{search_goods}){
-    state.searchGoods = search_goods;
+    state.searchGoods =  search_goods;
   }
 
 

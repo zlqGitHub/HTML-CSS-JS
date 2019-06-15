@@ -40,10 +40,12 @@ export default {
   },
 
   //获取推荐页面商品数据
-  async reqRecommendShopList({commit}){
-    let result = await getRecommendShopList();
-    console.log(result.message);
+  async reqRecommendShopList({commit},params){
+    console.log(params);
+    let result = await getRecommendShopList(params);
     commit(RECOMMEND_SHOP_LIST,{recommend_shop_list:result.message});
+    //执行回调
+    params.callback || params.callback();
   },
 
   //获取搜索页面数据     通过回调函数来处理异步问题

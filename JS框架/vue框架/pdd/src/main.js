@@ -14,6 +14,10 @@ import store from './store/index';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
+//全局引入mint-ui
+import Mint from 'mint-ui';
+Vue.set(Mint);
+
 
 new Vue({
   el:"#app",
