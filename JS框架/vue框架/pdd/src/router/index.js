@@ -13,6 +13,8 @@ import Recommend from './../pages/Recommend/Recommend';
 import Search from './../pages/Search/Search';
 import Chat from './../pages/Chat/Chat';
 import Me from './../pages/Me/Me';
+import SelectLogin from './../pages/Login/SelectLogin';
+import Login from './../pages/Login/Login';
 
 //导入二级路由模块
 import Hot from '../pages/Home/Children/Hot/Hot'
@@ -54,6 +56,8 @@ export default new VueRouter({
     {path:"/search",component:Search},
     {path:"/chat",component:Chat},
     {path:"/me",component:Me},
+    {path:"/SelectLogin",component:SelectLogin},
+    {path:"/login",component:Login},
     {path:"/",redirect:'/home'}      //重定向，默认显示页面
   ]
 });
