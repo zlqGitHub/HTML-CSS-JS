@@ -7,4 +7,7 @@ export default {
   recommendShopList:[],   //推荐页面数据
 
   searchGoods:[],     //搜索页面数据
+
+  userInfo:{},     //用户信息
+
 }

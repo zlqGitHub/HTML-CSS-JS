@@ -56,7 +56,7 @@ export default new VueRouter({
     {path:"/search",component:Search},
     {path:"/chat",component:Chat},
     {path:"/me",component:Me},
-    {path:"/SelectLogin",component:SelectLogin},
+    {path:"/selectLogin",component:SelectLogin},
     {path:"/login",component:Login},
     {path:"/",redirect:'/home'}      //重定向，默认显示页面
   ]

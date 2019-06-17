@@ -3,7 +3,8 @@ import {
   HOME_NAV,
   HOME_SHOP_LIST,
   RECOMMEND_SHOP_LIST,
-  SEARCH_GOODS
+  SEARCH_GOODS,
+  USER_INFO
 } from "./mutation-types";
 
 export default {
@@ -30,6 +31,12 @@ export default {
   //设置搜索页面的数据
   [SEARCH_GOODS](state,{search_goods}){
     state.searchGoods =  search_goods;
+  },
+
+  //获取用户的信息
+  [USER_INFO](state,{user_info}){
+    state.userInfo = user_info;
+
   }
 
 

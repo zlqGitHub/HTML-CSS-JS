@@ -4,7 +4,8 @@ import {
   getHomeNav,
   getHomeShopList,
   getRecommendShopList,
-  getSearchGoods
+  getSearchGoods,
+  getUserInfo
 } from './../api/index';
 
 //进行规范约束
@@ -13,7 +14,8 @@ import {
   HOME_NAV,
   HOME_SHOP_LIST,
   RECOMMEND_SHOP_LIST,
-  SEARCH_GOODS
+  SEARCH_GOODS,
+  USER_INFO
 } from "./mutation-types";
 
 export default {
@@ -35,7 +37,7 @@ export default {
   //获取首页商品列表数据
   async reqHomeShopList({commit}){
     let result = await getHomeShopList();
-    console.log(result);
+    // console.log(result);
     commit(HOME_SHOP_LIST,{home_shop_list:result.message.goods_list});
   },
 
@@ -54,6 +56,13 @@ export default {
     // console.log(result);
     commit(SEARCH_GOODS,{search_goods:result.message.data});
     callback && callback();
+  },
+
+  //获取用户的信息
+  async getUserInfo({commit}){
+    let result = await getUserInfo();
+    console.log(result);
+    // commit();
   }
 
 

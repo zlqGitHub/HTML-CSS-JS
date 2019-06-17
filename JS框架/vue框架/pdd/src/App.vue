@@ -6,11 +6,14 @@
 </template>
 
 <script>
-  import TarBar from './components/TarBar/TarBar'
+  import TarBar from './components/TarBar/TarBar';
   export default {
     name: "App",
     components:{
       TarBar,
+    },
+    created(){
+      this.$store.dispatch("getUserInfo");
     }
   }
 </script>

@@ -4,6 +4,7 @@ import axios from 'axios'
 export default function ajax( url = '', params = {}, type ="GET") {
   //定义 Promise 对象
   let promise;
+  // console.log(params);
   return new Promise((resolve,reject) => {
     //判断请求方式
     if(type === "GET"){    //需要处理url字符串
@@ -15,7 +16,7 @@ export default function ajax( url = '', params = {}, type ="GET") {
         paramStr = paramStr.substr(0,paramStr.lastIndexOf("&"));
       }
       url = url + "?" + paramStr;
-
+      console.log(url);
       //发送get请求
       promise = axios.get(url);
 

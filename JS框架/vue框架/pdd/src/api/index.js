@@ -21,3 +21,13 @@ export const getRecommendShopList = (params) => ajax(BASE_URL + "/api/recommends
 
 //请求搜索页面数据
 export const getSearchGoods = () => ajax(BASE_URL + "/api/searchgoods");
+
+//获取手机短信验证码
+export const getPhoneCode = (phone) => ajax(BASE_URL + "/api/send_code",phone);
+
+//手机验证码登录
+export const phoneCodeLogin = (phone,code) => ajax(BASE_URL + "/api/login_code",{phone,code},"POST");
+
+//获取用户信息
+export const getUserInfo  = () => ajax(BASE_URL + "/api/getUserInfo");
+

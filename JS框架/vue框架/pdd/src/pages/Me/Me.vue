@@ -1,13 +1,17 @@
 <template>
   <div class="Me">
-    我的
+    <select-login />
   </div>
 </template>
 
 <script>
-    export default {
-        name: "Me"
+  import SelectLogin from './../Login/SelectLogin';
+  export default {
+    name: "Me",
+    components:{
+      SelectLogin,
     }
+  }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
