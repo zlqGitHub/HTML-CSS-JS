@@ -1,7 +1,10 @@
 let express = require('express');
 let router = express.Router();
 const conn = require("./../db/db");
+const sms = require("./../util/sms_util");
+const session = require("cookie-session");
 
+const users = [];    //保存用户信息
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 //解决跨域问题
-router.get("*",function(req,res,next){
+router.all("*",function(req,res,next){
   //设置允许跨域的域名，*代表允许任意域名跨域
   res.header("Access-Control-Allow-Origin","*");
   //允许的header类型
@@ -17,7 +20,7 @@ router.get("*",function(req,res,next){
   //跨域允许的请求方式
   res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
   if (req.method.toLowerCase() == 'options'){
-    res.send(200);  //让options尝试请求快速结束
+    res.sendStatus(200);  //让options尝试请求快速结束
   }else{
     next();
   }
@@ -126,5 +129,105 @@ router.get("/api/searchgoods",(req,res) => {
     res.json({success_code:200,message:data});
   },10)
 });
+
+//获取验证码
+router.get("/api/send_code",(req,res) => {
+  //当前用户请求的手机号吗
+  let phone = req.query.phone;
+  //验证码
+  let code = sms.randomCode(6);
+  console.log(code);
+
+  //向指定号码发送验证码   将会报错，因为没有第三方服务提供短信发送
+  /*sms.sendCode(phone,code,function(success){
+    if(success){
+      users[phone] = code;
+      res.json({success_code:200,message:"验证码获取成功"});
+    }else{
+      res.json({error_code:0,message:"验证码获取失败"});
+    }
+  })*/
+
+  //成功
+  setTimeout(()=>{
+    users[phone] = code;
+    res.json({success_code:200,message:code});
+  },2000);
+
+/*
+  模拟失败
+  setTimeout(()=>{
+    res.json({error_code:0,message:"验证码获取失败"});
+  },2000);*/
+
+});
+
+//手机验证码登录
+router.post("/api/login_code",(req,res) => {
+  let phone = req.body.phone;
+  let code = req.body.code;
+  //判断提交验证码是否正确
+  if(users[phone] !== code ){
+    res.json({error_code:0,message:"验证输入有误"});
+  }
+
+  //先将当前的信息删除
+  delete users[phone];
+
+  //查询表中信息看看是否存再当前用户
+  let sqlStr = "select * from pdd_user_info where user_phone = "+ phone +" LIMIT 1;"
+
+  conn.query(sqlStr,(error,result,field) => {
+    if(error){
+      res.json({error_code:1,message:"获取数据失败"});
+    }else{
+        if(result[0]){   //用户存在
+            // console.log(result[0]);
+            req.session.userId = result[0].id;
+            console.log("oldID = ",req.session.userId);
+            //将数据返回
+            res.json({success_code:200,message:{id:result[0].id,user_name:result[0].user_name,user_phone:result[0].user_phone,user_sex:result[0].user_sex,user_address:result[0].user_address,user_birthday:result[0].user_birthday,user_sign:result[0].user_sign}});
+        }else{   //新用户
+            let sqlStr = "insert into pdd_user_info (user_name,user_phone) VALUES (?,?);"
+            //将新用户插入表中
+            conn.query(sqlStr,[phone,phone],(error,result,field) => {
+                if(error){
+                    res.json({error_code:3,message:"数据写入失败"});
+                }else{
+                    //将信息查询出来并保存
+                    let sqlStr = "select * from pdd_user_info where user_phone = "+ phone +" LIMIT 1;";
+                    conn.query(sqlStr,(error,result,field) => {
+                        req.session.userId = result[0].id;
+                        console.log("newID = ",req.session.userId);
+                        res.json({success_code:200,
+                            message:{
+                                id:result[0].id,
+                                user_name:result[0].user_name,
+                                user_phone:result[0].user_phone,
+                                user_sex:result[0].user_sex,
+                                user_address:result[0].user_address,
+                                user_birthday:result[0].user_birthday,
+                                user_sign:result[0].user_sign
+                            }
+                        });
+                    })
+                }
+            });
+        }
+    }
+
+  });
+
+//获取用户的信息
+router.get("/api/getUserInfo",(req,res) => {
+    //获取用户ID
+    let userId = req.session.userId;
+    console.log("hahah:",userId);
+    res.json({success_code:200});
+});
+
+
+});
+
 
 module.exports = router;
