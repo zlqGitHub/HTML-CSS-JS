@@ -5,7 +5,7 @@ import ajax from './ajax';
 //请求数据
 
 //定义基础路径
-const BASE_URL = 'http://127.0.0.1:3000';
+const BASE_URL = '/api';    //防止跨域问题
 
 //请求轮播图数据
 export const getHomeCasual = () => ajax(BASE_URL+'/api/homecasual');

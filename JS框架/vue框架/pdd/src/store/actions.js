@@ -15,6 +15,7 @@ import {
   HOME_SHOP_LIST,
   RECOMMEND_SHOP_LIST,
   SEARCH_GOODS,
+  SYNC_USER_INFO,
   USER_INFO
 } from "./mutation-types";
 
@@ -58,7 +59,13 @@ export default {
     callback && callback();
   },
 
-  //获取用户的信息
+  //同步用户信息
+  syncUserInfo({commit},sync_user_info){
+    console.log(sync_user_info);
+    commit(SYNC_USER_INFO,sync_user_info);
+  },
+
+  //异步获取用户的信息
   async getUserInfo({commit}){
     let result = await getUserInfo();
     console.log(result);

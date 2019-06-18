@@ -9,5 +9,7 @@ export const RECOMMEND_SHOP_LIST = 'recommend_shop_list';    //获取推荐页�
 
 export const SEARCH_GOODS = 'search_goods';     //获取搜索页面数据
 
+export const SYNC_USER_INFO = 'sync_user_info';     //同步用户信息
+
 export const USER_INFO = 'user_info';  //用户信息
 

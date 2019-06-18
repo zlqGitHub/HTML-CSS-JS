@@ -4,6 +4,7 @@ import {
   HOME_SHOP_LIST,
   RECOMMEND_SHOP_LIST,
   SEARCH_GOODS,
+  SYNC_USER_INFO,
   USER_INFO
 } from "./mutation-types";
 
@@ -33,11 +34,17 @@ export default {
     state.searchGoods =  search_goods;
   },
 
-  //获取用户的信息
-  [USER_INFO](state,{user_info}){
-    state.userInfo = user_info;
+  //保存用户信息id   同步用户信息
+  [SYNC_USER_INFO](state,sync_user_info){
+    state.userInfo = sync_user_info;
+  },
 
-  }
+  //获取用户的信息
+  // [USER_INFO](state,{user_info}){
+  //
+  //   // state.userInfo = user_info;
+  //
+  // }
 
 
 }

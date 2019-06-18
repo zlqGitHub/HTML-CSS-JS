@@ -1,6 +1,9 @@
 <template>
   <div class="Me">
     <select-login />
+   <div>
+      我的页面
+   </div>
   </div>
 </template>
 
@@ -10,6 +13,9 @@
     name: "Me",
     components:{
       SelectLogin,
+    },
+    mounted() {
+      // console.log(this.$router);
     }
   }
 </script>

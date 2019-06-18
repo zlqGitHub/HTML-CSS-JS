@@ -118,7 +118,7 @@
         }
         //登录
         let result = await phoneCodeLogin(this.phone,this.code);
-        console.log(result);
+        // console.log(result);
         //验证码出错
         if(result.error_code === 0){
           Toast({
@@ -141,13 +141,14 @@
         if(result.success_code === 200){
           this.userInfo = result.message;
         }
-
+        console.log(this.userInfo);
 
         //成功后后续处理
         if(!this.userInfo.id){
           Toast(this.userInfo.message);
         }else{    //成功
-
+          //同步用户信息
+          this.$store.dispatch("syncUserInfo",this.userInfo);
           this.$router.back();
         }
 
