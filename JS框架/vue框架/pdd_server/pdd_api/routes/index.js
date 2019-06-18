@@ -2,7 +2,6 @@ let express = require('express');
 let router = express.Router();
 const conn = require("./../db/db");
 const sms = require("./../util/sms_util");
-const session = require("cookie-session");
 
 const users = [];    //保存用户信息
 
@@ -164,6 +163,9 @@ router.get("/api/send_code",(req,res) => {
 
 //手机验证码登录
 router.post("/api/login_code",(req,res) => {
+    setTimeout(()=>{
+        console.log("167=",req.session.userId);
+    },2000);
   let phone = req.body.phone;
   let code = req.body.code;
   //判断提交验证码是否正确
@@ -175,20 +177,23 @@ router.post("/api/login_code",(req,res) => {
   delete users[phone];
 
   //查询表中信息看看是否存再当前用户
-  let sqlStr = "select * from pdd_user_info where user_phone = "+ phone +" LIMIT 1;"
+  let sqlStr = "select * from pdd_user_info where user_phone = "+ phone +" LIMIT 1;";
 
   conn.query(sqlStr,(error,result,field) => {
     if(error){
       res.json({error_code:1,message:"获取数据失败"});
     }else{
+        // console.log(result[0]);
+        result = JSON.parse(JSON.stringify(result));
+        // console.log(result[0]);
         if(result[0]){   //用户存在
             // console.log(result[0]);
             req.session.userId = result[0].id;
-            console.log("oldID = ",req.session.userId);
+            console.log(req.session);
             //将数据返回
             res.json({success_code:200,message:{id:result[0].id,user_name:result[0].user_name,user_phone:result[0].user_phone,user_sex:result[0].user_sex,user_address:result[0].user_address,user_birthday:result[0].user_birthday,user_sign:result[0].user_sign}});
         }else{   //新用户
-            let sqlStr = "insert into pdd_user_info (user_name,user_phone) VALUES (?,?);"
+            let sqlStr = "insert into pdd_user_info (user_name,user_phone) VALUES (?,?)";
             //将新用户插入表中
             conn.query(sqlStr,[phone,phone],(error,result,field) => {
                 if(error){
@@ -197,8 +202,8 @@ router.post("/api/login_code",(req,res) => {
                     //将信息查询出来并保存
                     let sqlStr = "select * from pdd_user_info where user_phone = "+ phone +" LIMIT 1;";
                     conn.query(sqlStr,(error,result,field) => {
+                        result = JSON.parse(JSON.stringify(result));
                         req.session.userId = result[0].id;
-                        console.log("newID = ",req.session.userId);
                         res.json({success_code:200,
                             message:{
                                 id:result[0].id,
@@ -218,16 +223,35 @@ router.post("/api/login_code",(req,res) => {
 
   });
 
+});
+
 //获取用户的信息
 router.get("/api/getUserInfo",(req,res) => {
+    console.log(req.session.userId);
     //获取用户ID
-    let userId = req.session.userId;
-    console.log("hahah:",userId);
-    res.json({success_code:200});
+    let userID = req.session.userId;
+    //查询用户信息
+    let sqlStr = "select * from pdd_user_info where id = " + userID;
+    conn.query(sqlStr,(error,result,field)=>{
+        if(error){
+            res.json({error_code:0,message:"请求数据失败"});
+        }else{
+            result = JSON.parse(JSON.stringify(result));
+            if(!result[0]){
+                delete req.session.userId;
+                res.json({error_code:1,message:"请先登录"});
+            }else{
+                res.json({
+                    success_code:200,
+                    message:{id:result[0].id,user_name:result[0].user_name,user_phone:result[0].user_phone,user_sex:result[0].user_sex,user_address:result[0].user_address,user_birthday:result[0].user_birthday,user_sign:result[0].user_sign}
+                })
+            }
+        }
+    });
+
+
+
+    res.json({success_code:200,message:req.session});
 });
-
-
-});
-
 
 module.exports = router;
