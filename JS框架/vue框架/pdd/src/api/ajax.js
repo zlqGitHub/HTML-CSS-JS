@@ -16,7 +16,7 @@ export default function ajax( url = '', params = {}, type ="GET") {
         paramStr = paramStr.substr(0,paramStr.lastIndexOf("&"));
       }
       url = url + "?" + paramStr;
-      console.log(url);
+      // console.log(url);
       //发送get请求
       promise = axios.get(url);
 

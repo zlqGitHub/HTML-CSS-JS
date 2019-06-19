@@ -18,7 +18,7 @@
       <!--<button class="getCode" @click.prevent="getVerifyCode">剩余 ({{countDown}}) s</button>-->
       <input class="input" v-model="code" type="text" placeholder="验证码">
       <span class="tip">
-         温馨提示：未注册撩课帐号的手机号，登录时将自动注册，且代表已同意
+         温馨提示：未注拼多多帐号的手机号，登录时将自动注册，且代表已同意
           <a href="javascript:;">服务协议与隐私政策</a>
       </span>
 
@@ -28,19 +28,22 @@
 
     <!--密码登录-->
     <div class="pwdLogin" v-else>
-      <input class="input" type="text" placeholder="请输入手机号">
-      <input class="input" type="text" placeholder="请输入密码">
-      <input class="input inputCode" type="text" style="width: 50%" placeholder="请输入验证码">
+      <input class="input" type="text" v-model="phone" placeholder="请输入手机号">
+      <input class="input" type="text" v-model="pwd" placeholder="请输入密码">
+
+      <!--<img ref="pwdImg" @click.prevent="changePwdImg" class="pwdModel" src="./images/hide_pwd.png" alt="" width="25px">-->
+
+      <input class="input inputCode" v-model="code" type="text" style="width: 50%" placeholder="请输入验证码">
       <button class="code">
-        <img src="./images/captcha.svg" width="100%" alt="">
+        <img ref="captcha" @click="getCaptcha()" src="http://127.0.0.1:3000/api/getCaptcha" width="100%" alt="">
       </button>
       <span class="tip">
-         温馨提示：未注册撩课帐号的手机号，登录时将自动注册，且代表已同意
+         温馨提示：未注册拼多多帐号的手机号，登录时将自动注册，且代表已同意
           <a href="javascript:;">服务协议与隐私政策</a>
       </span>
 
-      <button class="loginBtn">登录</button>
-      <button class="backBtn">返回</button>
+      <button class="loginBtn" @click.prevent="loginSubmit">登录</button>
+      <button class="backBtn" @click.prevent="$router.back()">返回</button>
     </div>
 
   </div>
@@ -48,13 +51,16 @@
 
 <script>
   import { Toast } from 'mint-ui';
-  import {getPhoneCode,phoneCodeLogin} from './../../api/index';
+  import {getPhoneCode,phoneCodeLogin,phonePwdLogin} from './../../api/index';
+
   export default {
     name: "Login",
     data(){
       return {
         changeLogin: true,   //判断那种登录方式
         phone:'',   //手机号
+        pwd:'',   //密码
+        pwdModel:true,   //密码显示方式   true密文显示    false 明文显示
         code:'',  //验证码
         tipTitle:'获取验证码',
         countDown:0,   //倒计时
@@ -76,7 +82,7 @@
       //获取验证码
       async getVerifyCode(){
         if(!this.phoneRight) return;   //手机号不正确是不允许点击
-        this.countDown = 5;
+        this.countDown = 60;
         this.timer = setInterval(()=>{
           this.countDown--;
           this.tipTitle = '剩余 ('+ this.countDown +') s';
@@ -98,6 +104,18 @@
           return ;
         }
       },
+
+      //改变密码图标
+      changePwdImg(){
+        this.pwdModel = !this.pwdModel;
+        this.$refs.pwdImg.src = this.pwdModel ? './images/hide_pwd.png' : './images/show_pwd.png';
+      },
+
+      //切换验证码
+      getCaptcha(){
+        this.$refs.captcha.src = 'http://127.0.0.1:3000/api/getCaptcha?time=' + new Date();
+        console.log(this.$refs.captcha.src);
+      },
       //提交信息进行登录
       async loginSubmit(){
         if(!this.phoneRight){
@@ -108,7 +126,15 @@
           });
           return;
         }
-        if(!/\d{6}/gi.test(this.code)){
+        if(!this.changeLogin && this.pwd.trim() === ""){
+          Toast({
+            message: '请输入密码',
+            position: 'center',
+            duration: 2000
+          });
+          return;
+        }
+        if((this.changeLogin && !/\d{6}/gi.test(this.code)) || (!this.changeLogin && this.code.length != 4)){
           Toast({
             message: '请输入验证码',
             position: 'center',
@@ -117,12 +143,12 @@
           return;
         }
         //登录
-        let result = await phoneCodeLogin(this.phone,this.code);
-        // console.log(result);
+        let result = this.changeLogin ? await phoneCodeLogin(this.phone,this.code) : await phonePwdLogin(this.phone,this.pwd,this.code);
+        console.log(result);
         //验证码出错
         if(result.error_code === 0){
           Toast({
-            message:result.method,
+            message:result.message,
             position:"center",
             duration: 2000
           });
@@ -131,7 +157,15 @@
         //获取数据失败
         if(result.error_code === 1){
           Toast({
-            message:result.method,
+            message:result.message,
+            position:"center",
+            duration: 2000
+          });
+          return;
+        }
+        if(result.error_code === 2){
+          Toast({
+            message:result.message,
             position:"center",
             duration: 2000
           });
@@ -210,6 +244,10 @@
       .inputCode
         position relative
         left -17.5%
+      .pwdModel
+        position absolute
+        top 68px
+        left 80%
       .code
         width 36%
         height 70px

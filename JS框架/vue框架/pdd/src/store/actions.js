@@ -5,7 +5,8 @@ import {
   getHomeShopList,
   getRecommendShopList,
   getSearchGoods,
-  getUserInfo
+  getUserInfo,
+  logout
 } from './../api/index';
 
 //进行规范约束
@@ -16,7 +17,8 @@ import {
   RECOMMEND_SHOP_LIST,
   SEARCH_GOODS,
   SYNC_USER_INFO,
-  USER_INFO
+  USER_INFO,
+  LOGOUT
 } from "./mutation-types";
 
 export default {
@@ -61,15 +63,33 @@ export default {
 
   //同步用户信息
   syncUserInfo({commit},sync_user_info){
-    console.log(sync_user_info);
     commit(SYNC_USER_INFO,sync_user_info);
   },
 
   //异步获取用户的信息
-  async getUserInfo({commit}){
+  async getUserInfos({commit},params){
     let result = await getUserInfo();
     console.log(result);
-    // commit();
+    if(result.success_code === 200){
+      // console.log("cg");
+      commit(SYNC_USER_INFO,result.message)
+    }
+    if(result.error_code === 0){
+      // params.callback && params.callback(result.message);
+    }
+    if(result.error_code === 1){
+      // params.callback && params.callback(result.message);
+    }
+  },
+
+  //退出登录
+  async logout({commit}){
+    let result = await logout();
+    console.log(result);
+    if(result.success_code === 200){   //退出成功
+      commit(SYNC_USER_INFO,{});
+      return result;
+    }
   }
 
 

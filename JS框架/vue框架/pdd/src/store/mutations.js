@@ -39,12 +39,7 @@ export default {
     state.userInfo = sync_user_info;
   },
 
-  //获取用户的信息
-  // [USER_INFO](state,{user_info}){
-  //
-  //   // state.userInfo = user_info;
-  //
-  // }
+
 
 
 }

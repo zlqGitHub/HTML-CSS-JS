@@ -28,6 +28,12 @@ export const getPhoneCode = (phone) => ajax(BASE_URL + "/api/send_code",phone);
 //手机验证码登录
 export const phoneCodeLogin = (phone,code) => ajax(BASE_URL + "/api/login_code",{phone,code},"POST");
 
+//手机号密码登录
+export const phonePwdLogin = (phone,pwd,code) => ajax(BASE_URL + "/api/pwdLogin",{phone,pwd,code},"POST");
+
 //获取用户信息
 export const getUserInfo  = () => ajax(BASE_URL + "/api/getUserInfo");
+
+//退出登录
+export const logout = () => ajax(BASE_URL + "/api/logout");
 

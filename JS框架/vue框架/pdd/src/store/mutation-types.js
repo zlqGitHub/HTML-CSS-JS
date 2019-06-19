@@ -13,3 +13,5 @@ export const SYNC_USER_INFO = 'sync_user_info';     //同步用户信息
 
 export const USER_INFO = 'user_info';  //用户信息
 
+export const LOGOUT = 'logout';     //退出登录
+
