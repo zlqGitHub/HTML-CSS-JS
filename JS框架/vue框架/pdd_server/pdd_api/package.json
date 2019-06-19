@@ -19,6 +19,7 @@
     "morgan": "~1.9.1",
     "mysql": "^2.17.1",
     "request": "^2.88.0",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "svg-captcha": "^1.4.0"
   }
 }

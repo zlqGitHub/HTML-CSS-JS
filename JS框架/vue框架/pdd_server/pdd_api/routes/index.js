@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 const conn = require("./../db/db");
 const sms = require("./../util/sms_util");
+const svgCaptcha = require('svg-captcha');
 
 const users = [];    //保存用户信息
 
@@ -135,7 +136,7 @@ router.get("/api/send_code",(req,res) => {
   let phone = req.query.phone;
   //验证码
   let code = sms.randomCode(6);
-  console.log(code);
+  req.session.phone = code;
 
   //向指定号码发送验证码   将会报错，因为没有第三方服务提供短信发送
   /*sms.sendCode(phone,code,function(success){
@@ -153,6 +154,13 @@ router.get("/api/send_code",(req,res) => {
     res.json({success_code:200,message:code});
   },2000);
 
+
+  setTimeout(() => {
+      //先将当前的信息删除
+      delete users[phone];
+      req.session.destroy();    //60秒后验证码失效
+  },60000);
+
 /*
   模拟失败
   setTimeout(()=>{
@@ -163,18 +171,17 @@ router.get("/api/send_code",(req,res) => {
 
 //手机验证码登录
 router.post("/api/login_code",(req,res) => {
-    setTimeout(()=>{
-        console.log("167=",req.session.userId);
-    },2000);
+  if(req.session.phone === undefined){
+    res.json({error_code:0,message:"验证码已失效"});
+    return;
+  }
   let phone = req.body.phone;
   let code = req.body.code;
   //判断提交验证码是否正确
   if(users[phone] !== code ){
     res.json({error_code:0,message:"验证输入有误"});
+    return;
   }
-
-  //先将当前的信息删除
-  delete users[phone];
 
   //查询表中信息看看是否存再当前用户
   let sqlStr = "select * from pdd_user_info where user_phone = "+ phone +" LIMIT 1;";
@@ -225,13 +232,83 @@ router.post("/api/login_code",(req,res) => {
 
 });
 
+//图形验证码   https://github.com/lemonce/svg-captcha/blob/1.x/README_CN.md
+router.get("/api/getCaptcha",(req,res) => {
+    let captcha = svgCaptcha.create({
+        color:true,
+        size:4,
+        ignoreChars:'0o1i',
+        noise:3,
+    });
+    req.session.captcha = captcha.text.toLocaleLowerCase();   //全部按本地格式转化为小写
+    console.log("验证码为：",req.session.captcha);
+    res.type('svg');
+    res.status(200).send(captcha.data);
+
+});
+
+//密码登录    用户不存在将写入库中
+router.post("/api/pwdLogin",(req,res)=>{
+    //获取验证码
+    let code = req.session.captcha;
+    console.log(code);
+    console.log(req.body);
+    if(req.body.code.toLocaleLowerCase() !== code){
+        res.json({error_code:0,message:"验证码错误"});
+        return;
+    }
+    //进行数据库的操作
+    let sqlStr = "select * from pdd_user_info where user_phone =" + req.body.phone + " limit 1";
+    conn.query(sqlStr,(error,result,field) => {
+        if (error){
+            res.json({error_code:1,message:"数据获取失败"});
+        }else{
+            result = JSON.parse(JSON.stringify(result))
+            if(result[0]){   //老用户
+                if(result[0].user_pwd !== req.body.pwd){
+                    res.json({error_code:2,message:"密码不正确"});
+                }
+                req.session.userId = result[0].id;
+                res.json({success_code:200,message:{id:result[0].id,user_name:result[0].user_name,user_phone:result[0].user_phone,user_sex:result[0].user_sex,user_address:result[0].user_address,user_birthday:result[0].user_birthday,user_sign:result[0].user_sign}});
+            }else{  //新用户
+                let sqlStr = "insert into pdd_user_info (user_name,user_phone,user_pwd) VALUES (?,?,?)";
+                //将新用户插入表中
+                conn.query(sqlStr,[req.body.phone,req.body.phone,req.body.pwd],(error,result,field) => {
+                    if(error){
+                        res.json({error_code:3,message:"数据写入失败"});
+                    }else{
+                        //将信息查询出来并保存
+                        let sqlStr = "select * from pdd_user_info where user_phone = "+ phone +" LIMIT 1;";
+                        conn.query(sqlStr,(error,result,field) => {
+                            result = JSON.parse(JSON.stringify(result));
+                            req.session.userId = result[0].id;
+                            res.json({success_code:200,
+                                message:{
+                                    id:result[0].id,
+                                    user_name:result[0].user_name,
+                                    user_phone:result[0].user_phone,
+                                    user_sex:result[0].user_sex,
+                                    user_address:result[0].user_address,
+                                    user_birthday:result[0].user_birthday,
+                                    user_sign:result[0].user_sign
+                                }
+                            });
+                        })
+                    }
+                });
+            }
+        }
+    });
+});
+
 //获取用户的信息
 router.get("/api/getUserInfo",(req,res) => {
-    console.log(req.session.userId);
     //获取用户ID
     let userID = req.session.userId;
+    console.log(req.session);
     //查询用户信息
-    let sqlStr = "select * from pdd_user_info where id = " + userID;
+    let sqlStr = "select * from pdd_user_info where id = " + userID + " limit 1";
+    console.log(sqlStr);
     conn.query(sqlStr,(error,result,field)=>{
         if(error){
             res.json({error_code:0,message:"请求数据失败"});
@@ -248,10 +325,14 @@ router.get("/api/getUserInfo",(req,res) => {
             }
         }
     });
+});
 
-
-
-    res.json({success_code:200,message:req.session});
+//退出登录
+router.get("/api/logout",(req,res) => {
+    //将sesstion中的userIdshanc
+    console.log(req.session.userId);
+    delete req.session.userId;
+    res.json({success_code:200,message:"退出成功"});
 });
 
 module.exports = router;
