@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>连连看（消除方块）</title>
+		<style>
+			.box{
+				width: 400px;
+				height: 320px;
+				border: 5px solid hotpink;
+				box-sizing:content-box;
+				margin: 20px auto;
+			}
+			.item{
+				width: 100px;
+				height: 80px;
+				float: left;
+				text-align: center;
+				line-height: 80px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<!-- <div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div> -->
+		</div>
+		<script>
+			var oBox = document.querySelector(".box");
+			//随机产生8个值
+			var valueArr = [];
+			for(var i = 0; i < 8 ; i++){
+				var temp = Math.floor(Math.random()*100);
+				if(!valueArr.includes(temp)){  //判断当前数组中是否含有相同 的值  es6中语法includes  还可以使用indexOf
+					valueArr.push(temp);
+				}else{
+					i--;
+				}
+			}
+			//创建16个小方块
+			var divs = [];
+			for(var i = 0; i < 16; i++){
+				//产生随机背景色
+				var color1 = Math.floor(Math.random()*255);
+				var color2 = Math.floor(Math.random()*255);
+				var color3 = Math.floor(Math.random()*255);
+				
+				var item = document.createElement("div");
+				item.className = "item";
+				item.style.background = "rgb("+color1+","+color2+","+color3+")";
+				// var index = i % 8;
+				item.innerText = valueArr[i % 8];	
+				divs.push(item);
+			}
+			//将小方块随机放入div中		
+			//产生16个 0-15不重复的值
+			var randoms = [];
+			while(1){
+				var tempRandom = Math.floor(Math.random()*16);
+				if(!randoms.includes(tempRandom)){
+					randoms.push(tempRandom);
+					if(randoms.length == 16){
+						break;
+					}
+				}
+			}
+			for(var i = 0; i < randoms.length; i++ ){
+				oBox.appendChild(divs[randoms[i]])
+			}
+			//定义点击事件
+			var arr = [];  //保存前后两次点击的值
+			var oDivs = oBox.querySelectorAll(".item");
+			oDivs.forEach((item,index) => {
+				item.onclick = function(){
+					arr.push([item.innerText,index]);
+					//删除两个相等的div
+					if(arr.length == 2 && arr[0][0] == arr[1][0] && arr[0][1] != arr[1][1]){
+						//不占位隐藏
+						// oDivs[arr[0][1]].style.display = 'none';
+						// oDivs[arr[1][1]].style.dispaly = 'none';
+						
+						//占位隐藏
+						oDivs[arr[0][1]].style.visibility = "hidden"
+						oDivs[arr[1][1]].style.visibility = 'hidden';
+						arr.splice(0,arr.length);
+					}
+					//只要数组中存放了超过两个值就需要清空数组
+					if(arr.length == 2){
+						arr.splice(0,arr.length);
+					}
+					console.log(arr)
+				}
+			});		
+		</script>
+	</body>
+</html>
