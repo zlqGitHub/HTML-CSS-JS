@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>小球碰撞</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			.box{
+				width: 800px;
+				height: 550px;
+				border: 5px solid deeppink;
+				position: relative;
+				margin: 20px auto;
+			}
+			.ball{
+				width: 40px;
+				height: 40px;
+				border-radius:50%;
+				background: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.ball2{
+				width: 25px;
+				height: 25px;
+				border-radius:50%;
+				background: cadetblue;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<!-- <div class="ball"></div> -->
+			<!-- <div class="ball2"></div> -->
+		</div>
+		
+		<script>
+			var oBox = document.querySelector(".box");
+			// var oBall = document.querySelector(".ball");
+			// move(oBall);  //调用方法
+			
+			// 创建多个小球
+			for(var i = 0; i <= 50; i++){
+				//产生小球的随机大小(设置宽高)
+				var size = Math.ceil(Math.random()*80+20);
+				
+				//产生小球随机背景色
+				var color1 = Math.ceil(Math.random()*255);
+				var color2 = Math.ceil(Math.random()*255);
+				var color3 = Math.ceil(Math.random()*255);
+				
+				// 产生小球
+				var newBall = document.createElement("div");
+				newBall.className = "ball";
+				newBall.style.width = size + "px";
+				newBall.style.height = size + 'px';
+				newBall.style.background = "rgb("+color1+","+color2+","+color3+")"
+				//调用动画
+				move(newBall);
+				//添加到box盒子中
+				oBox.appendChild(newBall);
+			}
+			//封装move小球移动函数
+			function move(obj){
+				//设置速度  +1表示不让小球在某个方向上速度变为0
+				var speed1 = Math.floor(Math.random()*10+1);  
+				var speed2 = Math.floor(Math.random()*10+1);
+				var leftValue = 0;
+				var topValue = 0;
+				setInterval(()=>{
+					leftValue += speed1;
+					topValue += speed2;
+					obj.style.left = leftValue + "px";
+					obj.style.top = topValue + "px";
+					console.log(obj.style.top);
+					// 控制垂直方向
+					if(obj.offsetTop >= 550 - obj.offsetHeight){
+						obj.style.top = (550 - obj.offsetHeight) + "px";
+						speed2 = -speed2;
+					}
+					if(obj.offsetTop <= 0){
+						speed2 = -speed2;
+					}
+					// 控制水平方向
+					if(obj.offsetLeft >= 800 - obj.offsetWidth){
+						obj.style.left = (550 - obj.offsetWidth) + "px";
+						speed1 = -speed1;
+					}
+					if(obj.offsetLeft <= 0){
+						speed1 = -speed1;
+					}
+					
+				},20);
+				
+			}
+			
+			//随机色函数
+			function randomColor(){
+				//产生一个随机颜色
+				var r = randomNumber(0, 255);
+				var g = randomNumber(0, 255);
+				var b = randomNumber(0, 255);
+				//修改元素
+				return "rgb(" + r + "," + g + "," + b + ")";
+			}
+		</script>
+		
+		
+	</body>
+</html>
