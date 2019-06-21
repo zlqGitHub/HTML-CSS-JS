@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>瀑布流</title>
+		<style type="text/css">
+			/* *{margin: 0;padding: 0;} */
+			.container{
+				display: flex;
+				justify-content: space-around;
+				align-items: flex-start;
+			}
+			.list{
+				width: 15%;
+			}
+			.item{
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="list"></div>
+			<div class="list"></div>
+			<div class="list"></div>
+			<div class="list"></div>
+			<div class="list"></div>
+		</div>
+		<script>
+			var oContainer = document.querySelector(".container");
+			var oLists = document.querySelectorAll(".list");
+			//创建多个小方块
+			for(var i = 0; i < 100; i++){
+				// 生成随机高度
+				var height = Math.ceil(Math.random()*200+50);
+				// 随机色
+				var color1 = Math.ceil(Math.random()*255);
+				var color2 = Math.ceil(Math.random()*255);
+				var color3 = Math.ceil(Math.random()*255);
+				
+				var item = document.createElement("div");
+				item.className = "item";
+				item.style.height = height + "px";
+				item.style.lineHeight = height + "px";
+				item.style.background = "rgb("+color1+","+color2+","+color3+")";
+				item.innerText = i+1;
+				//实现瀑布流
+				var currentIndex;    //要插入的当前list列表
+				var minHeight = 100000;   //设置默认的高度
+				// 找出最小高度list对应的索引
+				for(var j = 0; j < oLists.length; j++){
+					if(oLists[j].clientHeight < minHeight){
+						minHeight = oLists[j].clientHeight;
+						currentIndex = j;
+					}
+				}
+				oLists[currentIndex].appendChild(item);
+	
+			}
+			
+			
+		</script>
+	</body>
+</html>
