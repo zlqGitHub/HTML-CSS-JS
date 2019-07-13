@@ -1,6 +1,6 @@
 import React,{ Component } from "react";
-import {Input,Button,List,Typography} from 'antd';
 import 'antd/dist/antd.css';
+import TodoListUI from './TodoLIstUI';
 
 //导入action类型
 // import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './store/actionTypes.js';
@@ -20,30 +20,20 @@ class TodoList extends Component{
 		this.state = store.getState();
 		this.handleInputChange = this.handleInputChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
-		this.handleStoreChange = this.handleStoreChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleStoreChange = this.handleStoreChange.bind(this);
+        this.handleClickDelete = this.handleClickDelete.bind(this);
 		store.subscribe(this.handleStoreChange);    //是的store中的数据时刻更新
     }
     render(){
         return (
-            <div style={{marginTop:20,marginLeft:20}}>
-				<Input 
-                    style={{width:300}}
-                    value={this.state.inputValue}
-                    onChange={this.handleInputChange}
-                />
-                <Button onClick={this.handleClick} type="primary">提交</Button>
-                <List
-                    style={{width:300,marginTop:10}}
-                    bordered
-                    dataSource={this.state.list}
-                    renderItem={(item,index) => (
-                        <List.Item onClick={this.handleClickDelete.bind(this,index)}>
-                            {item}
-                        </List.Item>
-                    )}
-                />
-               
-            </div>
+            <TodoListUI 
+                inputValue = {this.state.inputValue}
+                handleInputChange = {this.handleInputChange}
+                handleClick = {this.handleClick}
+                list = {this.state.list}
+                handleClickDelete = {this.handleClickDelete}
+            />
         )
     }
 	//输入框发生改变的时候

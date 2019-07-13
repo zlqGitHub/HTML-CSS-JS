@@ -5,7 +5,7 @@ import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './actionTypes.js';
 
 const defaultData = {
 	inputValue:'',
-	list:[]
+	list:[1,2,3]
 };
 
 /* 
