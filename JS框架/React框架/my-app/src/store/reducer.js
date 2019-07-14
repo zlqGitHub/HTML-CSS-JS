@@ -1,7 +1,7 @@
 // 注意：Reducer必须还纯函数
 // 纯函数指给定固定的输入，就一定有固定的输出，而且不会有任何副作用
 //导入action类型
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './actionTypes.js';
+import {INIT_TODO_ITEM,CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './actionTypes.js';
 
 const defaultData = {
 	inputValue:'',
@@ -14,6 +14,12 @@ const defaultData = {
  */
 export default (state = defaultData,action) => {
 	// console.log(state,action);
+	// 初始化数据
+	if(action.type === INIT_TODO_ITEM){
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.list = action.data;
+        return newState;
+    }
 	//输入框数据发生变化的时候
 	if(action.type === CHANGE_INPUT_VALUE){
 		const newState = JSON.parse(JSON.stringify(state));  //深度复制
