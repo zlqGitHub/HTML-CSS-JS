@@ -1,6 +1,6 @@
 // 将action进行统一的封装
 //导入action类型
-import {INIT_TODO_ITEM,CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './actionTypes.js';
+import {GET_INIT_TODO,INIT_TODO_ITEM,CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './actionTypes.js';
 import axios from 'axios';
 
 //es6高级语法，直接返回一个对象
@@ -34,3 +34,7 @@ export const getTodoList = () => {
         });
 	}
 }
+
+export const getInitList = () => ({
+	type: GET_INIT_TODO
+})

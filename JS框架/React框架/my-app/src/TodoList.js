@@ -1,15 +1,15 @@
 import React,{ Component } from "react";
 import 'antd/dist/antd.css';
 import TodoListUI from './TodoLIstUI';
-// import axios from 'axios';
+import axios from 'axios';  
 
 //导入action类型
 // import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './store/actionTypes.js';
 
 //直接来使用actionCreator封装的action方法
-import {getTodoList,getInputChangeAction,getAddItemAction,getDelItemAction} from './store/actionCreator.js'
+import {getInitList,getTodoList,getInitItemAction,getInputChangeAction,getAddItemAction,getDelItemAction} from './store/actionCreator.js'
 //使用store
-import store from "./store/index"
+import store from "./store/index";
 
 class TodoList extends Component{
     constructor(props){
@@ -35,11 +35,10 @@ class TodoList extends Component{
     }
 
     // 生命周期函数来获取
-    componentDidMount(){
-        //通过store.getState() 来获取store中的数据
-        console.log(store.getState());   
-        const action = getTodoList();
+    componentDidMount(){    
+        const action = getInitList();
         store.dispatch(action)
+
         // 将请求在action中通过中间件来完成
         // axios.get('/list.json').then((res) => {
         //     const data = res.data;
@@ -50,7 +49,6 @@ class TodoList extends Component{
     
 	//输入框发生改变的时候
 	 handleInputChange(e){
-		console.log(store.getState());
         // const action = {
         //     type:CHANGE_INPUT_VALUE,
         //     value:e.target.value
