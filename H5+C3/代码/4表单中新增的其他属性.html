@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="myForm">
+        <!--
+            placeholder: 提示文本，提示占位符
+            autofocus: 自动获取焦点
+            autocomplete: 自动完成  on   off
+                1.必须成功提交过，提交记录才会保存下来
+                2.必须有name属性
+        -->
+        用户名：<input type="text" name="userName" placeholder="请输入用户名" autofocus autocomplete="on"><br>
+        <!--
+            tel：并不会起到校验作用，只是在移动端打开数字键盘
+            required: 必须输入，如果不输入，则会阻止当前数据的提交
+            pattern: 正则表达式，
+                *：表示任意多个   +：表示一个或多个   ?：表示0个或1个   ()：表示一个组合
+        -->
+        手机号：<input type="tel" required pattern="^(\+86)?1\d{10}$"><br>
+        <!--multiple: 可以选择多个文件，同样可以用于email邮箱验证中-->
+        <input type="file" name="fileName" multiple><br>
+
+        <input type="submit" value="提交"><br>
+    </form>
+
+    <!--
+        下面的input没有在form表单下，默认情况下，表单提交只会将form下的数据提交
+        可以通过form属性指定id，将input指定给要提交的form表单
+    -->
+    地址：<input type="text" name="address" form="myForm">
+
+</body>
+</html>
