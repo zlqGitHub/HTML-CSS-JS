@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>语义化标签及其兼容性</title>
+    <style>
+        *{margin: 0;padding:0}
+        header, section, footer, aside, nav, main, article, figure, main {
+            display: block;
+        }
+        header{
+            width: 100%;
+            height: 80px;
+            background: red;
+        }
+        nav{
+            width: 100%;
+            height: 40px;
+            background: green;
+        }
+        main{
+            width: 100%;
+            height: 600px;
+        }
+        main > article{
+            width: 80%;
+            height: 600px;
+            background: pink;
+            float: left;
+        }
+        main > aside {
+            width: 20%;
+            height: 600px;
+            background: orangered;
+            float: right;
+        }
+        footer{
+            width: 100%;
+            height: 60px;
+            background: purple;
+        }
+        div{
+            width: 100%;
+            height: 60px;
+            background: purple;
+        }
+    </style>
+</head>
+<body>
+    <!--兼容性处理-->
+    <script>
+        document.createElement("header");
+        document.createElement("nav");
+        document.createElement("main");
+        document.createElement("article");
+        document.createElement("aside");
+        document.createElement("footer");
+    </script>
+
+    <!--&lt;!&ndash;[if lt IE 9]>-->
+    <!--<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+
+
+    <header>头部</header>
+    <nav>导航条</nav>
+    <main>
+        <article>主体左边</article>
+        <aside>主体右边</aside>
+    </main>
+    <footer>底部</footer>
+</body>
+</html>
