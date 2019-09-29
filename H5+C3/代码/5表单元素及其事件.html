@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--原始的一个下拉选项卡-->
+    <form action="">
+        课程类型：<select name="type" id="subjects">
+            <option value="Java">java</option>
+            <option value="Javascript">Javascript</option>
+            <option value="C++">C++</option>
+            <option value="Python">Python</option>
+        </select>
+    </form>
+
+    <br>
+
+    <!--新增元素后的下拉选项卡-->
+    <form>
+        <!--
+            具有输入的功能
+            首先需要将input输入框与datalist进行绑定，list属性的值是datalist的id号
+        -->
+        <input type="text" list="browsers">
+        <datalist id="browsers">
+            <!--option可以是一个单双标签-->
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+        </datalist >
+        <input type="submit" value="提交">
+    </form>
+
+    <br>
+
+    <!--
+        了解keygen、output标签，目前浏览器对其支持性不好
+    -->
+    <form>
+        用户名：<input type="text" name="username" id="username" placeholder="请输入用户名" autofocus autocomplete="on"><br>
+        密码：<input type="password" name="passWd" id="passWd" placeholder="请输入密码"><br>
+        电话：<input type="tel" id="tel" required pattern="(\+86)?1\d{10}"><br>
+        <!--keygen：表单提交时，会生成一个公钥一个私钥，私钥被存储于客户端，公钥被发送到服务器端，用户解钥-->
+        加密：<keygen name="security"></keygen><br>
+        <!--output：只起到了显示输出的作用-->
+        <output>总价：1500元</output><br>
+        <input type="submit" value="提交">
+    </form>
+    <br><br><br>
+    <!--进度条：progress、meter-->
+    <progress></progress>
+    <progress max="100" min="0" value="40"></progress>
+    <br><br>
+    <!--meter：不同浏览器显示均不相同-->
+    <meter></meter>
+    <meter max="100" min="0" height="80" low="30" value="20"></meter>
+    <meter max="100" min="0" height="80" low="30" value="50"></meter>
+    <meter max="100" min="0" height="80" low="30" value="90"></meter>
+
+    <script>
+        /*
+        *   oninput事件：监听输入框内容的改变事件，只要内容有变化就会触发的
+        *   onkeyup事件：监听任意键盘的抬起事件，只要 键盘抬起就会触发的
+        *   oninvalid事件：监听验证事件，只要有验证就会触发
+        * */
+        document.getElementById("username").oninput = function () {
+            console.log("oninput = " + this.value);
+        }
+        document.getElementById("username").onkeyup = function () {
+            console.log("onkeyup = " + this.value);
+        }
+        document.getElementById("tel").oninvalid = function () {
+            //设置默认验证字符提示
+            this.setCustomValidity("请输入11位合法电话号码")
+            console.log("电话被验证了");
+        }
+    </script>
+
+</body>
+</html>
