@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>H5表单案例</title>
+    <link rel="stylesheet" href="./css/6.css">
+</head>
+<body>
+    <form action="stu">
+        <fieldset>
+            <legend>学生档案</legend>
+            <label for="username">姓名：</label>
+            <input type="text" id="username" name="username" placeholder="请输入用户名" value="" required autocomplete="on">
+
+            <label for="tel">手机号码：</label>
+            <input type="tel" id="tel" name="tel" pattern="1\d{10}">
+
+            <label for="email">邮箱地址：</label>
+            <input type="email" id="email" name="email" required multiple placeholder="所有多个邮箱请用','隔开">
+
+            <label for="types">所属学院：</label>
+            <input type="text" id="types" list="college" placeholder="请选择">
+            <datalist id="college">
+                <option value="软件学院" label="软件学院"/>
+                <option value="女子学院" label="女子学院"/>
+                <option value="人文学院" label="人文学院"/>
+                <option value="大数据与云计算学院" label="大数据与云计算学院"/>
+            </datalist>
+
+            <label for="record">入学成绩：</label>
+            <input id="record" type="number" max="100" min="0" value="0">
+
+            <label for="level">基础水平：</label>
+            <meter id="level" max="100" min="0" height="90" low="59" value="0"></meter>
+
+            <label for="joinDate">入学日期：</label>
+            <input type="date" id="joinDate">
+
+            <label for="outDate">毕业日期：</label>
+            <input type="date" id="outDate">
+
+            <input type="submit">
+        </fieldset>
+
+    </form>
+
+    <script>
+        document.getElementById("username").oninput = function(){
+            console.log("oninput = " + this.value)
+        }
+        document.getElementById("username").oninvalid = function(){
+            console.log("oninvalid = " +
+                this.value)
+            // this.setCustomValidity("姓名字段必填")
+        }
+        document.getElementById("record").oninput = function () {
+            document.getElementById("level").value = this.value;
+        }
+        document.getElementById("record").oninput = function(){
+            this.oninvalid = function () {
+                console.log(88)
+            };
+        }
+        // document.getElementById("record").oninvalid = function () {
+        //     console.log(55)
+        // }
+        
+    </script>
+
+</body>
+</html>
