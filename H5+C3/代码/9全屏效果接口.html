@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569826810362&di=74e1c7e7e771ac3b32519483dd2097f8&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201504%2F21%2F20150421H4705_wMLkK.jpeg" alt="">
+    <input type="button" id="full" value="全屏">
+    <input type="button" id="cancelFull" value="退出全屏">
+    <input type="button" id="isFull" value="是否全屏">
+</div>
+<script>
+    /*全屏操作的主要方法和属性
+    *   1.requestFullScreen(): 开启全屏
+    *       兼容性处理，不同浏览器需要加不同的前缀,使用能力测试为不同浏览器添加不同的前缀
+    *       Chrome：webkit   Firefox：moz    ie：ms    opera：o
+    *   2.cancelFullScreen():退出全屏
+    *       退出全屏也不要添加前缀，不同浏览器需要通过document来退出全屏，是整个文档退出全屏显示
+    *   3.fullScreenElement: 是否是全屏状态,也只能通过document来判断
+    *
+    *   使用document的原因：是整个文档而不是某一个元素
+    * */
+    window.onload = function () {
+        let div = document.querySelector("div");
+        //考虑兼容性问题   全屏处理
+        document.querySelector("#full").onclick = function () {
+            if(div.requestFullScreen){
+                div.requestFullScreen();
+            }else if(div.webkitRequestFullScreen){
+                div.webkitRequestFullScreen();
+            }else if(div.mozRequestFullScreen){
+                div.mozRequestFullScreen();
+            }else if(div.msRequestFullscreen){
+                div.msRequestFullScreen();
+            }
+        }
+
+        //退出全屏处理
+        document.querySelector("#cancelFull").onclick = function () {
+            if(document.cancelFullScreen){
+                document.cancelFullScreen();
+            }else if(document.webkitCancelFullScreen){
+                document.webkitCancelFullScreen();
+            }else if(document.mozCancelFullScreen){
+                document.mozCancelFullScreen();
+            }else if(document.msCancelFullScreen){
+                document.msCancelFullScreen();
+            }
+        }
+
+        //判断是否是全屏状态
+        document.querySelector("#isFull").onclick = function () {
+            //注意：使用document判断  能力测试   ,只有Firefox是标准的
+            if(div.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.mozFullScreenElement){
+                alert(true);
+            }else{
+                alert(false);
+            }
+        }
+    }
+
+    /*
+    * 能力检测：被人们广泛接受的客户端浏览器检测性形式。其目的不是识别特定的浏览器而是识别浏览器的能力。
+    * 采用这种方式不用顾及特定浏览器如何如何，只要确定浏览器支持特定的能力就可以给出解决方案。
+    * */
+
+</script>
+</body>
+</html>
