@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<!--
+    需求：即时预览效果（比如点击切换头像等操作）
+        即时：当用户选择完图片之后就立马展示预览的处理 》》 onchange(当内容变化时触发)
+        预览：通过文件读取对象的readAsDataURL()方法完成
+-->
+<form action="">
+    上传图片：<input type="file" name="myFile" id="myFile" onchange="getFileContent();"><br>
+    <input type="submit">
+</form>
+<img src="" alt="">
+<script>
+    /*
+        FileRead: 读取文件内容
+        1.readAsText(): 读取文本文件（可以使用Txt打开的文件），返回文本字符串，默认的编码是UTF-8
+        2.readAsBinaryString(): 读取任意类型的文件，返回二进制字符串。该方法不是用来读取文件展示给用户看的，
+            而是存储文件。例如：读取文件内容，获取二进制数据，传递给后台，后台接收到数据后，再将数据存储
+        3.readAsDataURL(): 读取文件获取一段以data开头的字符串，这段字符串的本质是DataURL。DateURL是将资源转化
+            为base64编码的字符串形式，并将这些内容直接存储在url中，可以优化网站的加载速度和执行效率。
+        4.abort(): 中断文件的读取
+    */
+    //即时预览处理：
+    function getFileContent(){
+        //首先创建文件读取对象
+        let reader = new FileReader();
+        /*
+            读取文件，获取DataURL (readAsDataURL)
+                没有任何返回值void，但读取完文件后，他会将读取点后的结果存储在文件读取对象的result中
+                不要传递一个参数binary large object：文件（图片或者其他可以嵌入到文档的类型）
+                上传的文件存储在file表单元素的files属性中，他是一个数组
+        */
+        let file = document.querySelector("#myFile").files;
+        reader.readAsDataURL(file[0]);
+        /*
+            获取数据（FileReader提供了一个完整的事件类型，用来捕获读取文件的状态）：
+                onabort: 读取文件中断时触发
+                onerror：读取错误时触发
+                onload：读取文件成功完成时触发
+                onloadend：无论成功失败，读取结束时均触发
+                onloadstart：开始读取是触发
+                onprogress: 读取文件过程中持续触发
+        */
+        reader.onload = function () {
+            //进行预览
+            // console.log(reader.result);
+            document.querySelector("img").src = reader.result;
+        }
+    }
+</script>
+
+</body>
+</html>
