@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+    <button onclick="getLocation()">点我</button>
+
+    <script>
+        <!--HTML5 Geolocation API 用于获得用户的地理位置-->
+        var x=document.getElementById("demo");
+        function getLocation(){
+            //能力测试
+            if (navigator.geolocation){
+                /*
+                    navigator.geolocation.getCurrentPosition(success,error,option);
+                        分别是获取地理信息成功之后的回调，失败之后的回调，调整获取当前地理信息的方式
+                        option: 可以设置获取数据的方式
+                            enableHighAccuracy:true/false: 是否使用高精度
+                            timeout：设置超时时间，单位：ms
+                            maximumAge：可以设置浏览器重新获取地理信息的时间间隔  ms
+                */
+                navigator.geolocation.getCurrentPosition(showPosition,showError,{
+                    enableHighAccuracy:true,
+                    timeout:3000
+                });
+            }else{
+                // x.innerHTML="该浏览器不支持获取地理位置。";
+                x.innerHTML = "Geolocation is not supported by this.browser.";
+            }
+        }
+        /*
+            成功后的回调，如果获取地理信息成功，会将获取的地理信息传递给成功之后的回调
+                position.coords.latitude  纬度
+                position.coords.longitude  经度
+                position.coords.accuracy   精度
+                position.coords.altitude   海拔高度
+        */
+        function showPosition(position){
+            x.innerHTML="纬度: " + position.coords.latitude +
+                "<br>经度: " + position.coords.longitude;
+        }
+        /* 获取地理位置失败之后的回调 */
+        fu  nction  showError(error) {
+            switch(error.code){
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERR:
+                    x.innerHTML = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
