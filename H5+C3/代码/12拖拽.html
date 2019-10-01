@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            float: left;
+            margin: 20px 50px;
+        }
+        .p1{
+            background: orangered;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        <p class="p1" draggable="true">我是拖拽元素</p>
+    </div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+
+    <script>
+        //******拖拽事件：被拖拽元素 + 目标元素******
+        let p = document.querySelector(".p1");
+        let box1 = document.querySelector(".box1");
+        let box2 = document.querySelector(".box2");
+        let box3 = document.querySelector(".box3");
+
+        /*
+            应用于被拖拽元素的事件：
+                ondrag ：整个拖拽过程都会调用
+                ondragstart ：当拖拽开始时调用
+                ondragleave ：当鼠标离开拖拽元素是调用
+                ondragend : 当拖拽接收时调用
+        */
+        p.ondragstart = function () {
+            console.log("ondragstart")
+        }
+        p.ondragend = function () {
+            console.log("ondragend");
+        }
+        p.ondrag = function () {
+            console.log("ondrag");
+        }
+        p.ondragleave = function () {
+            console.log("ondragleave");
+        }
+        /*
+           应用与目标元素的事件
+                ondragenter ：当拖拽元素进入时调用
+                ondragover ：当停留在目标元素上时调用
+                ondrop ：当在目标元素上松开时调用
+                ondragleave ：当鼠标离开目标元素时调用
+        */
+        box2.ondragenter = function () {
+            console.log("ondragenter");
+        }
+        box2.ondragover = function (event) {
+            console.log("ondragover");
+            //要想执行ondrop事件，需要在此处阻止浏览器默认事件
+            event.preventDefault();
+        }
+        //注意：浏览器会默认阻止ondrop事件，即默认阻止拖拽事件
+        //解决：必须在ondragover中阻止浏览器的默认事件
+        box2.ondrop = function () {
+            console.log("ondrop");
+            //添加元素
+            this.appendChild(p);
+        }
+        box2.ondragleave = function () {
+            console.log("离开了目标元素")
+        }
+
+        box1.ondragover = function (event) {
+            console.log("移回了元素中");
+            event.preventDefault();
+        }
+        box1.ondrop = function () {
+            this.appendChild(p);
+        }
+        box3.ondragover = function (event) {
+            console.log("移回了元素中");
+            event.preventDefault();
+        }
+        box3.ondrop = function () {
+            this.appendChild(p);
+        }
+
+    </script>
+
+</body>
+</html>
