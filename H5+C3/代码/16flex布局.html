@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .layout{width: 500px;height: 600px;background-color: #ccc;margin:20px auto;display: flex;flex-direction:column;}
+        header{width: 100%;height: 60px;background: red;}
+        main{
+            background: blue;
+            width: 100%;
+            /*flex:1可以设置其占据剩余空间的所有*/
+            flex:1;
+            display: flex;
+        }
+        main > article{
+            flex: 1;
+            background: aqua;
+            height: 100%;
+        }
+        main > aside{
+            flex: 3;
+            background: pink;
+            height: 100%;
+        }
+        footer{width: 100%;height: 80px;background: green;}
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <header></header>
+        <main>
+            <article></article>
+            <aside></aside>
+        </main>
+        <footer></footer>
+    </div>
+
+</body>
+</html>
