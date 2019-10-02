@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .content{width: 500px;height: 500px;background: #ddd;margin: 50px auto;border: 1px solid red;}
+        .an_header{width: 250px;height: 125px;background: darkgreen;margin: 20px auto 10px;border-radius: 125px 125px 0 0;position: relative;}
+        .an_header::before,.an_header:after{
+            content:"";
+            /* 行内 =》 块级  display:block;   float   position  */
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            position: absolute;
+            border-radius: 50%;
+            bottom: 40px;
+        }
+        .an_header::before{left: 70px;}
+        .an_header:after{ right: 70px;}
+
+        .an_body{
+            width: 250px;
+            height: 260px;
+            border-radius: 0 0 20px 20px;
+            background: darkgreen;
+            margin: 0 auto;
+            position: relative;
+        }
+        .an_body:before,.an_body:after{
+            content:"";
+            position: absolute;
+            width: 20px;
+            height: 180px;
+            background: darkgreen;
+            top: 20px;
+            border-radius: 10px;
+        }
+        .an_body:before{left: -30px;}
+        .an_body:after{right: -30px;}
+
+        .an_footer{
+            width: 250px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .an_footer:before,.an_footer:after{
+            content:'';
+            width: 20px;
+            height: 75px;
+            background: darkgreen;
+            position: absolute;
+            border-radius: 0 0 10px 10px;
+        }
+        .an_footer:before{left: 75px;}
+        .an_footer:after{right: 75px;}
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="an_header"></div>
+        <div class="an_body"></div>
+        <div class="an_footer"></div>
+    </div>
+
+</body>
+</html>
