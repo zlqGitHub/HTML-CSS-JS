@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .content{
+            width: 890px;
+            height: 134px;
+            background: #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        .content > ul{
+            width: 200%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            animation:move 5s linear infinite;
+        }
+        .content > ul > li{
+            float: left;
+        }
+        .content > ul:hover{
+            cursor: pointer;
+            animation-play-state: paused;
+            -webkit-animation-play-state:paused;
+        }
+        @keyframes move {
+            from {
+                transform: translateX(0);
+            }
+            to{
+                transform: translateX(-890px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul >
+            <li><img src="./imgs/1.jpg" alt=""></li>
+            <li><img src="./imgs/2.jpg" alt=""></li>
+            <li><img src="./imgs/3.jpg" alt=""></li>
+            <li><img src="./imgs/4.jpg" alt=""></li>
+            <li><img src="./imgs/5.jpg" alt=""></li>
+            <li><img src="./imgs/1.jpg" alt=""></li>
+            <li><img src="./imgs/2.jpg" alt=""></li>
+            <li><img src="./imgs/3.jpg" alt=""></li>
+            <li><img src="./imgs/4.jpg" alt=""></li>
+            <li><img src="./imgs/5.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
